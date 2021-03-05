@@ -15,7 +15,7 @@ public class Main extends Application {
         System.out.println("fxml loaded");
 
         // bootstrap "window" named stage
-        primaryStage.setTitle("Hello World");
+        primaryStage.setTitle("Tour Planner");
         System.out.println("set title");
 
         // set scene into stage in defined size

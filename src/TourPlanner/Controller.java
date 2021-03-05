@@ -39,7 +39,7 @@ public class Controller implements Initializable {
 
         InputTextField.textProperty().bindBidirectional(viewModel.inputProperty());
 
-        // OutputLabel.textProperty().bindBidirectional(viewModel.outputProperty());
+        //OutputLabel.textProperty().bindBidirectional(viewModel.outputProperty());
         Bindings.bindBidirectional(OutputLabel.textProperty(), viewModel.outputProperty());
     }
 }

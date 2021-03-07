@@ -33,6 +33,28 @@ public class Controller implements Initializable {
         viewModel.calculateOutputString();
     }
 
+    @FXML
+    public void getHelp(ActionEvent actionEvent) {
+        System.out.println("Controller Help");
+        viewModel.getHelp();
+    }
+
+    @FXML
+    public void getOptions(ActionEvent actionEvent) {
+        System.out.println("Controller Options");
+        viewModel.getOptions();
+    }
+    @FXML
+    public void getFile(ActionEvent actionEvent) {
+        System.out.println("Controller File");
+        viewModel.getFile();
+    }
+    @FXML
+    public void doEdit(ActionEvent actionEvent) {
+        System.out.println("Controller Edit");
+        viewModel.doEdit();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         System.out.println("Controller init");
@@ -40,6 +62,7 @@ public class Controller implements Initializable {
         InputTextField.textProperty().bindBidirectional(viewModel.inputProperty());
 
         //OutputLabel.textProperty().bindBidirectional(viewModel.outputProperty());
+        Bindings.bindBidirectional(OutputLabel.textProperty(), viewModel.outputProperty());
         Bindings.bindBidirectional(OutputLabel.textProperty(), viewModel.outputProperty());
     }
 }

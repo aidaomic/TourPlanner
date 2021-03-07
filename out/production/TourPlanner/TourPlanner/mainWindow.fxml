@@ -5,18 +5,18 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="756.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TourPlanner.Controller">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="605.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TourPlanner.Controller">
     <columnConstraints>
-        <ColumnConstraints hgrow="SOMETIMES" maxWidth="225.0" minWidth="10.0" prefWidth="150.0" />
-        <ColumnConstraints hgrow="SOMETIMES" maxWidth="568.4" minWidth="10.0" prefWidth="479.0" />
-        <ColumnConstraints hgrow="SOMETIMES" maxWidth="153.60000000000002" minWidth="10.0" prefWidth="126.60000000000002" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="225.0" minWidth="10.0" prefWidth="156.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="406.0" minWidth="10.0" prefWidth="359.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="106.0" minWidth="10.0" prefWidth="85.0" />
     </columnConstraints>
     <rowConstraints>
         <RowConstraints maxHeight="195.0" minHeight="10.0" prefHeight="79.0" valignment="CENTER" vgrow="NEVER" />
-        <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="321.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="321.0" minHeight="10.0" prefHeight="321.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
-        <Label prefHeight="18.0" prefWidth="145.0" text="Search Tour:" GridPane.hgrow="SOMETIMES" GridPane.vgrow="NEVER">
+        <Label text="Search Tour:" GridPane.hgrow="SOMETIMES" GridPane.vgrow="NEVER">
             <GridPane.margin>
                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
             </GridPane.margin>
@@ -31,9 +31,9 @@
                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
             </GridPane.margin>
         </Button>
-        <Label fx:id="OutputLabel" prefHeight="236.0" prefWidth="578.0" style="-fx-alignment: center;" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
+        <Label fx:id="OutputLabel" prefHeight="236.0" prefWidth="365.0" style="-fx-alignment: center;" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
             <font>
-                <Font size="47.0" />
+                <Font size="24.0" />
             </font>
         </Label>
     </children>

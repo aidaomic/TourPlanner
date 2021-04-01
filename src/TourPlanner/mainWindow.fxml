@@ -3,45 +3,95 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TourPlanner.Controller">
-    <columnConstraints>
-        <ColumnConstraints hgrow="SOMETIMES" maxWidth="500" minWidth="10.0" prefWidth="400.0" />
-        <ColumnConstraints hgrow="SOMETIMES" maxWidth="400" minWidth="10.0" prefWidth="300.0" />
-    </columnConstraints>
-    <rowConstraints>
-        <RowConstraints maxHeight="195.0" minHeight="10.0" prefHeight="50" valignment="CENTER" vgrow="NEVER" />
-        <RowConstraints maxHeight="321.0" minHeight="10.0" prefHeight="50" vgrow="SOMETIMES" />
-        <RowConstraints maxHeight="321.0" minHeight="10.0" prefHeight="300" vgrow="SOMETIMES" />
-    </rowConstraints>
-    <children>
-        <TextField fx:id="InputTextField" text="Search for Tour by number" GridPane.columnIndex="0" GridPane.rowIndex="1">
-            <padding>
-                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-            </padding>
-        </TextField>
-        <Button mnemonicParsing="false" onAction="#calculateOutput" prefWidth="249.0" text="Search" GridPane.columnIndex="1" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="1">
-            <GridPane.margin>
-                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-            </GridPane.margin>
-        </Button>
-        <Label fx:id="OutputLabel" style="-fx-alignment: center;" textAlignment="CENTER" GridPane.rowIndex="2">
-            <font>
-                <Font size="24.0" />
-            </font>
-        </Label>
-      <ButtonBar prefHeight="40.0" prefWidth="200.0">
-        <buttons>
-          <Button mnemonicParsing="false" text="File" onAction="#getFile"/>
-          <Button mnemonicParsing="false" text="Edit" onAction="#doEdit"/>
-          <Button mnemonicParsing="false" text="Options" onAction="#getOptions"/>
-        </buttons>
-      </ButtonBar>
-        <Button mnemonicParsing="false" onAction="#getHelp" prefWidth="249.0" text="Help" GridPane.columnIndex="1" GridPane.hgrow="SOMETIMES">
-            <GridPane.margin>
-                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-            </GridPane.margin>
-        </Button>
-    </children>
-</GridPane>
+<BorderPane prefHeight="500" prefWidth="500" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TourPlanner.MainWindowController">
+
+    <top>
+        <VBox alignment="BASELINE_CENTER" maxWidth="500" prefHeight="100">
+            <HBox alignment="TOP_CENTER">
+                    <Button alignment="BASELINE_CENTER" onAction="#getFile" prefHeight="30" prefWidth="80" text="File">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="10" />
+               </HBox.margin></Button>
+                    <Button alignment="BASELINE_CENTER" onAction="#doEdit" prefHeight="30" prefWidth="80" text="Edit" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="10" />
+               </HBox.margin></Button>
+                    <Button alignment="BASELINE_CENTER" onAction="#getOptions" prefHeight="30" prefWidth="220" text="Options" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="10" />
+               </HBox.margin></Button>
+                    <Button alignment="BASELINE_CENTER" onAction="#getHelp" prefHeight="30" prefWidth="120" text="Help" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="10" />
+               </HBox.margin></Button>
+            </HBox>
+            <HBox alignment="TOP_CENTER">
+                <TextField fx:id="InputTextField" prefHeight="30" prefWidth="380" text="Search for Tours">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="10" />
+               </HBox.margin></TextField>
+                <Button alignment="BASELINE_CENTER" onAction="#searchForTour" prefHeight="30" prefWidth="120" text="Search">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="10" />
+               </HBox.margin></Button>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <HBox>
+            <VBox minHeight="400" minWidth="160" style="-fx-border-color: #C8C8C8; -fx-border-width: 1; -fx-border-style: solid">
+                <HBox>
+                    <Label alignment="TOP_CENTER" prefWidth="80" text="TOURS">
+                  <HBox.margin>
+                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                  </HBox.margin></Label>
+                    <Button alignment="TOP_CENTER" onAction="#addTour" text="+" />
+                    <Button alignment="TOP_CENTER" onAction="#deleteTour" text="-" />
+                    <Button alignment="TOP_CENTER" onAction="#something" text="[]" />
+                </HBox>
+                <Label alignment="TOP_CENTER" text="1. Tour 2.Tour..." />
+            </VBox>
+
+            <VBox minHeight="400" minWidth="340" style="-fx-border-color: #C8C8C8; -fx-border-width: 1; -fx-border-style: solid">
+
+                <VBox minHeight="200" style="-fx-border-color: #C8C8C8; -fx-border-width: 0 0 1 0; -fx-border-style: solid">
+
+                    <Label prefWidth="340" text="Title: " />
+                    <HBox alignment="CENTER" spacing="5" >
+                        <Button alignment="TOP_CENTER" onAction="#displayRoute" prefWidth="150" text="Route" />
+                        <Button alignment="TOP_CENTER" onAction="#displayDescription" prefWidth="150" text="Description" />
+                    </HBox>
+                    <Label fx:id="OutputLabel" alignment="CENTER" minHeight="130" prefWidth="320" style="-fx-border-color: #000000; -fx-border-width: 2; -fx-border-styly: solid;">
+                  <VBox.margin>
+                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                  </VBox.margin></Label>
+                </VBox>
+
+                <VBox minHeight="200">
+                    <HBox>
+                        <Label alignment="CENTER_LEFT" prefWidth="250" text="Logs:">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin></Label>
+                        <Button alignment="TOP_CENTER" onAction="#addLog" text="+" />
+                        <Button alignment="TOP_CENTER" onAction="#deleteLog" text="-" />
+                        <Button alignment="TOP_CENTER" onAction="#somethingLog" text="[]" />
+                    </HBox>
+
+                    <TableView fx:id="LogTable">
+                        <columns>
+                            <TableColumn text="Date" />
+                            <TableColumn text="Duration" />
+                            <TableColumn text="Distance" />
+                        </columns>
+                    </TableView>
+
+                </VBox>
+
+            </VBox>
+        </HBox>
+    </center>
+
+</BorderPane>

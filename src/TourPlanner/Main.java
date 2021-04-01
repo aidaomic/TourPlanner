@@ -19,7 +19,7 @@ public class Main extends Application {
         System.out.println("set title");
 
         // set scene into stage in defined size
-        primaryStage.setScene(new Scene(root, 600, 500));
+        primaryStage.setScene(new Scene(root, 500, 500));
         System.out.println("set scene");
 
         // let's go

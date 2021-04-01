@@ -1,19 +1,16 @@
 package TourPlanner;
 
 import javafx.beans.binding.Bindings;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.ObjectPropertyBase;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Controller implements Initializable {
+public class MainWindowController implements Initializable {
 
     // create custom viewmodel
     public MainViewModel viewModel = new MainViewModel();
@@ -22,15 +19,15 @@ public class Controller implements Initializable {
     public TextField InputTextField;
     public Label OutputLabel;
 
-    public Controller()
+    public MainWindowController()
     {
         System.out.println("Controller created");
     }
 
     @FXML
-    public void calculateOutput(ActionEvent actionEvent) {
-        System.out.println("Controller calculate");
-        viewModel.calculateOutputString();
+    public void searchForTour(ActionEvent actionEvent) {
+        System.out.println("Controller Search");
+        viewModel.searchForTour();
     }
 
     @FXML
@@ -63,6 +60,29 @@ public class Controller implements Initializable {
 
         //OutputLabel.textProperty().bindBidirectional(viewModel.outputProperty());
         Bindings.bindBidirectional(OutputLabel.textProperty(), viewModel.outputProperty());
-        Bindings.bindBidirectional(OutputLabel.textProperty(), viewModel.outputProperty());
+    }
+
+    public void addTour(ActionEvent actionEvent) {
+    }
+
+    public void deleteTour(ActionEvent actionEvent) {
+    }
+
+    public void something(ActionEvent actionEvent) {
+    }
+
+    public void displayRoute(ActionEvent actionEvent) {
+    }
+
+    public void displayDescription(ActionEvent actionEvent) {
+    }
+
+    public void addLog(ActionEvent actionEvent) {
+    }
+
+    public void deleteLog(ActionEvent actionEvent) {
+    }
+
+    public void somethingLog(ActionEvent actionEvent) {
     }
 }

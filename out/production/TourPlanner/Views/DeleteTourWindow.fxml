@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane prefHeight="100" prefWidth="200" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TourWindowController">
+<center>
+    <VBox>
+        <Label alignment="CENTER" prefWidth="Infinity" text="Enter Tour (Name) to delete:">
+            <VBox.margin>
+               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </VBox.margin></Label>
+        <HBox>
+            <TextField>
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" top="10.0" />
+               </HBox.margin></TextField>
+            <Button prefHeight="26.0" prefWidth="71.0" text="Delete" onAction="#deleteTour">
+                <HBox.margin>
+                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                </HBox.margin>
+                <font>
+                    <Font size="10.0" />
+                </font></Button>
+        </HBox>
+    </VBox>
+</center>
+</BorderPane>

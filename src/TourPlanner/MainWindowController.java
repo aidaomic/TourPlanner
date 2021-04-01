@@ -88,4 +88,15 @@ public class MainWindowController implements Initializable {
     }
 
 
+    public void logFile(ActionEvent actionEvent) {
+    }
+
+    public void report(ActionEvent actionEvent) {
+    }
+
+    public void importData(ActionEvent actionEvent) {
+    }
+
+    public void exportData(ActionEvent actionEvent) {
+    }
 }

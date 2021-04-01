@@ -1,5 +1,6 @@
 package TourPlanner;
 
+import Models.MainViewModel;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -85,4 +86,6 @@ public class MainWindowController implements Initializable {
 
     public void somethingLog(ActionEvent actionEvent) {
     }
+
+
 }

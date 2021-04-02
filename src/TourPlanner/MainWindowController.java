@@ -4,10 +4,15 @@ import Models.MainViewModel;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -25,48 +30,30 @@ public class MainWindowController implements Initializable {
         System.out.println("Controller created");
     }
 
-    @FXML
-    public void searchForTour(ActionEvent actionEvent) {
-        System.out.println("Controller Search");
-        viewModel.searchForTour();
-    }
-
-    @FXML
-    public void getHelp(ActionEvent actionEvent) {
-        System.out.println("Controller Help");
-        viewModel.getHelp();
-    }
-
-    @FXML
-    public void getOptions(ActionEvent actionEvent) {
-        System.out.println("Controller Options");
-        viewModel.getOptions();
-    }
-    @FXML
-    public void getFile(ActionEvent actionEvent) {
-        System.out.println("Controller File");
-        viewModel.getFile();
-    }
-    @FXML
-    public void doEdit(ActionEvent actionEvent) {
-        System.out.println("Controller Edit");
-        viewModel.doEdit();
-    }
-
-    @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println("Controller init");
-
         InputTextField.textProperty().bindBidirectional(viewModel.inputProperty());
-
         //OutputLabel.textProperty().bindBidirectional(viewModel.outputProperty());
         Bindings.bindBidirectional(OutputLabel.textProperty(), viewModel.outputProperty());
     }
 
-    public void addTour(ActionEvent actionEvent) {
+    public void searchForTour(ActionEvent actionEvent) {
+        viewModel.searchForTour();
     }
 
-    public void deleteTour(ActionEvent actionEvent) {
+    public void getHelp(ActionEvent actionEvent) {
+        viewModel.getHelp();
+    }
+
+    public void doEdit(ActionEvent actionEvent) throws IOException {
+        viewModel.doEdit();
+    }
+
+    public void addTour(ActionEvent actionEvent) throws IOException {
+        viewModel.addTour();
+    }
+
+    public void deleteTour(ActionEvent actionEvent) throws IOException {
+        viewModel.deleteTour();
     }
 
     public void something(ActionEvent actionEvent) {

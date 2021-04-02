@@ -2,10 +2,18 @@ package Models;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class MainViewModel {
     private final StringProperty input = new SimpleStringProperty("");
     private final StringProperty output = new SimpleStringProperty("");
+    public Parent root;
+    Stage secondaryStage = new Stage();
 
     public StringProperty inputProperty() {
         System.out.println("VM: get input prop");
@@ -28,18 +36,24 @@ public class MainViewModel {
         this.output.set("Here should be some helpful stuff");
     }
 
-    public void doEdit() {
-        System.out.println("VM: do Edit");
-        this.output.set("You klicked the button for editing");
+    public void doEdit() throws IOException {
+        root = FXMLLoader.load(getClass().getResource("../Views/EditTourWindow.fxml"));
+        secondaryStage.setTitle("Tour Planner - delete Tour");
+        secondaryStage.setScene(new Scene(root, 500, 350)); //v=breite v1=höhe
+        secondaryStage.show();
     }
 
-    public void getOptions() {
-        System.out.println("VM: get Options");
-        this.output.set("Here should be some options displayed");
+    public void addTour() throws IOException {
+        root = FXMLLoader.load(getClass().getResource("../Views/AddTourWindow.fxml"));
+        secondaryStage.setTitle("Tour Planner - add Tour");
+        secondaryStage.setScene(new Scene(root, 500, 350)); //v=breite v1=höhe
+        secondaryStage.show();
     }
 
-    public void getFile() {
-        System.out.println("VM: get File");
-        this.output.set("You klicked on the getFile-Button");
+    public void deleteTour() throws IOException {
+        root = FXMLLoader.load(getClass().getResource("../Views/DeleteTourWindow.fxml"));
+        secondaryStage.setTitle("Tour Planner - delete Tour");
+        secondaryStage.setScene(new Scene(root, 200, 100)); //v=breite v1=höhe
+        secondaryStage.show();
     }
 }

@@ -69,7 +69,7 @@ public class MapQuest {
     public void getStaticMap(String sessionId, String boundBox){
 
         String buildURL = "http://www.mapquestapi.com/staticmap/v5/map?key=" + mapQuestKey +
-                "&size=640,480&defaultMarker=none&zoom=11&rand=737758036&session=" + sessionId + "&boundingBoze=" + boundBox;
+                "&size=640,480&defaultMarker=none&rand=737758036&session=" + sessionId + "&boundingBoze=" + boundBox;
         try {
             URL url = new URL(buildURL);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();

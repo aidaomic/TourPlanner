@@ -4,27 +4,26 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane prefHeight="500" prefWidth="500" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="TourPlanner.MainWindowController">
+<BorderPane prefHeight="500" prefWidth="500" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TourPlanner.MainWindowController">
 
     <top>
         <VBox alignment="BASELINE_CENTER" maxWidth="500" prefHeight="100">
             <ToolBar prefHeight="40.0" prefWidth="500.0">
                 <items>
-                    <MenuButton mnemonicParsing="false" text="File" prefWidth="80">
+                    <MenuButton mnemonicParsing="false" prefWidth="80" text="File">
                         <items>
-                            <MenuItem mnemonicParsing="false" text="Import File" onAction="#importData"/>
-                            <MenuItem mnemonicParsing="false" text="Export File" onAction="#exportData"/>
+                            <MenuItem mnemonicParsing="false" onAction="#importData" text="Import File" />
+                            <MenuItem mnemonicParsing="false" onAction="#exportData" text="Export File" />
                         </items>
                     </MenuButton>
-                    <Button mnemonicParsing="false" text="Edit" prefWidth="80" onAction="#doEdit"/>
-                    <MenuButton mnemonicParsing="false" text="Options" prefWidth="190">
+                    <Button mnemonicParsing="false" onAction="#doEdit" prefWidth="80" text="Edit" />
+                    <MenuButton mnemonicParsing="false" prefWidth="190" text="Options">
                         <items>
-                            <MenuItem mnemonicParsing="false" text="Log-File" onAction="#logFile"/>
-                            <MenuItem mnemonicParsing="false" text="Report" onAction="#report"/>
+                            <MenuItem mnemonicParsing="false" onAction="#logFile" text="Log-File" />
+                            <MenuItem mnemonicParsing="false" onAction="#report" text="Report" />
                         </items>
                     </MenuButton>
-                    <Button text="Help" prefWidth="120" onAction="#getHelp"/>
+                    <Button onAction="#getHelp" prefWidth="120" text="Help" />
                 </items>
             </ToolBar>
 
@@ -32,17 +31,16 @@
             <HBox alignment="TOP_CENTER">
                 <TextField fx:id="InputTextField" prefHeight="30" prefWidth="380" text="Search for Tours">
                     <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="10"/>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="10" />
                     </HBox.margin>
                 </TextField>
-                <Button alignment="BASELINE_CENTER" onAction="#searchForTour" prefHeight="30" prefWidth="120"
-                        text="Search">
+                <Button alignment="BASELINE_CENTER" onAction="#searchForTour" prefHeight="30" prefWidth="120" text="Search">
                     <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="10"/>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="10" />
                     </HBox.margin>
                 </Button>
                 <VBox.margin>
-                    <Insets top="10.0"/>
+                    <Insets top="10.0" />
                 </VBox.margin>
             </HBox>
         </VBox>
@@ -50,62 +48,56 @@
 
     <center>
         <HBox>
-            <VBox minHeight="400" minWidth="160"
-                  style="-fx-border-color: #C8C8C8; -fx-border-width: 1; -fx-border-style: solid">
+            <VBox minHeight="400" minWidth="160" style="-fx-border-color: #C8C8C8; -fx-border-width: 1; -fx-border-style: solid">
                 <HBox>
                     <Label alignment="TOP_CENTER" prefWidth="80" text="TOURS">
                         <HBox.margin>
-                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                         </HBox.margin>
                     </Label>
-                    <Button alignment="TOP_CENTER" onAction="#addTour" text="+"/>
-                    <Button alignment="TOP_CENTER" onAction="#deleteTour" text="-"/>
-                    <Button alignment="TOP_CENTER" onAction="#something" text="[]"/>
+                    <Button alignment="TOP_CENTER" onAction="#addTour" text="+" />
+                    <Button alignment="TOP_CENTER" onAction="#deleteTour" text="-" />
+                    <Button alignment="TOP_CENTER" onAction="#doEdit" text="[]" />
                 </HBox>
-                <Label alignment="TOP_CENTER" text="1. Tour 2.Tour..."/>
+                <ListView prefWidth="160" />
             </VBox>
 
-            <VBox minHeight="400" minWidth="340"
-                  style="-fx-border-color: #C8C8C8; -fx-border-width: 1; -fx-border-style: solid">
+            <VBox minHeight="400" minWidth="340" style="-fx-border-color: #C8C8C8; -fx-border-width: 1; -fx-border-style: solid">
 
-                <VBox minHeight="200"
-                      style="-fx-border-color: #C8C8C8; -fx-border-width: 0 0 1 0; -fx-border-style: solid">
+                <VBox minHeight="200" style="-fx-border-color: #C8C8C8; -fx-border-width: 0 0 1 0; -fx-border-style: solid">
 
                     <Label prefWidth="340" text="Title: ">
                         <padding>
-                            <Insets left="5.0" right="5.0" top="5.0"/>
+                            <Insets left="5.0" right="5.0" top="5.0" />
                         </padding>
                     </Label>
                     <HBox alignment="CENTER" spacing="5">
-                        <Button alignment="TOP_CENTER" onAction="#displayRoute" prefWidth="150" text="Route"/>
-                        <Button alignment="TOP_CENTER" onAction="#displayDescription" prefWidth="150"
-                                text="Description"/>
+                        <Button alignment="TOP_CENTER" onAction="#displayRoute" prefWidth="150" text="Route" />
+                        <Button alignment="TOP_CENTER" onAction="#displayDescription" prefWidth="150" text="Description" />
                     </HBox>
-                    <Label fx:id="OutputLabel" alignment="CENTER" minHeight="130" prefWidth="320"
-                           style="-fx-border-color: #000000; -fx-border-width: 2; -fx-border-styly: solid;">
+                    <Label fx:id="OutputLabel" alignment="CENTER" minHeight="130" prefWidth="320" style="-fx-border-color: #000000; -fx-border-width: 2; -fx-border-styly: solid;">
                         <VBox.margin>
-                            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                         </VBox.margin>
                     </Label>
                 </VBox>
 
                 <VBox minHeight="200">
                     <HBox>
-                        <Label alignment="CENTER_LEFT" prefWidth="250" text="Logs:">
+                        <Label alignment="CENTER_LEFT" prefWidth="280" text="Logs:">
                             <HBox.margin>
-                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                             </HBox.margin>
                         </Label>
-                        <Button alignment="TOP_CENTER" onAction="#addLog" text="+"/>
-                        <Button alignment="TOP_CENTER" onAction="#deleteLog" text="-"/>
-                        <Button alignment="TOP_CENTER" onAction="#somethingLog" text="[]"/>
+                        <Button alignment="TOP_CENTER" onAction="#addLog" text="+" />
+                        <Button alignment="TOP_CENTER" onAction="#deleteLog" text="-" />
                     </HBox>
 
                     <TableView fx:id="LogTable">
                         <columns>
-                            <TableColumn text="Date"/>
-                            <TableColumn text="Duration"/>
-                            <TableColumn text="Distance"/>
+                            <TableColumn text="Date" />
+                            <TableColumn text="Duration" />
+                            <TableColumn text="Distance" />
                         </columns>
                     </TableView>
 

@@ -16,16 +16,19 @@ public class TourWindowController implements Initializable {
     MapQuest mq = new MapQuest();
 
     // add fx:id and use intelliJ to create field in controller
-    public TextField tourStart, tourEnd, tourName;
+    public TextField tourStart, tourEnd, tourName, tourDescription;
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        tourStart.textProperty().bindBidirectional(tourModel.inputProperty());
-        tourName.textProperty().bindBidirectional(tourModel.inputProperty());
-        tourEnd.textProperty().bindBidirectional(tourModel.inputProperty());
+        tourStart.textProperty().bindBidirectional(tourModel.inputPropertyStart());
+        tourEnd.textProperty().bindBidirectional(tourModel.inputPropertyEnd());
+        tourName.textProperty().bindBidirectional(tourModel.inputPropertyName());
+        tourDescription.textProperty().bindBidirectional(tourModel.inputPropertyDescription());
     }
 
     public void createTour(ActionEvent actionEvent) {
         mq.getDirections(tourStart.getText(), tourEnd.getText());
+        //save to Database
+        //Update List ind MainView
     }
 
     public void deleteTour(ActionEvent actionEvent) {

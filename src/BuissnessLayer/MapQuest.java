@@ -71,8 +71,7 @@ public class MapQuest {
         String buildURL = "http://www.mapquestapi.com/staticmap/v5/map?key=" + mapQuestKey +
                 "&size=640,480&defaultMarker=none&zoom=11&rand=737758036&session=" + sessionId + "&boundingBoze=" + boundBox;
         try {
-            //System.out.println("URL: "+buildURL);
-            URL url = new URL("http://www.mapquestapi.com/staticmap/v5/map?key=AnCMu0aBcasIZjPMl75ZbWdIZmRC2u4c&size=640,480&defaultMarker=none&zoom=11&rand=737758036&session=6077f1b6-03c7-4ee4-02b4-350e-0eb7c3a7e853&boundingBoze=48.203083,13.013587,47.797558,16.373583");
+            URL url = new URL(buildURL);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
             con.connect();
@@ -85,6 +84,7 @@ public class MapQuest {
             InputStream is = con.getInputStream();
             OutputStream os = new FileOutputStream("TryOut.jpg");
 
+            //read Image
             byte[] buffer = new byte[1024];
             int byteReaded = is.read(buffer);
             while(byteReaded != -1) {

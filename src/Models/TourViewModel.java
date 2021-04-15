@@ -2,21 +2,33 @@ package Models;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.scene.Parent;
-import javafx.stage.Stage;
+
 
 public class TourViewModel {
 
-    private final StringProperty input = new SimpleStringProperty("");
+    private final StringProperty inputStart = new SimpleStringProperty("");
+    private final StringProperty inputEnd = new SimpleStringProperty("");
+    private final StringProperty inputName = new SimpleStringProperty("");
+    private final StringProperty inputDescription = new SimpleStringProperty("");
     private final StringProperty output = new SimpleStringProperty("");
 
-    public StringProperty inputProperty() {
-        System.out.println("VM: get input prop");
-        return input;
+    public StringProperty inputPropertyStart() {
+        return inputStart;
+    }
+
+    public StringProperty inputPropertyEnd() {
+        return inputEnd;
+    }
+
+    public StringProperty inputPropertyName() {
+        return inputName;
+    }
+
+    public StringProperty inputPropertyDescription() {
+        return inputDescription;
     }
 
     public StringProperty outputProperty() {
-        System.out.println("VM: get output prop");
         return output;
     }
 }

@@ -14,17 +14,19 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
+import javax.swing.plaf.basic.BasicOptionPaneUI;
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class MainViewModel {
-    private final StringProperty input = new SimpleStringProperty("");
-    private final StringProperty output = new SimpleStringProperty("");
-    private final StringProperty outputTitle = new SimpleStringProperty("Title");
-    private final ListProperty tourList = new SimpleListProperty();
+    public final StringProperty input = new SimpleStringProperty("");
+    public final StringProperty output = new SimpleStringProperty("");
+    public final StringProperty outputTitle = new SimpleStringProperty("Title");
+    public final ListProperty tourList = new SimpleListProperty();
     public Parent root;
     public Stage secondaryStage = new Stage();
 
@@ -63,18 +65,19 @@ public class MainViewModel {
 
     public void addTour() throws IOException {
         root = FXMLLoader.load(getClass().getResource("../Views/AddTourWindow.fxml"));
+        secondaryStage.close();
         secondaryStage.setTitle("Tour Planner - add Tour");
-        Scene addTour = new Scene(root, 500, 350);
-        secondaryStage.setScene(addTour); //v=breite v1=höhe
-        secondaryStage.setOnCloseRequest(refreshList());
+        secondaryStage.setScene(new Scene(root, 500, 350)); //v=breite v1=höhe
         secondaryStage.show();
+        secondaryStage.setOnCloseRequest(refreshList());
     }
 
-    public EventHandler<WindowEvent> refreshList(){
+    public EventHandler refreshList(){
         Database_Tours data = new Database_Tours();
         ArrayList list = data.getTourNames();
         ObservableList obList = FXCollections.observableList(list);
         tourList.setValue(obList);
+        System.out.println("Stage closing");
         return null;
     }
 

@@ -8,7 +8,7 @@ import javafx.beans.property.StringProperty;
 import java.util.ArrayList;
 
 
-public class TourViewModel {
+public class TourViewModel{
 
     private final StringProperty inputStart = new SimpleStringProperty("");
     private final StringProperty inputEnd = new SimpleStringProperty("");

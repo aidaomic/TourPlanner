@@ -15,9 +15,9 @@ public class Database_Tours implements Database{
 
     private Connection connection = null;
     private ResultSet rs = null;
-    private PreparedStatement preparedStatement = null;
+    public PreparedStatement preparedStatement = null;
     private ArrayList nameList = new ArrayList();
-    private String tourN, tourS, tourD, tourE;
+    public String tourN, tourS, tourD, tourE;
     private BufferedImage mapImage;
     private byte [] imgBytes;
 

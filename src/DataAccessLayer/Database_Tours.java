@@ -4,7 +4,10 @@ import TourPlanner.Tour;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferByte;
+import java.awt.image.RenderedImage;
 import java.io.*;
+import java.nio.Buffer;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -27,8 +30,9 @@ public class Database_Tours implements Database{
         return connection;
     }
 
-    public Tour specific(String name){
+    public Tour specificTour(String name){
         try {
+            connection = connectDatabase();
             preparedStatement = connection.prepareStatement("select * from public.tours where tourname = ?;");
             preparedStatement.setString(1, name);
             rs = preparedStatement.executeQuery();
@@ -37,10 +41,9 @@ public class Database_Tours implements Database{
                 tourD = rs.getString(2);
                 tourS = rs.getString(3);
                 tourE = rs.getString(4);
-                while (rs.next ()) {
-                    imgBytes = rs.getBytes (4);
-                }
-                mapImage = ImageIO.read(new ByteArrayInputStream(imgBytes));
+                mapImage = ImageIO.read(new ByteArrayInputStream(rs.getBytes (5)));
+                //for showing the picture
+                // ImageIO.write(mapImage, "jpg", new File("Test1.jpg"));
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -67,18 +70,20 @@ public class Database_Tours implements Database{
 
     public void save(ArrayList tour){
         try {
-
+            connection = connectDatabase();
             preparedStatement = connection.prepareStatement("insert into public.tours values (?,?,?,?,?)");
-            preparedStatement.setString(1, String.valueOf(tour.get(1)));
-            preparedStatement.setString(2, String.valueOf(tour.get(2)));
-            preparedStatement.setString(3,String.valueOf(tour.get(3)));
-            preparedStatement.setString(4,String.valueOf(tour.get(4)));
-            FileInputStream file = new FileInputStream (String.valueOf(tour.get(5)));
-            preparedStatement.setBinaryStream(5, file);
+            preparedStatement.setString(1, String.valueOf(tour.get(0)));
+            preparedStatement.setString(2, String.valueOf(tour.get(1)));
+            preparedStatement.setString(3,String.valueOf(tour.get(2)));
+            preparedStatement.setString(4,String.valueOf(tour.get(3)));
+            ByteArrayOutputStream os = new ByteArrayOutputStream();
+            ImageIO.write((RenderedImage) tour.get(4), "jpg", os);
+            InputStream is = new ByteArrayInputStream(os.toByteArray());
+            preparedStatement.setBinaryStream(5, is);
             preparedStatement.execute();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-        } catch (FileNotFoundException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

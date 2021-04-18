@@ -22,8 +22,9 @@ public class MapQuest {
     private String mapQuestData = "";
     private String session, boundingBox_ul_lat, boundingBox_ul_lng, boundingBox_lr_lat, boundingBox_lr_lng, boundingBox;
     private Scanner sc;
+    private BufferedImage map;
 
-    public void getDirections(String startPoint, String destination){
+    public BufferedImage getDirections(String startPoint, String destination){
 
         String buildURL = "http://www.mapquestapi.com/directions/v2/route?key=" + mapQuestKey + "&from=" + startPoint + "&to=" + destination;
         try {
@@ -55,7 +56,7 @@ public class MapQuest {
             boundingBox = boundingBox_ul_lat + "," + boundingBox_ul_lng + "," +
                     boundingBox_lr_lat + "," + boundingBox_ul_lng;
 
-            BufferedImage map = getStaticMap(session, boundingBox);
+            map = getStaticMap(session, boundingBox);
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -64,6 +65,7 @@ public class MapQuest {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return map;
 
     }
 

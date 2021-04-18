@@ -1,5 +1,7 @@
 package Models;
 
+import DataAccessLayer.Database_Tours;
+import TourPlanner.Tour;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXMLLoader;
@@ -7,11 +9,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.io.IOException;
 
 public class MainViewModel {
     private final StringProperty input = new SimpleStringProperty("");
     private final StringProperty output = new SimpleStringProperty("");
+    private final StringProperty outputTitle = new SimpleStringProperty("Title");
     public Parent root;
     Stage secondaryStage = new Stage();
 
@@ -22,6 +26,11 @@ public class MainViewModel {
     public StringProperty outputProperty() {
         return output;
     }
+
+    public StringProperty outputPropertyTitle() {
+        return outputTitle;
+    }
+
 
     public void searchForTour() {
         this.output.set("You searched for ".concat(this.input.get()).concat("!"));
@@ -52,5 +61,12 @@ public class MainViewModel {
         secondaryStage.setTitle("Tour Planner - delete Tour");
         secondaryStage.setScene(new Scene(root, 200, 100)); //v=breite v1=höhe
         secondaryStage.show();
+    }
+
+    public void showTour(String tourName) {
+        Database_Tours dbt = new Database_Tours();
+        Tour t = dbt.specificTour(tourName);
+        outputTitle.set("Title: "+t.tourName);
+        output.set("Description:\n"+t.tourDescription+"\n\nStart: "+t.tourSart+"\nZiel: "+t.tourEnd);
     }
 }

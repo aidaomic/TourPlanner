@@ -13,7 +13,6 @@ import java.util.ResourceBundle;
 public class TourWindowController implements Initializable {
 
     public TourViewModel tourModel = new TourViewModel();
-    MapQuest mq = new MapQuest();
 
     // add fx:id and use intelliJ to create field in controller
     public TextField tourStart, tourEnd, tourName, tourDescription;
@@ -26,9 +25,7 @@ public class TourWindowController implements Initializable {
     }
 
     public void createTour(ActionEvent actionEvent) {
-        mq.getDirections(tourStart.getText(), tourEnd.getText());
-        //save to Database
-        //Update List ind MainView
+        tourModel.addTour(tourName.getText(), tourDescription.getText(), tourStart.getText(), tourEnd.getText());
     }
 
     public void deleteTour(ActionEvent actionEvent) {

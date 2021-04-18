@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -30,7 +31,7 @@ public class MainWindowController implements Initializable {
     // add fx:id and use intelliJ to create field in controller
     public TextField InputTextField;
     public ListView tourList;
-    public Label OutputLabel;
+    public Label OutputLabel, titleOutput;
 
     public MainWindowController(){
         System.out.println("Controller created");
@@ -42,8 +43,8 @@ public class MainWindowController implements Initializable {
         ObservableList obList = FXCollections.observableList(list);
         tourList.setItems(obList);
         InputTextField.textProperty().bindBidirectional(viewModel.inputProperty());
-        //OutputLabel.textProperty().bindBidirectional(viewModel.outputProperty());
-        Bindings.bindBidirectional(OutputLabel.textProperty(), viewModel.outputProperty());
+        OutputLabel.textProperty().bindBidirectional(viewModel.outputProperty());
+        titleOutput.textProperty().bindBidirectional(viewModel.outputPropertyTitle());
     }
 
     public void searchForTour(ActionEvent actionEvent) {
@@ -88,5 +89,9 @@ public class MainWindowController implements Initializable {
     }
 
     public void exportData(ActionEvent actionEvent) {
+    }
+
+    public void showTour(MouseEvent mouseEvent) {
+        viewModel.showTour(String.valueOf(tourList.getSelectionModel().getSelectedItem()));
     }
 }

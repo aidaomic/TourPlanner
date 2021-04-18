@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 public class MainWindowControllerTest {
 
     @Test
-    public void searchForTest(){
+    public void showTour(){
 
     }
 

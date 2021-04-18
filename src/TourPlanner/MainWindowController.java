@@ -60,7 +60,9 @@ public class MainWindowController implements Initializable {
     }
 
     public void addTour(ActionEvent actionEvent) throws IOException {
+        tourList.itemsProperty().bindBidirectional(viewModel.outputList());
         viewModel.addTour();
+        //viewModel.secondaryStage.close();
     }
 
     public void deleteTour(ActionEvent actionEvent) throws IOException {

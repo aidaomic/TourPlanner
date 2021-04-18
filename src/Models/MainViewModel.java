@@ -2,22 +2,31 @@ package Models;
 
 import DataAccessLayer.Database_Tours;
 import TourPlanner.Tour;
+import javafx.application.Platform;
+import javafx.beans.property.ListProperty;
+import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ListView;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
-import java.awt.*;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class MainViewModel {
     private final StringProperty input = new SimpleStringProperty("");
     private final StringProperty output = new SimpleStringProperty("");
     private final StringProperty outputTitle = new SimpleStringProperty("Title");
+    private final ListProperty tourList = new SimpleListProperty();
     public Parent root;
-    Stage secondaryStage = new Stage();
+    public Stage secondaryStage = new Stage();
 
     public StringProperty inputProperty() {
         return input;
@@ -31,6 +40,9 @@ public class MainViewModel {
         return outputTitle;
     }
 
+    public ListProperty outputList(){
+        return tourList;
+    }
 
     public void searchForTour() {
         this.output.set("You searched for ".concat(this.input.get()).concat("!"));
@@ -52,8 +64,18 @@ public class MainViewModel {
     public void addTour() throws IOException {
         root = FXMLLoader.load(getClass().getResource("../Views/AddTourWindow.fxml"));
         secondaryStage.setTitle("Tour Planner - add Tour");
-        secondaryStage.setScene(new Scene(root, 500, 350)); //v=breite v1=höhe
+        Scene addTour = new Scene(root, 500, 350);
+        secondaryStage.setScene(addTour); //v=breite v1=höhe
+        secondaryStage.setOnCloseRequest(refreshList());
         secondaryStage.show();
+    }
+
+    public EventHandler<WindowEvent> refreshList(){
+        Database_Tours data = new Database_Tours();
+        ArrayList list = data.getTourNames();
+        ObservableList obList = FXCollections.observableList(list);
+        tourList.setValue(obList);
+        return null;
     }
 
     public void deleteTour() throws IOException {

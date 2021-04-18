@@ -1,7 +1,10 @@
 package TourPlanner;
 
+import DataAccessLayer.Database_Tours;
 import Models.MainViewModel;
 import javafx.beans.binding.Bindings;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,11 +12,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class MainWindowController implements Initializable {
@@ -23,14 +29,18 @@ public class MainWindowController implements Initializable {
 
     // add fx:id and use intelliJ to create field in controller
     public TextField InputTextField;
+    public ListView tourList;
     public Label OutputLabel;
 
-    public MainWindowController()
-    {
+    public MainWindowController(){
         System.out.println("Controller created");
     }
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        Database_Tours data = new Database_Tours();
+        ArrayList list = data.getTourNames();
+        ObservableList obList = FXCollections.observableList(list);
+        tourList.setItems(obList);
         InputTextField.textProperty().bindBidirectional(viewModel.inputProperty());
         //OutputLabel.textProperty().bindBidirectional(viewModel.outputProperty());
         Bindings.bindBidirectional(OutputLabel.textProperty(), viewModel.outputProperty());
@@ -56,9 +66,6 @@ public class MainWindowController implements Initializable {
         viewModel.deleteTour();
     }
 
-    public void something(ActionEvent actionEvent) {
-    }
-
     public void displayRoute(ActionEvent actionEvent) {
     }
 
@@ -70,10 +77,6 @@ public class MainWindowController implements Initializable {
 
     public void deleteLog(ActionEvent actionEvent) {
     }
-
-    public void somethingLog(ActionEvent actionEvent) {
-    }
-
 
     public void logFile(ActionEvent actionEvent) {
     }

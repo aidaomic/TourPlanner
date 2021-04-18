@@ -49,5 +49,6 @@
     <orderEntry type="library" name="jackson-databind-2.11.1" level="application" />
     <orderEntry type="library" name="json-20201115" level="application" />
     <orderEntry type="library" name="jackson-annotations-2.11.1" level="application" />
+    <orderEntry type="library" name="postgresql-42.2.18" level="project" />
   </component>
 </module>

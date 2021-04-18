@@ -59,7 +59,7 @@
                     <Button alignment="TOP_CENTER" onAction="#deleteTour" text="-" />
                     <Button alignment="TOP_CENTER" onAction="#doEdit" text="[]" />
                 </HBox>
-                <ListView prefWidth="160" />
+                <ListView fx:id="tourList" prefWidth="160" />
             </VBox>
 
             <VBox minHeight="400" minWidth="340" style="-fx-border-color: #C8C8C8; -fx-border-width: 1; -fx-border-style: solid">

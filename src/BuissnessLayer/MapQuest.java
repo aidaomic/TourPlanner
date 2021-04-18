@@ -10,6 +10,7 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
+import java.net.ProtocolException;
 import java.net.URL;
 import java.net.http.HttpClient;
 import java.util.Scanner;
@@ -54,7 +55,7 @@ public class MapQuest {
             boundingBox = boundingBox_ul_lat + "," + boundingBox_ul_lng + "," +
                     boundingBox_lr_lat + "," + boundingBox_ul_lng;
 
-            getStaticMap(session, boundingBox);
+            BufferedImage map = getStaticMap(session, boundingBox);
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -66,7 +67,7 @@ public class MapQuest {
 
     }
 
-    public void getStaticMap(String sessionId, String boundBox){
+    public BufferedImage getStaticMap(String sessionId, String boundBox) throws IOException {
 
         String buildURL = "http://www.mapquestapi.com/staticmap/v5/map?key=" + mapQuestKey +
                 "&size=640,480&defaultMarker=none&rand=737758036&session=" + sessionId + "&boundingBoze=" + boundBox;
@@ -81,25 +82,14 @@ public class MapQuest {
             if(responsecode != 200)
                throw new RuntimeException("HttpResponseCode: " + responsecode);
 
-            InputStream is = con.getInputStream();
-            OutputStream os = new FileOutputStream("TryOut.jpg");
-
-            //read Image
-            byte[] buffer = new byte[1024];
-            int byteReaded = is.read(buffer);
-            while(byteReaded != -1) {
-                os.write(buffer, 0, byteReaded);
-                byteReaded = is.read(buffer);
-            }
+            return ImageIO.read(con.getInputStream());
 
         } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (JsonMappingException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        return ImageIO.read(new File("image_not_found.jpg"));
     }
 
 }

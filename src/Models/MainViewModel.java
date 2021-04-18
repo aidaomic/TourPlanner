@@ -16,17 +16,14 @@ public class MainViewModel {
     Stage secondaryStage = new Stage();
 
     public StringProperty inputProperty() {
-        System.out.println("VM: get input prop");
         return input;
     }
 
     public StringProperty outputProperty() {
-        System.out.println("VM: get output prop");
         return output;
     }
 
     public void searchForTour() {
-        System.out.println("VM: Search for Tour");
         this.output.set("You searched for ".concat(this.input.get()).concat("!"));
         this.input.set("");
     }

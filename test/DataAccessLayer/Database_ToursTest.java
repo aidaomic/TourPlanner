@@ -37,13 +37,13 @@ public class Database_ToursTest {
     @Test
     public void saveTest(){
         ArrayList list = new ArrayList();
-        list.add("TestTour2");
+        list.add("TestTour5");
         list.add("Testing second time");
         list.add("Wien");
         list.add("Graz");
         list.add(new MapQuest().getDirections("Wien", "Graz"));
         dbt.save(list);
-        Assertions.assertEquals( String.valueOf(dbt.preparedStatement),"insert into public.tours values ('TestTour2','Testing second time','Wien','Graz',?)");
+        Assertions.assertEquals( String.valueOf(dbt.preparedStatement),"insert into public.tours values ('TestTour5','Testing second time','Wien','Graz',?)");
     }
 
 }

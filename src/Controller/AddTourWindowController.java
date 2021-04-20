@@ -1,16 +1,17 @@
 package Controller;
 
-import BuissnessLayer.MapQuest;
 import Models.TourViewModel;
-import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class TourWindowController implements Initializable {
+public class AddTourWindowController implements Initializable {
 
     public TourViewModel tourModel = new TourViewModel();
 
@@ -24,15 +25,10 @@ public class TourWindowController implements Initializable {
         tourDescription.textProperty().bindBidirectional(tourModel.inputPropertyDescription());
     }
 
-    public void createTour(ActionEvent actionEvent) {
+    public void createTour(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
         tourModel.addTour(tourName.getText(), tourDescription.getText(), tourStart.getText(), tourEnd.getText());
+        tourModel.changeSceneToMain(stage);
     }
 
-    public void deleteTour(ActionEvent actionEvent) {
-        //Datenbank ansprechen
-    }
-
-    public void editTour(ActionEvent actionEvent) {
-        //Datenbank ansprechen
-    }
 }

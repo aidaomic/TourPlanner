@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane prefHeight="350" prefWidth="500" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TourWindowController">
+<BorderPane prefHeight="350" prefWidth="500" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AddTourWindowController">
 
     <top>
         <Label alignment="CENTER" prefWidth="Infinity" text="Please enter Name, Description and route information for the Tour down below!">

@@ -43,7 +43,8 @@ public class Database_Tours implements Database{
                 tourE = rs.getString(4);
                 mapImage = ImageIO.read(new ByteArrayInputStream(rs.getBytes (5)));
                 //for showing the picture
-                // ImageIO.write(mapImage, "jpg", new File("Test1.jpg"));
+                //prüfen ob schon existent
+                ImageIO.write(mapImage, "jpg", new File(tourN+".jpg"));
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();

@@ -2,15 +2,11 @@ package TourPlanner;
 
 import DataAccessLayer.Database_Tours;
 import Models.MainViewModel;
-import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -20,7 +16,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class MainWindowController implements Initializable {
@@ -56,16 +51,19 @@ public class MainWindowController implements Initializable {
     }
 
     public void doEdit(ActionEvent actionEvent) throws IOException {
-        viewModel.doEdit();
+        Stage stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        viewModel.doEdit(stage);
     }
 
     public void addTour(ActionEvent actionEvent) throws IOException {
         tourList.itemsProperty().bindBidirectional(viewModel.outputList());
-        viewModel.addTour();
+        Stage stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        viewModel.addTour(stage);
     }
 
     public void deleteTour(ActionEvent actionEvent) throws IOException {
-        viewModel.deleteTour();
+        Stage stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        viewModel.deleteTour(stage);
     }
 
     public void displayRoute(ActionEvent actionEvent) {
@@ -95,4 +93,5 @@ public class MainWindowController implements Initializable {
     public void showTour(MouseEvent mouseEvent) {
         viewModel.showTour(String.valueOf(tourList.getSelectionModel().getSelectedItem()));
     }
+
 }

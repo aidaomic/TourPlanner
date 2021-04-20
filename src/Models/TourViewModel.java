@@ -61,7 +61,7 @@ public class TourViewModel {
         new Database_Tours().save(list);
     }
 
-    public void editTour(Tour tour, Tour tourEdited) {
+    public void editTour(Tour tour, Tour tourEdited, Stage stage) throws IOException {
         EditTourInspector inspector = new EditTourInspector(tour, tourEdited);
 
         if(inspector.noChanges() == 1)
@@ -77,6 +77,7 @@ public class TourViewModel {
             list.add(mq.getDirections(tourEdited.tourSart, tourEdited.tourEnd));
             list.add(tour.tourName);
             dbt.editNewRoute(list);
+            changeSceneToMain(stage);
             return;
         }
         list.clear();
@@ -87,5 +88,6 @@ public class TourViewModel {
         list.add(tourEdited.tourEnd);
         list.add(tour.tourName);
         dbt.edit(list);
+        changeSceneToMain(stage);
     }
 }

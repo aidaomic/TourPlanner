@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
 <BorderPane prefHeight="500" prefWidth="500" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TourPlanner.MainWindowController">
@@ -59,7 +60,7 @@
                     <Button alignment="TOP_CENTER" onAction="#deleteTour" text="-" />
                     <Button alignment="TOP_CENTER" onAction="#doEdit" text="[]" />
                 </HBox>
-                <ListView fx:id="tourList" prefWidth="160" onMouseClicked="#showTour" />
+                <ListView fx:id="tourList" onMouseClicked="#showTour" prefWidth="160" />
             </VBox>
 
             <VBox minHeight="400" minWidth="340" style="-fx-border-color: #C8C8C8; -fx-border-width: 1; -fx-border-style: solid">
@@ -71,15 +72,20 @@
                             <Insets left="5.0" right="5.0" top="5.0" />
                         </padding>
                     </Label>
-                    <HBox alignment="CENTER" spacing="5">
-                        <Button alignment="TOP_CENTER" onAction="#displayRoute" prefWidth="150" text="Route" />
-                        <Button alignment="TOP_CENTER" onAction="#displayDescription" prefWidth="150" text="Description" />
-                    </HBox>
-                    <Label fx:id="OutputLabel" alignment="CENTER" minHeight="130" prefWidth="320" style="-fx-border-color: #000000; -fx-border-width: 2; -fx-border-styly: solid;">
-                        <VBox.margin>
-                            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                        </VBox.margin>
-                    </Label>
+               <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+                 <tabs>
+                   <Tab text="Route">
+                     <content>
+                       <ImageView fx:id="tourImageDisplay" />
+                     </content>
+                   </Tab>
+                   <Tab text="Description">
+                     <content>
+                         <Label fx:id="tourInformationDisplay" alignment="CENTER" minHeight="130" prefHeight="149.0" prefWidth="338.0" style="-fx-border-color: #000000; -fx-border-width: 2; -fx-border-styly: solid;" />
+                     </content>
+                   </Tab>
+                 </tabs>
+               </TabPane>
                 </VBox>
 
                 <VBox minHeight="200">

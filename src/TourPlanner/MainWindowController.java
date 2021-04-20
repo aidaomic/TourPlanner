@@ -10,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -26,7 +27,8 @@ public class MainWindowController implements Initializable {
     // add fx:id and use intelliJ to create field in controller
     public TextField InputTextField;
     public ListView tourList;
-    public Label OutputLabel, titleOutput;
+    public Label tourInformationDisplay, titleOutput;
+    public ImageView tourImageDisplay;
 
     public MainWindowController(){
         System.out.println("Controller created");
@@ -38,7 +40,8 @@ public class MainWindowController implements Initializable {
         ObservableList obList = FXCollections.observableList(list);
         tourList.setItems(obList);
         InputTextField.textProperty().bindBidirectional(viewModel.inputProperty());
-        OutputLabel.textProperty().bindBidirectional(viewModel.outputProperty());
+        tourInformationDisplay.textProperty().bindBidirectional(viewModel.informationProperty());
+        tourImageDisplay.imageProperty().bindBidirectional(viewModel.tourImageProperty());
         titleOutput.textProperty().bindBidirectional(viewModel.outputPropertyTitle());
     }
 
@@ -56,7 +59,6 @@ public class MainWindowController implements Initializable {
     }
 
     public void addTour(ActionEvent actionEvent) throws IOException {
-        //tourList.itemsProperty().bindBidirectional(viewModel.outputList());
         Stage stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
         viewModel.addTour(stage);
     }

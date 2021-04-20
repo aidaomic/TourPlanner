@@ -12,7 +12,7 @@ public class MainViewModelTest {
     public void showTourTest(){
         String ergebnis = "Description:\nTesting first time\n\nStart: Wien\nZiel: Graz";
         mvm.showTour("TestTour1");
-        Assertions.assertEquals(mvm.output, ergebnis);
+        Assertions.assertEquals(mvm.informationOutput, ergebnis);
     }
 
     @Test

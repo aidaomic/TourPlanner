@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane prefHeight="350" prefWidth="500" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TourWindowController">
+<BorderPane prefHeight="350" prefWidth="500" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AddTourWindowController">
 
     <top>
         <Label alignment="CENTER" prefWidth="Infinity" text="Please enter Name, Description and route information for the Tour down below!">
@@ -20,7 +20,7 @@
                <HBox.margin>
                   <Insets top="5.0" />
                </HBox.margin></Label>
-                <TextField prefHeight="20" prefWidth="380">
+                <TextField fx:id="tourName" prefHeight="20" prefWidth="380">
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin></TextField>
@@ -30,7 +30,7 @@
                <HBox.margin>
                   <Insets top="5.0" />
                </HBox.margin></Label>
-                <TextField prefHeight="100" prefWidth="380">
+                <TextField fx:id="tourDescription" prefHeight="100" prefWidth="380">
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin></TextField>
@@ -40,7 +40,7 @@
                <HBox.margin>
                   <Insets top="5.0" />
                </HBox.margin></Label>
-                <TextField prefHeight="50" prefWidth="380">
+                <TextField fx:id="tourStart" prefHeight="50" prefWidth="380">
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin></TextField>
@@ -50,7 +50,7 @@
                <HBox.margin>
                   <Insets top="5.0" />
                </HBox.margin></Label>
-                <TextField prefHeight="50" prefWidth="380">
+                <TextField fx:id="tourEnd" prefHeight="50" prefWidth="380">
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin></TextField>
@@ -60,7 +60,7 @@
 
     <bottom>
         <Button alignment="CENTER" onAction="#createTour" text="Create Tour" BorderPane.alignment="CENTER">
-         <BorderPane.margin>
+        <BorderPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </BorderPane.margin></Button>
     </bottom>

@@ -1,14 +1,21 @@
 package TourPlanner;
 
+import DataAccessLayer.Database_Tours;
 import Models.MainViewModel;
-import javafx.beans.binding.Bindings;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class MainWindowController implements Initializable {
@@ -18,58 +25,45 @@ public class MainWindowController implements Initializable {
 
     // add fx:id and use intelliJ to create field in controller
     public TextField InputTextField;
-    public Label OutputLabel;
+    public ListView tourList;
+    public Label OutputLabel, titleOutput;
 
-    public MainWindowController()
-    {
+    public MainWindowController(){
         System.out.println("Controller created");
     }
 
-    @FXML
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        Database_Tours data = new Database_Tours();
+        ArrayList list = data.getTourNames();
+        ObservableList obList = FXCollections.observableList(list);
+        tourList.setItems(obList);
+        InputTextField.textProperty().bindBidirectional(viewModel.inputProperty());
+        OutputLabel.textProperty().bindBidirectional(viewModel.outputProperty());
+        titleOutput.textProperty().bindBidirectional(viewModel.outputPropertyTitle());
+    }
+
     public void searchForTour(ActionEvent actionEvent) {
-        System.out.println("Controller Search");
         viewModel.searchForTour();
     }
 
-    @FXML
     public void getHelp(ActionEvent actionEvent) {
-        System.out.println("Controller Help");
         viewModel.getHelp();
     }
 
-    @FXML
-    public void getOptions(ActionEvent actionEvent) {
-        System.out.println("Controller Options");
-        viewModel.getOptions();
-    }
-    @FXML
-    public void getFile(ActionEvent actionEvent) {
-        System.out.println("Controller File");
-        viewModel.getFile();
-    }
-    @FXML
-    public void doEdit(ActionEvent actionEvent) {
-        System.out.println("Controller Edit");
-        viewModel.doEdit();
+    public void doEdit(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        viewModel.doEdit(stage, String.valueOf(tourList.getSelectionModel().getSelectedItem()));
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println("Controller init");
-
-        InputTextField.textProperty().bindBidirectional(viewModel.inputProperty());
-
-        //OutputLabel.textProperty().bindBidirectional(viewModel.outputProperty());
-        Bindings.bindBidirectional(OutputLabel.textProperty(), viewModel.outputProperty());
+    public void addTour(ActionEvent actionEvent) throws IOException {
+        //tourList.itemsProperty().bindBidirectional(viewModel.outputList());
+        Stage stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        viewModel.addTour(stage);
     }
 
-    public void addTour(ActionEvent actionEvent) {
-    }
-
-    public void deleteTour(ActionEvent actionEvent) {
-    }
-
-    public void something(ActionEvent actionEvent) {
+    public void deleteTour(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        viewModel.deleteTour(stage);
     }
 
     public void displayRoute(ActionEvent actionEvent) {
@@ -84,10 +78,6 @@ public class MainWindowController implements Initializable {
     public void deleteLog(ActionEvent actionEvent) {
     }
 
-    public void somethingLog(ActionEvent actionEvent) {
-    }
-
-
     public void logFile(ActionEvent actionEvent) {
     }
 
@@ -99,4 +89,9 @@ public class MainWindowController implements Initializable {
 
     public void exportData(ActionEvent actionEvent) {
     }
+
+    public void showTour(MouseEvent mouseEvent) {
+        viewModel.showTour(String.valueOf(tourList.getSelectionModel().getSelectedItem()));
+    }
+
 }

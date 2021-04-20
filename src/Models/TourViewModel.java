@@ -2,6 +2,7 @@ package Models;
 
 import BuissnessLayer.EditTourInspector;
 import BuissnessLayer.MapQuest;
+import DataAccessLayer.Database_EditTours;
 import DataAccessLayer.Database_Tours;
 import TourPlanner.Tour;
 import javafx.beans.property.SimpleStringProperty;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 
 
 public class TourViewModel {
-    private Database_Tours dbt = new Database_Tours();
+    private Database_EditTours dbt = new Database_EditTours();
     ArrayList list = new ArrayList();
 
     private final StringProperty inputStart = new SimpleStringProperty("");

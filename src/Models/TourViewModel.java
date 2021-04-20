@@ -1,7 +1,9 @@
 package Models;
 
+import BuissnessLayer.EditTourInspector;
 import BuissnessLayer.MapQuest;
 import DataAccessLayer.Database_Tours;
+import TourPlanner.Tour;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXMLLoader;
@@ -13,7 +15,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 
-public class TourViewModel{
+public class TourViewModel {
+    private Database_Tours dbt = new Database_Tours();
+    ArrayList list = new ArrayList();
 
     private final StringProperty inputStart = new SimpleStringProperty("");
     private final StringProperty inputEnd = new SimpleStringProperty("");
@@ -54,5 +58,33 @@ public class TourViewModel{
         list.add(tourEnd);
         list.add(mq.getDirections(tourStart, tourEnd));
         new Database_Tours().save(list);
+    }
+
+    public void editTour(Tour tour, Tour tourEdited) {
+        EditTourInspector inspector = new EditTourInspector(tour, tourEdited);
+
+        if(inspector.noChanges() == 1)
+            return;
+        else if(inspector.nameChanged() == 1)
+            return;
+        else if(inspector.changedRoute() == 1){
+            list.clear();
+            list.add(tourEdited.tourName);
+            list.add(tourEdited.tourDescription);
+            list.add(tourEdited.tourSart);
+            list.add(tourEdited.tourEnd);
+            list.add(mq.getDirections(tourEdited.tourSart, tourEdited.tourEnd));
+            list.add(tour.tourName);
+            dbt.editNewRoute(list);
+            return;
+        }
+        list.clear();
+        list.clear();
+        list.add(tourEdited.tourName);
+        list.add(tourEdited.tourDescription);
+        list.add(tourEdited.tourSart);
+        list.add(tourEdited.tourEnd);
+        list.add(tour.tourName);
+        dbt.edit(list);
     }
 }

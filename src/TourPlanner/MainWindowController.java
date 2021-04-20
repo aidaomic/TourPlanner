@@ -52,11 +52,11 @@ public class MainWindowController implements Initializable {
 
     public void doEdit(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
-        viewModel.doEdit(stage);
+        viewModel.doEdit(stage, String.valueOf(tourList.getSelectionModel().getSelectedItem()));
     }
 
     public void addTour(ActionEvent actionEvent) throws IOException {
-        tourList.itemsProperty().bindBidirectional(viewModel.outputList());
+        //tourList.itemsProperty().bindBidirectional(viewModel.outputList());
         Stage stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
         viewModel.addTour(stage);
     }

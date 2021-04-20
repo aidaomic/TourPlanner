@@ -73,6 +73,14 @@ public class Database_Logs implements Database{
         }
     }
 
+    public void edit(String name){
+        try {
+            connection.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
     //From a given File
     public void store(File file){
         try {

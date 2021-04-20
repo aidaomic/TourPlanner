@@ -24,20 +24,11 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes>
-      <connection connection-id="9126f4bc-4811-46ac-9404-cc4db8c18723">
-        <schema name="information_schema" object-types="view, table" />
-        <schema name="pg_catalog" object-types="view, table" />
-        <schema name="public" object-types="index, column, dataset trigger, sequence, function, constraint, view, table" />
-      </connection>
-    </loaded-nodes>
+    <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="9126f4bc-4811-46ac-9404-cc4db8c18723">
-      <console name="Connection" type="STANDARD" schema="information_schema" session="Main"><![CDATA[select * from public.logs;
-select * from public.tours;
---insert into public.logs values ('Tour1', current_date, current_time, );
-delete from public.tours;]]></console>
+      <console name="Connection" type="STANDARD" schema="" session="Main" />
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">

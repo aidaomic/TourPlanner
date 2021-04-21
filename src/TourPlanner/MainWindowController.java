@@ -96,4 +96,7 @@ public class MainWindowController implements Initializable {
         viewModel.showTour(String.valueOf(tourList.getSelectionModel().getSelectedItem()));
     }
 
+    public void zoom(MouseEvent mouseEvent) throws IOException {
+        viewModel.zoomPicture(titleOutput.getText());
+    }
 }

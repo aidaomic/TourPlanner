@@ -1,6 +1,7 @@
 package Models;
 
 import BuissnessLayer.EditTourInspector;
+import BuissnessLayer.ImageHandler;
 import BuissnessLayer.MapQuest;
 import DataAccessLayer.Database_EditTours;
 import DataAccessLayer.Database_Tours;
@@ -12,6 +13,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -77,6 +80,7 @@ public class TourViewModel {
             list.add(mq.getDirections(tourEdited.tourSart, tourEdited.tourEnd));
             list.add(tour.tourName);
             dbt.editNewRoute(list);
+            new ImageHandler().updateImage((String) list.get(0), (BufferedImage)list.get(4));
             changeSceneToMain(stage);
             return;
         }

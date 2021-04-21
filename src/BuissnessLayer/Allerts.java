@@ -1,6 +1,8 @@
 package BuissnessLayer;
 
 import javafx.scene.control.Alert;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class Allerts {
 

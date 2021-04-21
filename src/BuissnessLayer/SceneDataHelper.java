@@ -3,6 +3,8 @@ package BuissnessLayer;
 import TourPlanner.Tour;
 import javafx.scene.Parent;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class SceneDataHelper {
 
@@ -12,6 +14,10 @@ public class SceneDataHelper {
     public SceneDataHelper(Parent r, Tour t) {
         root = r;
         tour = t;
+    }
+
+    public SceneDataHelper(Parent r) {
+        root = r;
     }
 
     public void setDataForTourEdit(){
@@ -40,5 +46,10 @@ public class SceneDataHelper {
 
     public Tour getTour() {
         return tour;
+    }
+
+    public void setImage(Image img) {
+        ImageView imageView = (ImageView) root.lookup("#image");
+        imageView.setImage(img);
     }
 }

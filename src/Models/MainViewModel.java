@@ -5,8 +5,14 @@ import BuissnessLayer.StageLoader;
 import DataAccessLayer.Database_Tours;
 import TourPlanner.Tour;
 import javafx.beans.property.*;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
+import java.nio.Buffer;
 
 public class MainViewModel {
     public final StringProperty input = new SimpleStringProperty("");
@@ -62,5 +68,12 @@ public class MainViewModel {
         outputTitle.set("Title: "+t.tourName);
         informationOutput.set("Description:\n"+t.tourDescription+"\n\nStart: "+t.tourSart+"\nZiel: "+t.tourEnd);
         imageOutput.set(new ImageHandler().resize(t.tourImage,t.tourImage.getWidth()*0.53,t.tourImage.getHeight()*0.3));
+    }
+
+    public void zoomPicture(String name) throws IOException {
+
+        Image img = new ImageHandler().getImageFromFS(name);
+        new StageLoader().chnageImageStage(name, img);
+
     }
 }

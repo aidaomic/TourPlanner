@@ -1,5 +1,6 @@
 package DataAccessLayer;
 
+import BuissnessLayer.ImageHandler;
 import TourPlanner.Tour;
 
 import javax.imageio.ImageIO;
@@ -38,10 +39,8 @@ public class Database_Tours implements Database{
                 tourD = rs.getString(2);
                 tourS = rs.getString(3);
                 tourE = rs.getString(4);
-                mapImage = ImageIO.read(new ByteArrayInputStream(rs.getBytes (5)));
-                //for showing the picture
-                //prüfen ob schon existent
-                ImageIO.write(mapImage, "jpg", new File(tourN+".jpg"));
+                mapImage = ImageIO.read( new ByteArrayInputStream(rs.getBytes (5)));
+                new ImageHandler().storeOnFS(tourN, mapImage);
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -75,7 +74,7 @@ public class Database_Tours implements Database{
             preparedStatement.setString(3,String.valueOf(tour.get(2)));
             preparedStatement.setString(4,String.valueOf(tour.get(3)));
             ByteArrayOutputStream os = new ByteArrayOutputStream();
-            ImageIO.write((RenderedImage) tour.get(4), "jpg", os);
+            ImageIO.write((BufferedImage) tour.get(4), "jpg", os);
             InputStream is = new ByteArrayInputStream(os.toByteArray());
             preparedStatement.setBinaryStream(5, is);
             preparedStatement.execute();

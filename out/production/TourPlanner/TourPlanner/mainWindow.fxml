@@ -76,7 +76,7 @@
                  <tabs>
                    <Tab text="Route">
                      <content>
-                       <ImageView fx:id="tourImageDisplay" />
+                       <ImageView fx:id="tourImageDisplay" fitHeight="147.0" fitWidth="336.0" onMouseClicked="#zoom" />
                      </content>
                    </Tab>
                    <Tab text="Description">

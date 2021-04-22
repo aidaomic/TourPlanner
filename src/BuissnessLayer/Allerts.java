@@ -1,8 +1,11 @@
 package BuissnessLayer;
 
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+
+import java.util.Optional;
 
 public class Allerts {
 
@@ -25,5 +28,19 @@ public class Allerts {
         warning.setTitle("Warning");
         warning.setContentText("This Name has already been taken!");
         warning.showAndWait();
+    }
+
+    public int allertDelete(String tourToDelete) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation Dialog");
+        alert.setHeaderText("Please check if you want to delete the Tour");
+        alert.setContentText(tourToDelete);
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            return 0;
+        }else
+            return 1;
+
     }
 }

@@ -5,6 +5,8 @@ import BuissnessLayer.StageLoader;
 import DataAccessLayer.Database_Tours;
 import TourPlanner.Tour;
 import javafx.beans.property.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
@@ -13,12 +15,15 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.nio.Buffer;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class MainViewModel {
     public final StringProperty input = new SimpleStringProperty("");
     public final StringProperty informationOutput = new SimpleStringProperty("");
     public final StringProperty outputTitle = new SimpleStringProperty("Title:");
     public final ObjectProperty imageOutput = new SimpleObjectProperty();
+    public final ListProperty tourList = new SimpleListProperty();
 
     public StringProperty inputProperty() {
         return input;
@@ -36,7 +41,15 @@ public class MainViewModel {
         return imageOutput;
     }
 
-    public void searchForTour() {
+    public ListProperty tourListProperty(){
+        return tourList;
+    }
+
+    public void searchForTour(String searchText) throws SQLException {
+
+        ArrayList searchedList = new Database_Tours().getSearchedTours(searchText);
+        ObservableList obList = FXCollections.observableList(searchedList);
+        tourList.setValue(obList);
 
     }
 
@@ -58,8 +71,12 @@ public class MainViewModel {
         new StageLoader(stage).changeStage("AddTour");
     }
 
-    public void deleteTour(Stage stage) throws IOException {
-        new StageLoader(stage).changeStage("DeleteTour");
+    public void deleteTour(String tourToDelete) throws IOException, SQLException {
+        if(new Allerts().allertDelete(tourToDelete)==1)
+            return;
+        new Database_Tours().delete(tourToDelete);
+        ObservableList obList = FXCollections.observableList(new Database_Tours().getTourNames());
+        tourList.setValue(obList);
     }
 
     public void showTour(String tourName) {
@@ -76,4 +93,5 @@ public class MainViewModel {
         new StageLoader().chnageImageStage(name, img);
 
     }
+
 }

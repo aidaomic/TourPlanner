@@ -4,6 +4,7 @@ import DataAccessLayer.Database_Tours;
 import Models.MainViewModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -16,8 +17,11 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 
 public class MainWindowController implements Initializable {
 
@@ -25,7 +29,7 @@ public class MainWindowController implements Initializable {
     public MainViewModel viewModel = new MainViewModel();
 
     // add fx:id and use intelliJ to create field in controller
-    public TextField InputTextField;
+    public TextField textForSearch;
     public ListView tourList;
     public Label tourInformationDisplay, titleOutput;
     public ImageView tourImageDisplay;
@@ -35,18 +39,20 @@ public class MainWindowController implements Initializable {
     }
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        textForSearch.textProperty().bindBidirectional(viewModel.inputProperty());
+        tourInformationDisplay.textProperty().bindBidirectional(viewModel.informationProperty());
+        tourImageDisplay.imageProperty().bindBidirectional(viewModel.tourImageProperty());
+        titleOutput.textProperty().bindBidirectional(viewModel.outputPropertyTitle());
+        tourList.itemsProperty().bindBidirectional(viewModel.tourListProperty());
+
         Database_Tours data = new Database_Tours();
         ArrayList list = data.getTourNames();
         ObservableList obList = FXCollections.observableList(list);
         tourList.setItems(obList);
-        InputTextField.textProperty().bindBidirectional(viewModel.inputProperty());
-        tourInformationDisplay.textProperty().bindBidirectional(viewModel.informationProperty());
-        tourImageDisplay.imageProperty().bindBidirectional(viewModel.tourImageProperty());
-        titleOutput.textProperty().bindBidirectional(viewModel.outputPropertyTitle());
     }
 
-    public void searchForTour(ActionEvent actionEvent) {
-        viewModel.searchForTour();
+    public void searchForTour(ActionEvent actionEvent) throws SQLException {
+        viewModel.searchForTour(textForSearch.getText());
     }
 
     public void getHelp(ActionEvent actionEvent) {
@@ -63,15 +69,9 @@ public class MainWindowController implements Initializable {
         viewModel.addTour(stage);
     }
 
-    public void deleteTour(ActionEvent actionEvent) throws IOException {
-        Stage stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
-        viewModel.deleteTour(stage);
-    }
-
-    public void displayRoute(ActionEvent actionEvent) {
-    }
-
-    public void displayDescription(ActionEvent actionEvent) {
+    public void deleteTour(ActionEvent actionEvent) throws IOException, SQLException {
+        //Stage stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        viewModel.deleteTour(String.valueOf(tourList.getSelectionModel().getSelectedItem()));
     }
 
     public void addLog(ActionEvent actionEvent) {

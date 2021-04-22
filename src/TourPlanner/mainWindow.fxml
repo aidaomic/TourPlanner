@@ -30,7 +30,7 @@
 
 
             <HBox alignment="TOP_CENTER">
-                <TextField fx:id="InputTextField" prefHeight="30" prefWidth="380" text="Search for Tours">
+                <TextField fx:id="textForSearch" prefHeight="30" prefWidth="380" text="Search for Tours">
                     <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="10" />
                     </HBox.margin>

@@ -85,14 +85,30 @@ public class Database_Tours implements Database{
         }
     }
 
+    public ArrayList getSearchedTours(String searchText) throws SQLException {
+        connection = connectDatabase();
+        preparedStatement = connection.prepareStatement("select tourname from public.tours where tourname like ?");
+        preparedStatement.setString(1, "%"+searchText+"%");
+        rs = preparedStatement.executeQuery();
+        while (rs.next()){
+            nameList.add(rs.getString(1));
+        }
+        connection.close();
+        return nameList;
+    }
+
     //From a given File
     public void store(File file) {
 
     }
 
     @Override
-    public void delete(String name) {
-
+    public void delete(String name) throws SQLException {
+        connection = connectDatabase();
+        preparedStatement = connectDatabase().prepareStatement("delete from public.tours where tourname = ?");
+        preparedStatement.setString(1, name);
+        preparedStatement.execute();
+        connection.close();
     }
 
 

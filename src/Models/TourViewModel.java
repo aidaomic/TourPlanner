@@ -94,4 +94,6 @@ public class TourViewModel {
         dbt.edit(list);
         changeSceneToMain(stage);
     }
+
+
 }

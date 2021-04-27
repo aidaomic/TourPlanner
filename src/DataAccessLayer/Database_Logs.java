@@ -1,11 +1,15 @@
 package DataAccessLayer;
 
+import BuissnessLayer.PropertyHandler;
+
 import java.io.File;
+import java.io.IOException;
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Properties;
 
 public class Database_Logs implements Database{
 
@@ -16,9 +20,12 @@ public class Database_Logs implements Database{
 
     public Connection connectDatabase(){
         try {
-            connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "if20b204");
+            Properties prop = new PropertyHandler().getConnectionProperty();
+            connection = DriverManager.getConnection(prop.getProperty("connectionURL"), prop.getProperty("connectionUser"), prop.getProperty("connectionPW"));
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return connection;
     }

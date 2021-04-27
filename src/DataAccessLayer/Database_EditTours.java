@@ -1,7 +1,8 @@
 package DataAccessLayer;
 
+import BuissnessLayer.PropertyHandler;
+
 import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.awt.image.RenderedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -9,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Properties;
 
 public class Database_EditTours {
 
@@ -18,9 +20,12 @@ public class Database_EditTours {
 
     public Connection connectDatabase(){
         try {
-            connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "if20b204");
+            Properties prop = new PropertyHandler().getConnectionProperty();
+            connection = DriverManager.getConnection(prop.getProperty("connectionURL"), prop.getProperty("connectionUser"), prop.getProperty("connectionPW"));
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return connection;
     }
@@ -28,9 +33,7 @@ public class Database_EditTours {
     public void edit(ArrayList list){
         try {
             connection = connectDatabase();
-
-            preparedStatement = connection.prepareStatement("update public.tours set tourname = ?, description = ?, " +
-                    "startpoint = ?, endpoint = ? where tourname = ?");
+            preparedStatement = connection.prepareStatement(new PropertyHandler().getConnectionProperty().getProperty("editTour"));
             preparedStatement.setString(1,String.valueOf(list.get(0)));
             preparedStatement.setString(2,String.valueOf(list.get(1)));
             preparedStatement.setString(3,String.valueOf(list.get(2)));
@@ -40,15 +43,15 @@ public class Database_EditTours {
             connection.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
     public void editNewRoute(ArrayList list) {
         try {
             connection = connectDatabase();
-
-            preparedStatement = connection.prepareStatement("update public.tours set tourname = ?, description = ?, " +
-                    "startpoint = ?, endpoint = ?, distance = ?, image = ? where tourname = ?");
+            preparedStatement = connection.prepareStatement(new PropertyHandler().getConnectionProperty().getProperty("editTourRoute"));
             preparedStatement.setString(1,String.valueOf(list.get(0)));
             preparedStatement.setString(2,String.valueOf(list.get(1)));
             preparedStatement.setString(3,String.valueOf(list.get(2)));

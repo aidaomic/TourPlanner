@@ -1,6 +1,7 @@
 package DataAccessLayer;
 
 import BuissnessLayer.ImageHandler;
+import BuissnessLayer.PropertyHandler;
 import TourPlanner.Tour;
 
 import javax.imageio.ImageIO;
@@ -8,6 +9,7 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Properties;
 
 public class Database_Tours implements Database{
 
@@ -20,9 +22,12 @@ public class Database_Tours implements Database{
 
     public Connection connectDatabase(){
         try {
-            connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "if20b204");
+            Properties prop = new PropertyHandler().getConnectionProperty();
+            connection = DriverManager.getConnection(prop.getProperty("connectionURL"), prop.getProperty("connectionUser"), prop.getProperty("connectionPW"));
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return connection;
     }
@@ -30,7 +35,7 @@ public class Database_Tours implements Database{
     public Tour specificTour(String name){
         try {
             connection = connectDatabase();
-            preparedStatement = connection.prepareStatement("select * from public.tours where tourname = ?;");
+            preparedStatement = connection.prepareStatement(new PropertyHandler().getConnectionProperty().getProperty("specificTour"));
             preparedStatement.setString(1, name);
             rs = preparedStatement.executeQuery();
             if(rs.next()){
@@ -53,13 +58,13 @@ public class Database_Tours implements Database{
     public ArrayList getTourNames(){
         try {
             connection = connectDatabase();
-            preparedStatement = connection.prepareStatement("select tourname from public.tours;");
+            preparedStatement = connection.prepareStatement(new PropertyHandler().getConnectionProperty().getProperty("allTourNames"));
             rs = preparedStatement.executeQuery();
             while (rs.next()){
                 nameList.add(rs.getString(1));
             }
 
-        } catch (SQLException throwables) {
+        } catch (SQLException | IOException throwables) {
             throwables.printStackTrace();
         }
         return nameList;
@@ -68,7 +73,7 @@ public class Database_Tours implements Database{
     public void save(ArrayList tour){
         try {
             connection = connectDatabase();
-            preparedStatement = connection.prepareStatement("insert into public.tours values (?,?,?,?,?,?)");
+            preparedStatement = connection.prepareStatement(new PropertyHandler().getConnectionProperty().getProperty("saveTour"));
             preparedStatement.setString(1, String.valueOf(tour.get(0)));
             preparedStatement.setString(2, String.valueOf(tour.get(1)));
             preparedStatement.setString(3,String.valueOf(tour.get(2)));
@@ -86,15 +91,21 @@ public class Database_Tours implements Database{
         }
     }
 
-    public ArrayList getSearchedTours(String searchText) throws SQLException {
-        connection = connectDatabase();
-        preparedStatement = connection.prepareStatement("select tourname from public.tours where tourname like ?");
-        preparedStatement.setString(1, "%"+searchText+"%");
-        rs = preparedStatement.executeQuery();
-        while (rs.next()){
-            nameList.add(rs.getString(1));
+    public ArrayList getSearchedTours(String searchText) {
+        try {
+            connection = connectDatabase();
+            preparedStatement = connection.prepareStatement(new PropertyHandler().getConnectionProperty().getProperty("searchedTours"));
+            preparedStatement.setString(1, "%" + searchText + "%");
+            rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                nameList.add(rs.getString(1));
+            }
+            connection.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        connection.close();
         return nameList;
     }
 
@@ -104,12 +115,19 @@ public class Database_Tours implements Database{
     }
 
     @Override
-    public void delete(String name) throws SQLException {
+    public void delete(String name) {
         connection = connectDatabase();
-        preparedStatement = connectDatabase().prepareStatement("delete from public.tours where tourname = ?");
-        preparedStatement.setString(1, name);
-        preparedStatement.execute();
-        connection.close();
+        try {
+            preparedStatement = connection.prepareStatement(new PropertyHandler().getConnectionProperty().getProperty("deleteTour"));
+            preparedStatement.setString(1, name);
+            preparedStatement.execute();
+            connection.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
     }
 
 

@@ -21,6 +21,7 @@ public class MapQuest {
     private String mapQuestKey = "AnCMu0aBcasIZjPMl75ZbWdIZmRC2u4c";
     private String mapQuestData = "";
     private String session, boundingBox_ul_lat, boundingBox_ul_lng, boundingBox_lr_lat, boundingBox_lr_lng, boundingBox;
+    public double distance;
     private Scanner sc;
     private BufferedImage map;
 
@@ -52,9 +53,10 @@ public class MapQuest {
             boundingBox_ul_lng = jsonNode.get("route").get("boundingBox").get("ul").get("lng").asText();
             boundingBox_lr_lat = jsonNode.get("route").get("boundingBox").get("lr").get("lat").asText();
             boundingBox_lr_lng = jsonNode.get("route").get("boundingBox").get("lr").get("lng").asText();
+            distance = jsonNode.get("route").get("distance").asDouble() * 1.609;
 
             boundingBox = boundingBox_ul_lat + "," + boundingBox_ul_lng + "," +
-                    boundingBox_lr_lat + "," + boundingBox_ul_lng;
+                    boundingBox_lr_lat + "," + boundingBox_lr_lng;
 
             map = getStaticMap(session, boundingBox);
 

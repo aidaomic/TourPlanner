@@ -10,11 +10,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
-import java.nio.Buffer;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -44,6 +40,8 @@ public class MainViewModel {
     public ListProperty tourListProperty(){
         return tourList;
     }
+
+    //Methoden
 
     public void searchForTour(String searchText) throws SQLException {
 
@@ -83,7 +81,7 @@ public class MainViewModel {
         Database_Tours dbt = new Database_Tours();
         Tour t = dbt.specificTour(tourName);
         outputTitle.set("Title: "+t.tourName);
-        informationOutput.set("Description:\n"+t.tourDescription+"\n\nStart: "+t.tourSart+"\nZiel: "+t.tourEnd);
+        informationOutput.set("Description:\n"+t.tourDescription+"\n\nStart: "+t.tourSart+"\nZiel: "+t.tourEnd+"\nEntfermung: "+t.tourDist);
         imageOutput.set(new ImageHandler().resize(t.tourImage,t.tourImage.getWidth()*0.53,t.tourImage.getHeight()*0.3));
     }
 

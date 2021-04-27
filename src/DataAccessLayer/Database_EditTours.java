@@ -48,16 +48,17 @@ public class Database_EditTours {
             connection = connectDatabase();
 
             preparedStatement = connection.prepareStatement("update public.tours set tourname = ?, description = ?, " +
-                    "startpoint = ?, endpoint = ?, image = ? where tourname = ?");
+                    "startpoint = ?, endpoint = ?, distance = ?, image = ? where tourname = ?");
             preparedStatement.setString(1,String.valueOf(list.get(0)));
             preparedStatement.setString(2,String.valueOf(list.get(1)));
             preparedStatement.setString(3,String.valueOf(list.get(2)));
             preparedStatement.setString(4,String.valueOf(list.get(3)));
+            preparedStatement.setDouble(5, (Double) list.get(4));
             ByteArrayOutputStream os = new ByteArrayOutputStream();
-            ImageIO.write((RenderedImage) list.get(4), "jpg", os);
+            ImageIO.write((RenderedImage) list.get(5), "jpg", os);
             InputStream is = new ByteArrayInputStream(os.toByteArray());
-            preparedStatement.setBinaryStream(5, is);
-            preparedStatement.setString(6,String.valueOf(list.get(5)));
+            preparedStatement.setBinaryStream(6, is);
+            preparedStatement.setString(7,String.valueOf(list.get(6)));
             preparedStatement.execute();
             connection.close();
         } catch (SQLException throwables) {

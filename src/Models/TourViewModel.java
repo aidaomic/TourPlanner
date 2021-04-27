@@ -21,7 +21,8 @@ import java.util.ArrayList;
 
 public class TourViewModel {
     private Database_EditTours dbt = new Database_EditTours();
-    ArrayList list = new ArrayList();
+    private ArrayList list = new ArrayList();
+    private BufferedImage map;
 
     private final StringProperty inputStart = new SimpleStringProperty("");
     private final StringProperty inputEnd = new SimpleStringProperty("");
@@ -60,7 +61,9 @@ public class TourViewModel {
         list.add(tourDescription);
         list.add(tourStart);
         list.add(tourEnd);
-        list.add(mq.getDirections(tourStart, tourEnd));
+        map = mq.getDirections(tourStart, tourEnd);
+        list.add(mq.distance);
+        list.add(map);
         new Database_Tours().save(list);
     }
 
@@ -77,10 +80,12 @@ public class TourViewModel {
             list.add(tourEdited.tourDescription);
             list.add(tourEdited.tourSart);
             list.add(tourEdited.tourEnd);
-            list.add(mq.getDirections(tourEdited.tourSart, tourEdited.tourEnd));
+            map = mq.getDirections(tourEdited.tourSart, tourEdited.tourEnd);
+            list.add(mq.distance);
+            list.add(map);
             list.add(tour.tourName);
             dbt.editNewRoute(list);
-            new ImageHandler().updateImage((String) list.get(0), (BufferedImage)list.get(4));
+            new ImageHandler().updateImage((String) list.get(0), (BufferedImage)list.get(5));
             changeSceneToMain(stage);
             return;
         }

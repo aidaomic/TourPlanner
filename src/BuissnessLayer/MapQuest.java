@@ -27,9 +27,8 @@ public class MapQuest {
 
     public BufferedImage getDirections(String startPoint, String destination){
 
-        String buildURL = "http://www.mapquestapi.com/directions/v2/route?key=" + mapQuestKey + "&from=" + startPoint + "&to=" + destination;
         try {
-            URL url = new URL(buildURL);
+            URL url = new URL(new PropertyHandler().getMapQuest_directions(startPoint,destination));
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
             con.connect();
@@ -47,7 +46,6 @@ public class MapQuest {
             //JSON PARSING
             ObjectMapper objectMapper = new ObjectMapper();
             JsonNode jsonNode = objectMapper.readTree(mapQuestData);
-            //System.out.println(jsonNode);
             session = jsonNode.get("route").get("sessionId").asText();
             boundingBox_ul_lat = jsonNode.get("route").get("boundingBox").get("ul").get("lat").asText();
             boundingBox_ul_lng = jsonNode.get("route").get("boundingBox").get("ul").get("lng").asText();
@@ -72,11 +70,8 @@ public class MapQuest {
     }
 
     public BufferedImage getStaticMap(String sessionId, String boundBox) throws IOException {
-
-        String buildURL = "http://www.mapquestapi.com/staticmap/v5/map?key=" + mapQuestKey +
-                "&size=640,480&defaultMarker=none&rand=737758036&session=" + sessionId + "&boundingBoze=" + boundBox;
         try {
-            URL url = new URL(buildURL);
+            URL url = new URL(new PropertyHandler().getMapQuest_image(sessionId, boundBox));
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
             con.connect();

@@ -20,4 +20,18 @@ public class PropertyHandler {
         return prop.getProperty(name);
     }
 
+    public String getMapQuest_directions( String startPoint, String destination) throws IOException {
+        input = getClass().getClassLoader().getResourceAsStream("config.properties");
+        prop.load(input);
+        return prop.getProperty("mqDirectionsUrlFrom")+startPoint+prop.getProperty("mqDirectionsTo")+destination;
+    }
+
+
+    public String getMapQuest_image(String sessionId, String boundBox) throws IOException {
+        input = getClass().getClassLoader().getResourceAsStream("config.properties");
+        prop.load(input);
+        String url = prop.getProperty("mqMapURLMarker")+"none"+prop.getProperty("mqMapSession")+sessionId
+                +prop.getProperty("mqMapBox")+boundBox;
+        return url;
+    }
 }

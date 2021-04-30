@@ -13,8 +13,8 @@
                 <items>
                     <MenuButton mnemonicParsing="false" prefWidth="80" text="File">
                         <items>
-                            <MenuItem mnemonicParsing="false" onAction="#importData" text="Import File" />
-                            <MenuItem mnemonicParsing="false" onAction="#exportData" text="Export File" />
+                            <MenuItem mnemonicParsing="false" onAction="#importData" text="Import Tours" />
+                            <MenuItem mnemonicParsing="false" onAction="#exportData" text="Export Tours" />
                         </items>
                     </MenuButton>
                     <Button mnemonicParsing="false" onAction="#doEdit" prefWidth="80" text="Edit" />

@@ -90,6 +90,7 @@ public class MainWindowController implements Initializable {
     }
 
     public void exportData(ActionEvent actionEvent) {
+        viewModel.exportTours();
     }
 
     public void showTour(MouseEvent mouseEvent) {

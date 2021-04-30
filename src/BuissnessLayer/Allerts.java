@@ -2,14 +2,13 @@ package BuissnessLayer;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
 import java.util.Optional;
 
 public class Allerts {
 
     private Alert warning = new Alert(Alert.AlertType.WARNING);
+
     public void tourToEditIsNull(){
         warning.setTitle("Warning");
         //alert.setHeaderText("Look, a Warning Dialog");
@@ -41,5 +40,13 @@ public class Allerts {
         }else
             return 1;
 
+    }
+
+    public void allertExportSuccess() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Export");
+        alert.setHeaderText("Information regarding tours export");
+        alert.setContentText("All Tours have been exported to a file on your File System!");
+        alert.showAndWait();
     }
 }

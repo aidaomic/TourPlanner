@@ -1,5 +1,6 @@
 package TourPlanner;
 
+import BuissnessLayer.PdfGenerator;
 import DataAccessLayer.Database_Logs;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +14,9 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+
+        new PdfGenerator().toursToPdf();
+
         // fxml created with SceneBuilder
         Parent root = FXMLLoader.load(getClass().getResource("mainWindow.fxml"));
 

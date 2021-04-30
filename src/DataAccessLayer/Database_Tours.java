@@ -3,6 +3,9 @@ package DataAccessLayer;
 import BuissnessLayer.ImageHandler;
 import BuissnessLayer.PropertyHandler;
 import TourPlanner.Tour;
+import com.itextpdf.text.pdf.PdfPTable;
+import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.image.Image;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -112,6 +115,31 @@ public class Database_Tours implements Database{
     //From a given File
     public void store(File file) {
 
+    }
+
+    //To a File
+    public PdfPTable toFile(PdfPTable exportTable) {
+        String image = "not working";
+        Image img = null;
+        try {
+            connection = connectDatabase();
+            preparedStatement = connection.prepareStatement(new PropertyHandler().getConnectionProperty().getProperty("exportTours"));
+            rs = preparedStatement.executeQuery();
+            while(rs.next()){
+
+                exportTable.addCell(rs.getString(1));
+                exportTable.addCell(rs.getString(2));
+                exportTable.addCell(rs.getString(3));
+                exportTable.addCell(rs.getString(4));
+                exportTable.addCell(rs.getString(5));
+                exportTable.completeRow();
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return exportTable;
     }
 
     @Override

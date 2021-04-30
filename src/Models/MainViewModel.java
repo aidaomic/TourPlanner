@@ -1,6 +1,7 @@
 package Models;
 import BuissnessLayer.Allerts;
 import BuissnessLayer.ImageHandler;
+import BuissnessLayer.PdfGenerator;
 import BuissnessLayer.StageLoader;
 import DataAccessLayer.Database_Tours;
 import TourPlanner.Tour;
@@ -81,7 +82,7 @@ public class MainViewModel {
         Database_Tours dbt = new Database_Tours();
         Tour t = dbt.specificTour(tourName);
         outputTitle.set("Title: "+t.tourName);
-        informationOutput.set("Description:\n"+t.tourDescription+"\n\nStart: "+t.tourSart+"\nZiel: "+t.tourEnd+"\nEntfermung: "+t.tourDist);
+        informationOutput.set("Description:\n"+t.tourDescription+"\n\nStart: "+t.tourSart+"\nZiel: "+t.tourEnd+"\nEntfermung: "+t.tourDistance);
         imageOutput.set(new ImageHandler().resize(t.tourImage,t.tourImage.getWidth()*0.53,t.tourImage.getHeight()*0.3));
     }
 
@@ -90,6 +91,11 @@ public class MainViewModel {
         Image img = new ImageHandler().getImageFromFS(name);
         new StageLoader().chnageImageStage(name, img);
 
+    }
+
+    public void exportTours(){
+        new PdfGenerator().toursToPdf();
+        new Allerts().allertExportSuccess();
     }
 
 }

@@ -10,7 +10,6 @@ import java.util.Optional;
 public class Allerts {
 
     private Alert warning = new Alert(Alert.AlertType.WARNING);
-
     public void tourToEditIsNull(){
         warning.setTitle("Warning");
         //alert.setHeaderText("Look, a Warning Dialog");

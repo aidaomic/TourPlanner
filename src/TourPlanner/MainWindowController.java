@@ -87,6 +87,11 @@ public class MainWindowController implements Initializable {
     }
 
     public void importData(ActionEvent actionEvent) {
+        viewModel.importTours();
+        Database_Tours data = new Database_Tours();
+        ArrayList list = data.getTourNames();
+        ObservableList obList = FXCollections.observableList(list);
+        tourList.setItems(obList);
     }
 
     public void exportData(ActionEvent actionEvent) {

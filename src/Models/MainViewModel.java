@@ -1,7 +1,7 @@
 package Models;
 import BuissnessLayer.Allerts;
 import BuissnessLayer.ImageHandler;
-import BuissnessLayer.PdfGenerator;
+import BuissnessLayer.TourPdfGenerator;
 import BuissnessLayer.StageLoader;
 import DataAccessLayer.Database_Tours;
 import TourPlanner.Tour;
@@ -94,8 +94,11 @@ public class MainViewModel {
     }
 
     public void exportTours(){
-        new PdfGenerator().toursToPdf();
+        new TourPdfGenerator().toursToPdf();
         new Allerts().allertExportSuccess();
     }
 
+    public void importTours(){
+        new TourPdfGenerator().pdfToTours();
+    }
 }

@@ -101,4 +101,10 @@ public class MainViewModel {
     public void importTours(){
         new TourPdfGenerator().pdfToTours();
     }
+
+    public void copyTour(String tourName) {
+        Database_Tours dbt = new Database_Tours();
+        Tour tour = dbt.specificTour(tourName);
+        dbt.copy(tour);
+    }
 }

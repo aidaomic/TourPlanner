@@ -9,9 +9,12 @@ import javafx.scene.image.Image;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
 import java.io.*;
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Properties;
 
 public class Database_Tours implements Database{
@@ -87,6 +90,7 @@ public class Database_Tours implements Database{
             InputStream is = new ByteArrayInputStream(os.toByteArray());
             preparedStatement.setBinaryStream(6, is);
             preparedStatement.execute();
+            connection.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } catch (IOException e) {
@@ -110,11 +114,6 @@ public class Database_Tours implements Database{
             e.printStackTrace();
         }
         return nameList;
-    }
-
-    //From a given File
-    public void store(File file) {
-
     }
 
     //To a File
@@ -156,6 +155,31 @@ public class Database_Tours implements Database{
             throwables.printStackTrace();
         }
 
+    }
+
+    public void copy(Tour tour){
+        try{
+            BufferedImage img;
+            connection = connectDatabase();
+            preparedStatement = connection.prepareStatement(new PropertyHandler().getConnectionProperty().getProperty("saveTour"));
+            preparedStatement.setString(1, String.valueOf(tour.tourName+"_COPY_"+new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date())));
+            preparedStatement.setString(2, String.valueOf(tour.tourDescription));
+            preparedStatement.setString(3,String.valueOf(tour.tourSart));
+            preparedStatement.setString(4,String.valueOf(tour.tourEnd));
+            preparedStatement.setDouble(5, Double.parseDouble(tour.tourDistance));
+            ByteArrayOutputStream os = new ByteArrayOutputStream();
+            if(tour.map == null)
+                img = ImageIO.read(new File(tour.tourName+".jpg"));
+            else
+                img =  SwingFXUtils.fromFXImage(tour.map, null);
+            ImageIO.write(img, "jpg", os);
+            InputStream is = new ByteArrayInputStream(os.toByteArray());
+            preparedStatement.setBinaryStream(6, is);
+            preparedStatement.execute();
+            connection.close();
+        } catch (SQLException | IOException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
 

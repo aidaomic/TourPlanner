@@ -105,4 +105,12 @@ public class MainWindowController implements Initializable {
     public void zoom(MouseEvent mouseEvent) throws IOException {
         viewModel.zoomPicture(titleOutput.getText());
     }
+
+    public void copyTour(ActionEvent actionEvent) {
+        viewModel.copyTour(String.valueOf(tourList.getSelectionModel().getSelectedItem()));
+        Database_Tours data = new Database_Tours();
+        ArrayList list = data.getTourNames();
+        ObservableList obList = FXCollections.observableList(list);
+        tourList.setItems(obList);
+    }
 }

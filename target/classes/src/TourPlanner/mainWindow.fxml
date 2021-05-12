@@ -20,6 +20,7 @@
                     <Button mnemonicParsing="false" onAction="#doEdit" prefWidth="80" text="Edit" />
                     <MenuButton mnemonicParsing="false" prefWidth="190" text="Options">
                         <items>
+                            <MenuItem mnemonicParsing="false" onAction="#copyTour" text="Copy Tour" />
                             <MenuItem mnemonicParsing="false" onAction="#logFile" text="Log-File" />
                             <MenuItem mnemonicParsing="false" onAction="#report" text="Report" />
                         </items>

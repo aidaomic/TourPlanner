@@ -1,8 +1,9 @@
 package Models;
-import BuissnessLayer.Allerts;
-import BuissnessLayer.ImageHandler;
-import BuissnessLayer.TourPdfGenerator;
-import BuissnessLayer.StageLoader;
+import BuissnessLayer.Handler.ImageHandler;
+import BuissnessLayer.Notification.Allerts;
+import BuissnessLayer.Pdf.PdfGenerator;
+import BuissnessLayer.Pdf.PdfReader;
+import BuissnessLayer.StageSceneViewHelper.StageLoader;
 import DataAccessLayer.Database_Tours;
 import TourPlanner.Tour;
 import javafx.beans.property.*;
@@ -79,11 +80,15 @@ public class MainViewModel {
     }
 
     public void showTour(String tourName) {
-        Database_Tours dbt = new Database_Tours();
-        Tour t = dbt.specificTour(tourName);
-        outputTitle.set("Title: "+t.tourName);
-        informationOutput.set("Description:\n"+t.tourDescription+"\n\nStart: "+t.tourSart+"\nZiel: "+t.tourEnd+"\nEntfermung: "+t.tourDistance);
-        imageOutput.set(new ImageHandler().resize(t.tourImage,t.tourImage.getWidth()*0.53,t.tourImage.getHeight()*0.3));
+        if (tourName.equals("null"))
+            new Allerts().tourToEditIsNull();
+        else {
+            Database_Tours dbt = new Database_Tours();
+            Tour t = dbt.specificTour(tourName);
+            outputTitle.set("Title: " + t.tourName);
+            informationOutput.set("Description:\n" + t.tourDescription + "\n\nStart: " + t.tourSart + "\nZiel: " + t.tourEnd + "\nEntfermung: " + t.tourDistance);
+            imageOutput.set(new ImageHandler().resize(t.tourImage, t.tourImage.getWidth() * 0.53, t.tourImage.getHeight() * 0.3));
+        }
     }
 
     public void zoomPicture(String name) throws IOException {
@@ -94,17 +99,26 @@ public class MainViewModel {
     }
 
     public void exportTours(){
-        new TourPdfGenerator().toursToPdf();
+        new PdfGenerator().toursToPdf();
+        new Allerts().allertExportSuccess();
+    }
+
+    public void exportToursTable(){
+        new PdfGenerator().toursToPdfTable();
         new Allerts().allertExportSuccess();
     }
 
     public void importTours(){
-        new TourPdfGenerator().pdfToTours();
+        new PdfReader().pdfToTours();
     }
 
     public void copyTour(String tourName) {
-        Database_Tours dbt = new Database_Tours();
-        Tour tour = dbt.specificTour(tourName);
-        dbt.copy(tour);
+        if (tourName.equals("null"))
+            new Allerts().tourToEditIsNull();
+        else{
+            Database_Tours dbt = new Database_Tours();
+            Tour tour = dbt.specificTour(tourName);
+            dbt.copy(tour);
+        }
     }
 }

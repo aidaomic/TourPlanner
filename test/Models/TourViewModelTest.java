@@ -1,6 +1,6 @@
 package Models;
 
-import BuissnessLayer.MapQuest;
+import BuissnessLayer.MapQuest.MapQuest;
 import DataAccessLayer.Database_Tours;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

@@ -1,8 +1,8 @@
 package Models;
 
-import BuissnessLayer.EditTourInspector;
-import BuissnessLayer.ImageHandler;
-import BuissnessLayer.MapQuest;
+import BuissnessLayer.StageSceneViewHelper.EditTourInspector;
+import BuissnessLayer.Handler.ImageHandler;
+import BuissnessLayer.MapQuest.MapQuest;
 import DataAccessLayer.Database_EditTours;
 import DataAccessLayer.Database_Tours;
 import TourPlanner.Tour;
@@ -13,7 +13,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;

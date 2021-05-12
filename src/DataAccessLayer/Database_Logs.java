@@ -1,6 +1,6 @@
 package DataAccessLayer;
 
-import BuissnessLayer.PropertyHandler;
+import BuissnessLayer.Handler.PropertyHandler;
 
 import java.io.File;
 import java.io.IOException;

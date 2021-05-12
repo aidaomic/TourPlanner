@@ -1,4 +1,4 @@
-package BuissnessLayer;
+package BuissnessLayer.StageSceneViewHelper;
 
 import TourPlanner.Tour;
 import javafx.scene.Parent;

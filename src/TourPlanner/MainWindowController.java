@@ -86,7 +86,7 @@ public class MainWindowController implements Initializable {
     public void report(ActionEvent actionEvent) {
     }
 
-    public void importData(ActionEvent actionEvent) {
+    public void importDataTours(ActionEvent actionEvent) {
         viewModel.importTours();
         Database_Tours data = new Database_Tours();
         ArrayList list = data.getTourNames();
@@ -94,7 +94,7 @@ public class MainWindowController implements Initializable {
         tourList.setItems(obList);
     }
 
-    public void exportData(ActionEvent actionEvent) {
+    public void exportDataTours(ActionEvent actionEvent) {
         viewModel.exportTours();
     }
 
@@ -112,5 +112,9 @@ public class MainWindowController implements Initializable {
         ArrayList list = data.getTourNames();
         ObservableList obList = FXCollections.observableList(list);
         tourList.setItems(obList);
+    }
+
+    public void exportDataToursTable(ActionEvent actionEvent) {
+        viewModel.exportToursTable();
     }
 }

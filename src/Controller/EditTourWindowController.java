@@ -1,22 +1,16 @@
 package Controller;
 
-import BuissnessLayer.Allerts;
-import BuissnessLayer.EditTourInspector;
-import BuissnessLayer.MapQuest;
-import DataAccessLayer.Database_Tours;
+import BuissnessLayer.MapQuest.MapQuest;
 import Models.TourViewModel;
 import TourPlanner.Tour;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class EditTourWindowController implements Initializable {

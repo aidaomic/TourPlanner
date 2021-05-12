@@ -13,12 +13,13 @@
                 <items>
                     <MenuButton mnemonicParsing="false" prefWidth="80" text="File">
                         <items>
-                            <MenuItem mnemonicParsing="false" onAction="#importData" text="Import Tours" />
-                            <MenuItem mnemonicParsing="false" onAction="#exportData" text="Export Tours" />
+                            <MenuItem mnemonicParsing="false" onAction="#importDataTours" text="Import Tours" />
+                            <MenuItem mnemonicParsing="false" onAction="#exportDataToursTable" text="Export Tours as Table" />
+                     <MenuItem mnemonicParsing="false" onAction="#exportDataTours" text="Export Tours" />
                         </items>
                     </MenuButton>
-                    <Button mnemonicParsing="false" onAction="#doEdit" prefWidth="80" text="Edit" />
-                    <MenuButton mnemonicParsing="false" prefWidth="190" text="Options">
+                    <Button mnemonicParsing="false" onAction="#doEdit" prefWidth="80" text="Options" />
+                    <MenuButton mnemonicParsing="false" prefWidth="190" text="Features">
                         <items>
                             <MenuItem mnemonicParsing="false" onAction="#copyTour" text="Copy Tour" />
                             <MenuItem mnemonicParsing="false" onAction="#logFile" text="Log-File" />

@@ -1,5 +1,6 @@
-package BuissnessLayer;
+package BuissnessLayer.StageSceneViewHelper;
 
+import BuissnessLayer.Notification.Allerts;
 import DataAccessLayer.Database_Tours;
 import TourPlanner.Tour;
 

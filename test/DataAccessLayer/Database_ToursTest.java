@@ -1,6 +1,6 @@
 package DataAccessLayer;
 
-import BuissnessLayer.MapQuest;
+import BuissnessLayer.MapQuest.MapQuest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

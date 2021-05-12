@@ -1,6 +1,6 @@
 package DataAccessLayer;
 
-import BuissnessLayer.PropertyHandler;
+import BuissnessLayer.Handler.PropertyHandler;
 
 import javax.imageio.ImageIO;
 import java.awt.image.RenderedImage;

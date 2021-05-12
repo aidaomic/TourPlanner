@@ -1,6 +1,5 @@
 package TourPlanner;
 
-import BuissnessLayer.TourPdfGenerator;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

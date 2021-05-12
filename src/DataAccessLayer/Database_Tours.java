@@ -1,15 +1,13 @@
 package DataAccessLayer;
 
-import BuissnessLayer.ImageHandler;
-import BuissnessLayer.PropertyHandler;
+import BuissnessLayer.Handler.ImageHandler;
+import BuissnessLayer.Handler.PropertyHandler;
 import TourPlanner.Tour;
 import com.itextpdf.text.pdf.PdfPTable;
 import javafx.embed.swing.SwingFXUtils;
-import javafx.scene.image.Image;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.awt.image.RenderedImage;
 import java.io.*;
 import java.sql.*;
 import java.text.SimpleDateFormat;
@@ -117,9 +115,7 @@ public class Database_Tours implements Database{
     }
 
     //To a File
-    public PdfPTable toFile(PdfPTable exportTable) {
-        String image = "not working";
-        Image img = null;
+    public PdfPTable toFileTable(PdfPTable exportTable) {
         try {
             connection = connectDatabase();
             preparedStatement = connection.prepareStatement(new PropertyHandler().getConnectionProperty().getProperty("exportTours"));
@@ -139,6 +135,26 @@ public class Database_Tours implements Database{
             e.printStackTrace();
         }
         return exportTable;
+    }
+
+    public String toFile() {
+        String output = "";
+        try {
+            connection = connectDatabase();
+            preparedStatement = connection.prepareStatement(new PropertyHandler().getConnectionProperty().getProperty("exportTours"));
+            rs = preparedStatement.executeQuery();
+            while(rs.next()){
+                for(int i = 1; i <=5; i++){
+                    output = output + rs.getString(i) + ";";
+                }
+                output += "\n";
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return output;
     }
 
     @Override

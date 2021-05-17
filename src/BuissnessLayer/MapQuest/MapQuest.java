@@ -16,7 +16,6 @@ import java.util.Scanner;
 
 public class MapQuest {
 
-    private String mapQuestKey = "AnCMu0aBcasIZjPMl75ZbWdIZmRC2u4c";
     private String mapQuestData = "";
     private String session, boundingBox_ul_lat, boundingBox_ul_lng, boundingBox_lr_lat, boundingBox_lr_lng, boundingBox;
     public double distance;
@@ -30,7 +29,6 @@ public class MapQuest {
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
             con.connect();
-
             //to check if done correctily
             int responsecode = con.getResponseCode();
             if(responsecode != 200)

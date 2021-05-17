@@ -1,6 +1,5 @@
 package BuissnessLayer.StageSceneViewHelper;
 
-import BuissnessLayer.StageSceneViewHelper.SceneDataHelper;
 import TourPlanner.Tour;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -29,14 +28,14 @@ public class StageLoader {
     }
 
     public void changeStage(String methode) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../Views/"+methode+"Window.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../../Views/Tour/"+methode+"Window.fxml"));
         stage.setTitle("Tour Planner - " + methode);
         stage.setScene(new Scene(root, 500, 350)); //v=breite v1=höhe
         stage.show();
     }
 
     public void changeStageForEdit(String methode) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../Views/"+methode+"Window.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../../Views/Tour/"+methode+"Window.fxml"));
         stage.setTitle("Tour Planner - " + methode);
         stage.setScene(new Scene(root, 500, 350)); //v=breite v1=höhe
         new SceneDataHelper(root, tour).setDataForTourEdit();

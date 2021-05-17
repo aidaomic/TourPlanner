@@ -1,10 +1,11 @@
 package TourPlanner;
 
 import DataAccessLayer.Database_Tours;
-import Models.MainViewModel;
+import Models.AddTourViewModel;
+import Models.EditTourViewModel;
+import Models.MenuBarViewModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -19,14 +20,15 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.ResourceBundle;
-import java.util.function.Predicate;
 
 public class MainWindowController implements Initializable {
 
     // create custom viewmodel
-    public MainViewModel viewModel = new MainViewModel();
+    private MainViewModel viewModel = new MainViewModel();
+    private AddTourViewModel addTourModel = new AddTourViewModel();
+    private EditTourViewModel editTourModel = new EditTourViewModel();
+    private MenuBarViewModel menuModel = new MenuBarViewModel();
 
     // add fx:id and use intelliJ to create field in controller
     public TextField textForSearch;
@@ -44,7 +46,6 @@ public class MainWindowController implements Initializable {
         tourImageDisplay.imageProperty().bindBidirectional(viewModel.tourImageProperty());
         titleOutput.textProperty().bindBidirectional(viewModel.outputPropertyTitle());
         tourList.itemsProperty().bindBidirectional(viewModel.tourListProperty());
-
         Database_Tours data = new Database_Tours();
         ArrayList list = data.getTourNames();
         ObservableList obList = FXCollections.observableList(list);
@@ -52,21 +53,21 @@ public class MainWindowController implements Initializable {
     }
 
     public void searchForTour(ActionEvent actionEvent) throws SQLException {
-        viewModel.searchForTour(textForSearch.getText());
+        tourList.setItems(menuModel.searchForTour(textForSearch.getText()));
     }
 
     public void getHelp(ActionEvent actionEvent) {
-        viewModel.getHelp();
+        menuModel.getHelp();
     }
 
     public void doEdit(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
-        viewModel.doEdit(stage, String.valueOf(tourList.getSelectionModel().getSelectedItem()));
+        editTourModel.editTourStage(stage, String.valueOf(tourList.getSelectionModel().getSelectedItem()));
     }
 
     public void addTour(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
-        viewModel.addTour(stage);
+        addTourModel.addTourStage(stage);
     }
 
     public void deleteTour(ActionEvent actionEvent) throws IOException, SQLException {
@@ -87,7 +88,7 @@ public class MainWindowController implements Initializable {
     }
 
     public void importDataTours(ActionEvent actionEvent) {
-        viewModel.importTours();
+        menuModel.importTours();
         Database_Tours data = new Database_Tours();
         ArrayList list = data.getTourNames();
         ObservableList obList = FXCollections.observableList(list);
@@ -95,7 +96,7 @@ public class MainWindowController implements Initializable {
     }
 
     public void exportDataTours(ActionEvent actionEvent) {
-        viewModel.exportTours();
+        menuModel.exportTours();
     }
 
     public void showTour(MouseEvent mouseEvent) {
@@ -115,6 +116,6 @@ public class MainWindowController implements Initializable {
     }
 
     public void exportDataToursTable(ActionEvent actionEvent) {
-        viewModel.exportToursTable();
+        menuModel.exportToursTable();
     }
 }

@@ -31,4 +31,6 @@ public class AddTourWindowController implements Initializable {
         tourModel.changeSceneToMain(stage);
     }
 
+    public void exit(ActionEvent actionEvent) {
+    }
 }

@@ -59,9 +59,18 @@
     </center>
 
     <bottom>
+        <HBox alignment="center" prefHeight="40.0" prefWidth="500.0">
         <Button alignment="CENTER" onAction="#createTour" text="Create Tour" BorderPane.alignment="CENTER">
         <BorderPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </BorderPane.margin></Button>
+         </BorderPane.margin>
+            <opaqueInsets>
+               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </opaqueInsets></Button>
+            <Button alignment="CENTER" onAction="#exit" text="Exit" BorderPane.alignment="CENTER">
+                <BorderPane.margin>
+                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                </BorderPane.margin></Button>
+        </HBox>
     </bottom>
 </BorderPane>

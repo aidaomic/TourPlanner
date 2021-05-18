@@ -34,11 +34,11 @@ public class EditTourViewModel {
 
     public void editTourStage(Stage stage, String tourName) throws IOException {
         if (tourName.equals("null"))
-            new Allerts().tourToEditIsNull();
+            new Allerts().tourIsNull();
         else{
             Database_Tours dbt = new Database_Tours();
             Tour t = dbt.specificTour(tourName);
-            new StageLoader(stage, t).changeStageForEdit("EditTour");
+            new StageLoader(stage, t).changeStageForEdit("Tour/EditTour");
         }
     }
 

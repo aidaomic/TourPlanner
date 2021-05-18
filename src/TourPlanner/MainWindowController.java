@@ -1,6 +1,7 @@
 package TourPlanner;
 
 import DataAccessLayer.Database_Tours;
+import Models.AddLogViewModel;
 import Models.AddTourViewModel;
 import Models.EditTourViewModel;
 import Models.MenuBarViewModel;
@@ -29,6 +30,7 @@ public class MainWindowController implements Initializable {
     private AddTourViewModel addTourModel = new AddTourViewModel();
     private EditTourViewModel editTourModel = new EditTourViewModel();
     private MenuBarViewModel menuModel = new MenuBarViewModel();
+    private AddLogViewModel addLogModel = new AddLogViewModel();
 
     // add fx:id and use intelliJ to create field in controller
     public TextField textForSearch;
@@ -75,7 +77,9 @@ public class MainWindowController implements Initializable {
         viewModel.deleteTour(String.valueOf(tourList.getSelectionModel().getSelectedItem()));
     }
 
-    public void addLog(ActionEvent actionEvent) {
+    public void addLog(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        addLogModel.addTourLogStage(stage, String.valueOf(tourList.getSelectionModel().getSelectedItem()));
     }
 
     public void deleteLog(ActionEvent actionEvent) {

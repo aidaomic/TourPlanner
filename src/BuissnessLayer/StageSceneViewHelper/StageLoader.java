@@ -28,17 +28,25 @@ public class StageLoader {
     }
 
     public void changeStage(String methode) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../../Views/Tour/"+methode+"Window.fxml"));
-        stage.setTitle("Tour Planner - " + methode);
+        Parent root = FXMLLoader.load(getClass().getResource("../../Views/"+methode+"Window.fxml"));
+        stage.setTitle("Tour Planner - Add Tour");
         stage.setScene(new Scene(root, 500, 350)); //v=breite v1=höhe
         stage.show();
     }
 
     public void changeStageForEdit(String methode) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../../Views/Tour/"+methode+"Window.fxml"));
-        stage.setTitle("Tour Planner - " + methode);
+        Parent root = FXMLLoader.load(getClass().getResource("../../Views/"+methode+"Window.fxml"));
+        stage.setTitle("Tour Planner - Edit Tour");
         stage.setScene(new Scene(root, 500, 350)); //v=breite v1=höhe
         new SceneDataHelper(root, tour).setDataForTourEdit();
+        stage.show();
+    }
+
+    public void changeStageForLog(String methode) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("../../Views/"+methode+"Window.fxml"));
+        stage.setTitle("Tour Planner - Add Log");
+        stage.setScene(new Scene(root, 500, 350)); //v=breite v1=höhe
+        new SceneDataHelper(root, tour).setDataForAddLog();
         stage.show();
     }
 

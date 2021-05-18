@@ -53,7 +53,7 @@ public class AddTourViewModel {
     }
 
     public void addTourStage(Stage stage) throws IOException {
-        new StageLoader(stage).changeStage("AddTour");
+        new StageLoader(stage).changeStage("Tour/AddTour");
     }
 
     public void addTour(String tourName, String tourDescription, String tourStart, String tourEnd){

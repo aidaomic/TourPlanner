@@ -32,6 +32,8 @@ public class AddTourWindowController implements Initializable {
         addModel.changeSceneToMain(stage);
     }
 
-    public void exit(ActionEvent actionEvent) {
+    public void exit(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        addModel.changeSceneToMain(stage);
     }
 }

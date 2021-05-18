@@ -9,7 +9,7 @@ public class Allerts {
 
     private Alert warning = new Alert(Alert.AlertType.WARNING);
 
-    public void tourToEditIsNull(){
+    public void tourIsNull(){
         warning.setTitle("Warning");
         //alert.setHeaderText("Look, a Warning Dialog");
         warning.setContentText("Please select a Tour from the List first!");

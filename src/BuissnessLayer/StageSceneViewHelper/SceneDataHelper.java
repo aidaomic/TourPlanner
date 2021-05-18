@@ -52,4 +52,13 @@ public class SceneDataHelper {
         ImageView imageView = (ImageView) root.lookup("#image");
         imageView.setImage(img);
     }
+
+    public void setDataForAddLog() {
+        TextField txtN = (TextField) root.lookup("#tourName");
+        txtN.setText(String.valueOf(tour.tourName));
+        txtN.setDisable(true);
+        TextField txtD = (TextField) root.lookup("#tourDistance");
+        txtD.setText(String.valueOf(tour.tourDistance));
+        txtD.setDisable(true);
+    }
 }

@@ -49,7 +49,7 @@ public class MainViewModel {
 
     public void copyTour(String tourName) {
         if (tourName.equals("null"))
-            new Allerts().tourToEditIsNull();
+            new Allerts().tourIsNull();
         else{
             Database_Tours dbt = new Database_Tours();
             Tour tour = dbt.specificTour(tourName);
@@ -59,7 +59,7 @@ public class MainViewModel {
 
     public void showTour(String tourName) {
         if (tourName.equals("null"))
-            new Allerts().tourToEditIsNull();
+            new Allerts().tourIsNull();
         else {
             Database_Tours dbt = new Database_Tours();
             Tour t = dbt.specificTour(tourName);

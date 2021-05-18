@@ -10,6 +10,6 @@ import java.util.ArrayList;
 public interface Database {
 
     public Connection connectDatabase();
-    public void save(ArrayList list);
+    //public void save(ArrayList list);
     public void delete(String name) throws SQLException;
 }

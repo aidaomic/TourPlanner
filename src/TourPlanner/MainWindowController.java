@@ -1,5 +1,6 @@
 package TourPlanner;
 
+import DataAccessLayer.Database_Logs;
 import DataAccessLayer.Database_Tours;
 import Models.*;
 import javafx.collections.FXCollections;
@@ -7,9 +8,8 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -35,6 +35,8 @@ public class MainWindowController implements Initializable {
     public ListView tourList;
     public Label tourInformationDisplay, titleOutput;
     public ImageView tourImageDisplay;
+    public TableView logTable;
+    public TableColumn tourName, dateAndTime, distance, totalTime, rating, weather, seasClos, transportation, traffic, fuelUsed, speed;
 
     public MainWindowController(){
         System.out.println("Controller created");
@@ -46,10 +48,16 @@ public class MainWindowController implements Initializable {
         tourImageDisplay.imageProperty().bindBidirectional(viewModel.tourImageProperty());
         titleOutput.textProperty().bindBidirectional(viewModel.outputPropertyTitle());
         tourList.itemsProperty().bindBidirectional(viewModel.tourListProperty());
-        Database_Tours data = new Database_Tours();
-        ArrayList list = data.getTourNames();
+
+        Database_Tours data_t = new Database_Tours();
+        ArrayList list = data_t.getTourNames();
         ObservableList obList = FXCollections.observableList(list);
         tourList.setItems(obList);
+
+        Database_Logs data_l = new Database_Logs();
+        ArrayList logs = data_l.getLogs();
+        ObservableList obList_l = FXCollections.observableList(logs);
+        logTable.setItems(obList_l);
     }
 
     public void searchForTour(ActionEvent actionEvent) throws SQLException {

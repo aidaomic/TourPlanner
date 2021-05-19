@@ -102,11 +102,19 @@
                         <Button alignment="TOP_CENTER" onAction="#editLog" text="[]" />
                     </HBox>
 
-                    <TableView fx:id="LogTable">
+                    <TableView fx:id="logTable">
                         <columns>
-                            <TableColumn text="Date" />
-                            <TableColumn text="Duration" />
-                            <TableColumn text="Distance" />
+                            <TableColumn fx:id="tourName" text="Tour"/>
+                            <TableColumn fx:id="dateAndTime" text="Date and Creation Time"/>
+                            <TableColumn fx:id="distance" text="Distance" />
+                            <TableColumn fx:id="totalTime" text="Total Time" />
+                            <TableColumn fx:id="rating" text="Rating"/>
+                            <TableColumn fx:id="weather" text="Weather"/>
+                            <TableColumn fx:id="seasClos" text="Seasonal Closure"/>
+                            <TableColumn fx:id="transportation" text="Transportation"/>
+                            <TableColumn fx:id="traffic" text="Traffic Jam"/>
+                            <TableColumn fx:id="fuelUsed" text="Fuel Used"/>
+                            <TableColumn fx:id="speed" text="Average Speed"/>
                         </columns>
                     </TableView>
 

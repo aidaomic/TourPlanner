@@ -2,6 +2,9 @@ package DataAccessLayer;
 
 import BuissnessLayer.Handler.PropertyHandler;
 import TourPlanner.Log;
+import TourPlanner.LogTable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,7 +19,9 @@ public class Database_Logs implements Database{
 
     private Connection connection = null;
     private PreparedStatement preparedStatement = null;
-    private ArrayList logArray;
+    private ResultSet rs = null;
+    private ArrayList logArray = new ArrayList();
+    private ObservableList obsl = null;
 
     public Connection connectDatabase(){
         try {
@@ -64,6 +69,20 @@ public class Database_Logs implements Database{
 
     public ArrayList getLogs() {
         try {
+            logArray.clear();
+            connection = connectDatabase();
+            preparedStatement = connectDatabase().prepareStatement("select * from public.logs;");
+            rs = preparedStatement.executeQuery();
+            while (rs.next()){
+                LogTable log = new LogTable(
+                        rs.getString(1), rs.getString(2) + " " +
+                        rs.getString(3), rs.getDouble(4), rs.getString(5),
+                        rs.getDouble(6), rs.getString(7), rs.getString(8),
+                        rs.getString(9), rs.getString(10), rs.getDouble(11),
+                        rs.getDouble(12));
+                System.out.println(rs.getString(1));
+                logArray.add(log);
+            }
             connection.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();

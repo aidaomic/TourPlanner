@@ -1,20 +1,14 @@
 package TourPlanner;
 
-public class Log {
-    public String logName;
+public class LogTable {
+
+    public String logName, creationDateTime;
     public String totalTime, weather, transportation, seasonalClosure, trafficJam;
     public double distance, rating, fuelUsed, averageSpeed;
 
-    public Log() {}
-
-    public Log(String name){
-        logName = name;
-    }
-
-    public Log(String logName, String totalTime, String weather, String transportation, Boolean seasonalClosure, Boolean trafficJam, double distance, double rating, double fuelUsed, double averageSpeed){}
-
-    public Log(String logName, String totalTime, String weather, String transportation, String seasonalClosure, String trafficJam, double distance, double rating, double fuelUsed, double averageSpeed) {
+    public LogTable(String logName, String creationDateTime, double distance, String totalTime, double rating, String weather, String seasonalClosure, String transportation, String trafficJam, double fuelUsed, double averageSpeed) {
         this.logName = logName;
+        this.creationDateTime = creationDateTime;
         this.totalTime = totalTime;
         this.weather = weather;
         this.transportation = transportation;

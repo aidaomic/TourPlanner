@@ -2,6 +2,7 @@ package DataAccessLayer;
 
 import BuissnessLayer.Handler.ImageHandler;
 import BuissnessLayer.Handler.PropertyHandler;
+import TourPlanner.Log;
 import TourPlanner.Tour;
 import com.itextpdf.text.pdf.PdfPTable;
 import javafx.embed.swing.SwingFXUtils;

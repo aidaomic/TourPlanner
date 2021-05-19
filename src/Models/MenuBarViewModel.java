@@ -50,4 +50,17 @@ public class MenuBarViewModel {
 
     }
 
+    public void importTourLogs(){
+        new PdfReader().pdfToTourLogs();
+    }
+
+    public void exportTourLogsTable() {
+        new PdfGenerator().tourLogsToPdfTable();
+        new Allerts().allertExportSuccess();
+    }
+
+    public void exportTourLogs(){
+        new PdfGenerator().logsToPdf();
+        new Allerts().allertExportSuccess();
+    }
 }

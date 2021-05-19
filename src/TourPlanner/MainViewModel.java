@@ -77,8 +77,8 @@ public class MainViewModel {
         new StageLoader().changeImageStage(name, img);
     }
 
-    public void deleteTourLog(Stage stage, String name, String dateAndTime) throws IOException {
-        new Database_Logs().delete(name+";"+dateAndTime);
+    public void deleteTourLog(Stage stage, int id) throws IOException {
+        new Database_Logs().delete(String.valueOf(id));
         new StageLoader(stage).changeMainStage();
     }
 

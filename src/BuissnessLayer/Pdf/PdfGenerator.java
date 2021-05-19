@@ -1,24 +1,15 @@
 package BuissnessLayer.Pdf;
 
+import DataAccessLayer.Database_Logs;
 import DataAccessLayer.Database_Tours;
-import TourPlanner.Tour;
 import com.itextpdf.text.*;
-import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
-import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.PdfWriter;
-import com.itextpdf.text.pdf.parser.Line;
-import com.itextpdf.text.pdf.parser.PdfTextExtractor;
-import javafx.embed.swing.SwingFXUtils;
 
-import java.awt.image.BufferedImage;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.Map;
-import java.util.StringTokenizer;
 
 public class PdfGenerator {
 
@@ -63,7 +54,53 @@ public class PdfGenerator {
         }
     }
 
+    public void tourLogsToPdfTable(){
+        try {
+            PdfWriter.getInstance(doc, new FileOutputStream("TourLogssFromDatabase-TableView-"+ new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date()) +".pdf"));
+            doc.open();
+
+            PdfPTable table = new PdfPTable(13); // 5 columns w/o image
+            table.setWidthPercentage(100); //Width 100%
+            table.setSpacingBefore(10f); //Space before table
+            table.setSpacingAfter(10f); //Space after table
+
+            //Set Column widths
+            float[] columnWidths = {1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f,};
+            table.setWidths(columnWidths);
+
+            table.addCell("Log Id");
+            table.addCell("Tour Name");
+            table.addCell("Creation Date");
+            table.addCell("Creation Time");
+            table.addCell("Distance");
+            table.addCell("Total Time");
+            table.addCell("Rating");
+            table.addCell("Weather");
+            table.addCell("Seasonal Closure");
+            table.addCell("Transportation");
+            table.addCell("Traffic Jam");
+            table.addCell("Fuel Used");
+            table.addCell("Average Speed");
+            table.completeRow();
+
+            doc.add(new Database_Logs().toFileTable(table));
+            doc.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public void logsToPdf(){
+        try {
+            PdfWriter.getInstance(doc, new FileOutputStream("TourLogsFromDatabase-"+ new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date()) +".pdf"));
+            doc.open();
+            doc.add(new Paragraph(new Database_Logs().toFile()));
+            doc.close();
+        } catch (DocumentException e) {
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 
     }
 }

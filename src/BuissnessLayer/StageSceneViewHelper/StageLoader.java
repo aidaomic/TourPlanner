@@ -63,7 +63,7 @@ public class StageLoader {
     public void changeMainStage() throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("../../TourPlanner/mainWindow.fxml"));
         stage.setTitle("Tour Planner - Tour Log");
-        stage.setScene(new Scene(root, 500, 350)); //v=breite v1=höhe
+        stage.setScene(new Scene(root, 500, 500)); //v=breite v1=höhe
         stage.show();
     }
 

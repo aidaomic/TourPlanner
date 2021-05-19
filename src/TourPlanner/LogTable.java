@@ -5,8 +5,10 @@ public class LogTable {
     public String tourName, dateAndTime;
     public String totalTime, weather, transportation, seasClos, traffic;
     public double distance, rating, fuelUsed, speed;
+    public int logId;
 
-    public LogTable(String logName, String creationDateTime, double distance, String totalTime, double rating, String weather, String seasonalClosure, String transportation, String trafficJam, double fuelUsed, double averageSpeed) {
+    public LogTable(int id, String logName, String creationDateTime, double distance, String totalTime, double rating, String weather, String seasonalClosure, String transportation, String trafficJam, double fuelUsed, double averageSpeed) {
+        this.logId = id;
         this.tourName = logName;
         this.dateAndTime = creationDateTime;
         this.totalTime = totalTime;
@@ -18,6 +20,10 @@ public class LogTable {
         this.rating = rating;
         this.fuelUsed = fuelUsed;
         this.speed = averageSpeed;
+    }
+
+    public int getLogId() {
+        return logId;
     }
 
     public String getTourName() {

@@ -37,7 +37,7 @@ public class MainWindowController implements Initializable {
     public Label tourInformationDisplay, titleOutput;
     public ImageView tourImageDisplay;
     public TableView logTable;
-    public TableColumn<LogTable, String> tourName, dateAndTime, distance, totalTime, rating, weather, seasClos, transportation, traffic, fuelUsed, speed;
+    public TableColumn<LogTable, String> logId, tourName, dateAndTime, distance, totalTime, rating, weather, seasClos, transportation, traffic, fuelUsed, speed;
 
     public MainWindowController(){
         System.out.println("Controller created");
@@ -76,6 +76,7 @@ public class MainWindowController implements Initializable {
         traffic.setCellValueFactory(new PropertyValueFactory<>("traffic"));
         fuelUsed.setCellValueFactory(new PropertyValueFactory<>("fuelUsed"));
         speed.setCellValueFactory(new PropertyValueFactory<>("speed"));
+        logId.setCellValueFactory(new PropertyValueFactory<>("logId"));
     }
 
     public void searchForTour(ActionEvent actionEvent) throws SQLException {
@@ -110,18 +111,12 @@ public class MainWindowController implements Initializable {
     public void deleteLog(ActionEvent actionEvent) throws IOException {
         LogTable l = (LogTable) logTable.getSelectionModel().getSelectedItem();
         Stage stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
-        viewModel.deleteTourLog(stage, l.tourName, l.dateAndTime);
-    }
-
-    public void logFile(ActionEvent actionEvent) {
+        viewModel.deleteTourLog(stage, l.logId);
     }
 
     public void editLog(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
         editLogModel.editTourLogStage(stage, (LogTable) logTable.getSelectionModel().getSelectedItem());
-    }
-
-    public void report(ActionEvent actionEvent) {
     }
 
     public void importDataTours(ActionEvent actionEvent) {
@@ -156,4 +151,22 @@ public class MainWindowController implements Initializable {
         menuModel.exportToursTable();
     }
 
+    public void importDataTourLogs(ActionEvent actionEvent) {
+        menuModel.importTourLogs();
+        Database_Logs data = new Database_Logs();
+        ArrayList list = data.getLogs();
+        ObservableList obList = FXCollections.observableList(list);
+        logTable.setItems(obList);
+    }
+
+    public void exportDataTourLogsTable(ActionEvent actionEvent) {
+        menuModel.exportTourLogsTable();
+    }
+
+    public void exportDataTourLogs(ActionEvent actionEvent) {
+        menuModel.exportTourLogs();
+    }
+
+    public void report(ActionEvent actionEvent) {
+    }
 }

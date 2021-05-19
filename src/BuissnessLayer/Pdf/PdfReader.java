@@ -2,6 +2,7 @@ package BuissnessLayer.Pdf;
 
 import BuissnessLayer.MapQuest.MapQuest;
 import BuissnessLayer.Handler.PathHandler;
+import DataAccessLayer.Database_Logs;
 import DataAccessLayer.Database_Tours;
 import com.itextpdf.text.pdf.parser.PdfTextExtractor;
 
@@ -41,6 +42,36 @@ public class PdfReader {
                 counter++;
             }
             System.out.println("Added "+counter+" Tours!");
+            reader.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void pdfToTourLogs() {
+        try {
+            com.itextpdf.text.pdf.PdfReader reader = new com.itextpdf.text.pdf.PdfReader(new PathHandler().inputPath());
+            String textFromPage = PdfTextExtractor.getTextFromPage(reader, 1);
+
+            StringTokenizer token = new StringTokenizer(textFromPage, ";");
+
+            Database_Logs dbt = new Database_Logs();
+            ArrayList t = new ArrayList();
+            int counter = 0;
+            while(token.hasMoreElements()){
+                t.clear();
+                if(counter != 0)
+                    t.add(token.nextToken().substring(2));
+                else
+                    t.add(token.nextToken());
+                for (int i = 1; i < 10; i++){
+                    t.add(token.nextToken());
+                }
+                dbt.save(t);
+                counter++;
+            }
+            System.out.println("Added "+counter+" TourLogs!");
             reader.close();
 
         } catch (IOException e) {

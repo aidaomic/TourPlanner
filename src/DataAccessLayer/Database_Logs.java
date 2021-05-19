@@ -138,4 +138,25 @@ public class Database_Logs implements Database{
         }
     }
 
+    public ArrayList getSearchedTourLogs(String text) {
+        try{
+            connection = connectDatabase();
+            preparedStatement = connectDatabase().prepareStatement("select * from public.logs where tourname like ?;");
+            preparedStatement.setString(1, "%"+text+"%");
+            rs = preparedStatement.executeQuery();
+            while(rs.next()){
+                LogTable log = new LogTable(
+                        rs.getString(1), rs.getString(2) + " " +
+                        rs.getString(3), rs.getDouble(4), rs.getString(5),
+                        rs.getDouble(6), rs.getString(7), rs.getString(8),
+                        rs.getString(9), rs.getString(10), rs.getDouble(11),
+                        rs.getDouble(12));
+                logArray.add(log);
+            }
+            connection.close();
+        } catch (SQLException throwables) {
+        throwables.printStackTrace();
+        }
+        return logArray;
+    }
 }

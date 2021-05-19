@@ -80,6 +80,7 @@ public class MainWindowController implements Initializable {
 
     public void searchForTour(ActionEvent actionEvent) throws SQLException {
         tourList.setItems(menuModel.searchForTour(textForSearch.getText()));
+        logTable.setItems(menuModel.searchForLog(textForSearch.getText()));
     }
 
     public void getHelp(ActionEvent actionEvent) {

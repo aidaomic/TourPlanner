@@ -3,6 +3,7 @@ package Models;
 import BuissnessLayer.Notification.Allerts;
 import BuissnessLayer.Pdf.PdfGenerator;
 import BuissnessLayer.Pdf.PdfReader;
+import DataAccessLayer.Database_Logs;
 import DataAccessLayer.Database_Tours;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
@@ -19,9 +20,14 @@ public class MenuBarViewModel {
     }
 
     //Methoden
-    //search erweitern
     public ObservableList searchForTour(String searchText){
         ArrayList searchedList = new Database_Tours().getSearchedTours(searchText);
+        ObservableList obList = FXCollections.observableList(searchedList);
+        return obList;
+    }
+
+    public ObservableList searchForLog(String text) {
+        ArrayList searchedList = new Database_Logs().getSearchedTourLogs(text);
         ObservableList obList = FXCollections.observableList(searchedList);
         return obList;
     }
@@ -43,4 +49,5 @@ public class MenuBarViewModel {
     public void getHelp() {
 
     }
+
 }

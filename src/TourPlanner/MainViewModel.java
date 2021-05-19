@@ -3,11 +3,14 @@ package TourPlanner;
 import BuissnessLayer.Handler.ImageHandler;
 import BuissnessLayer.Notification.Allerts;
 import BuissnessLayer.StageSceneViewHelper.StageLoader;
+import DataAccessLayer.Database_Logs;
 import DataAccessLayer.Database_Tours;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
+import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -72,6 +75,11 @@ public class MainViewModel {
     public void zoomPicture(String name) throws IOException {
         Image img = new ImageHandler().getImageFromFS(name);
         new StageLoader().changeImageStage(name, img);
+    }
+
+    public void deleteTourLog(Stage stage, String name, String dateAndTime) throws IOException {
+        new Database_Logs().delete(name+";"+dateAndTime);
+        new StageLoader(stage).changeMainStage();
     }
 
 }

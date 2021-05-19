@@ -19,6 +19,7 @@ public class MenuBarViewModel {
     }
 
     //Methoden
+    //search erweitern
     public ObservableList searchForTour(String searchText){
         ArrayList searchedList = new Database_Tours().getSearchedTours(searchText);
         ObservableList obList = FXCollections.observableList(searchedList);

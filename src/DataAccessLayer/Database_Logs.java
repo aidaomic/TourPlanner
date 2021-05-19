@@ -3,8 +3,6 @@ package DataAccessLayer;
 import BuissnessLayer.Handler.PropertyHandler;
 import TourPlanner.Log;
 import TourPlanner.LogTable;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,6 +12,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Properties;
+import java.util.StringTokenizer;
 
 public class Database_Logs implements Database{
 
@@ -21,7 +20,6 @@ public class Database_Logs implements Database{
     private PreparedStatement preparedStatement = null;
     private ResultSet rs = null;
     private ArrayList logArray = new ArrayList();
-    private ObservableList obsl = null;
 
     public Connection connectDatabase(){
         try {
@@ -80,8 +78,8 @@ public class Database_Logs implements Database{
                         rs.getDouble(6), rs.getString(7), rs.getString(8),
                         rs.getString(9), rs.getString(10), rs.getDouble(11),
                         rs.getDouble(12));
-                System.out.println(rs.getString(1));
                 logArray.add(log);
+
             }
             connection.close();
         } catch (SQLException throwables) {
@@ -92,14 +90,39 @@ public class Database_Logs implements Database{
 
     public void delete(String name){
         try {
+            connection = connectDatabase();
+            StringTokenizer token = new StringTokenizer(name, ";");
+            String log = token.nextToken();
+            String dateAndTime = token.nextToken();
+            String date = dateAndTime.substring(0, 10);
+            String time = dateAndTime.substring(11);
+            preparedStatement = connectDatabase().prepareStatement("delete from public.logs where tourname = ? and creationdate = ? and creationtime = ?;");
+            preparedStatement.setString(1, log);
+            preparedStatement.setString(2, date);
+            preparedStatement.setString(3, time);
+            preparedStatement.execute();
             connection.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
     }
 
-    public void edit(String name){
+    public void edit(Log log){
         try {
+            connection = connectDatabase();
+            preparedStatement = connectDatabase().prepareStatement("Update public.logs set totaltime = ?, rating = ?, weather = ?," +
+                    "seasonalclosure = ?, transportation = ?, traffic_jam = ?, fuel_used = ?, average_speed = ?" +
+                    "where tourname = ?");
+            preparedStatement.setString(1, log.totalTime);
+            preparedStatement.setInt(2, (int) log.rating);
+            preparedStatement.setString(3, log.weather);
+            preparedStatement.setBoolean(4, log.seas);
+            preparedStatement.setString(5, log.transportation);
+            preparedStatement.setBoolean(6, log.traf);
+            preparedStatement.setDouble(7, log.fuelUsed);
+            preparedStatement.setDouble(8, log.averageSpeed);
+            preparedStatement.setString(9, log.logName);
+            preparedStatement.execute();
             connection.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -114,4 +137,5 @@ public class Database_Logs implements Database{
             throwables.printStackTrace();
         }
     }
+
 }

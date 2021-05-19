@@ -2,21 +2,65 @@ package TourPlanner;
 
 public class LogTable {
 
-    public String logName, creationDateTime;
-    public String totalTime, weather, transportation, seasonalClosure, trafficJam;
-    public double distance, rating, fuelUsed, averageSpeed;
+    public String tourName, dateAndTime;
+    public String totalTime, weather, transportation, seasClos, traffic;
+    public double distance, rating, fuelUsed, speed;
 
     public LogTable(String logName, String creationDateTime, double distance, String totalTime, double rating, String weather, String seasonalClosure, String transportation, String trafficJam, double fuelUsed, double averageSpeed) {
-        this.logName = logName;
-        this.creationDateTime = creationDateTime;
+        this.tourName = logName;
+        this.dateAndTime = creationDateTime;
         this.totalTime = totalTime;
         this.weather = weather;
         this.transportation = transportation;
-        this.seasonalClosure = seasonalClosure;
-        this.trafficJam = trafficJam;
+        this.seasClos = seasonalClosure;
+        this.traffic = trafficJam;
         this.distance = distance;
         this.rating = rating;
         this.fuelUsed = fuelUsed;
-        this.averageSpeed = averageSpeed;
+        this.speed = averageSpeed;
+    }
+
+    public String getTourName() {
+        return tourName;
+    }
+
+    public String getDateAndTime() {
+        return dateAndTime;
+    }
+
+    public String getTotalTime() {
+        return totalTime;
+    }
+
+    public String getWeather() {
+        return weather;
+    }
+
+    public String getTransportation() {
+        return transportation;
+    }
+
+    public String getSeasClos() {
+        return seasClos;
+    }
+
+    public String getTraffic() {
+        return traffic;
+    }
+
+    public double getDistance() {
+        return distance;
+    }
+
+    public double getRating() {
+        return rating;
+    }
+
+    public double getFuelUsed() {
+        return fuelUsed;
+    }
+
+    public double getSpeed() {
+        return speed;
     }
 }

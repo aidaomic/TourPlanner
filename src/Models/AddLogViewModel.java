@@ -24,9 +24,11 @@ public class AddLogViewModel {
     public final StringProperty totalTime = new SimpleStringProperty("");
     public final IntegerProperty rating = new SimpleIntegerProperty();
     public final StringProperty weather = new SimpleStringProperty("");
-    public final BooleanProperty seasonalClos = new SimpleBooleanProperty();
+    public final BooleanProperty seasonalClosYes = new SimpleBooleanProperty();
+    public final BooleanProperty seasonalClosNo = new SimpleBooleanProperty();
     public final StringProperty transportation = new SimpleStringProperty("");
-    public final BooleanProperty trafficJam = new SimpleBooleanProperty();
+    public final BooleanProperty trafficJamYes = new SimpleBooleanProperty();
+    public final BooleanProperty trafficJamNo = new SimpleBooleanProperty();
     public final StringProperty fuelUsed = new SimpleStringProperty("");
     public final StringProperty averageSpeed = new SimpleStringProperty("");
 
@@ -50,16 +52,24 @@ public class AddLogViewModel {
         return weather;
     }
 
-    public Property<Boolean> seasonalClosProperty() {
-        return seasonalClos;
+    public BooleanProperty seasonalClosYesProperty() {
+        return seasonalClosYes;
+    }
+
+    public BooleanProperty seasonalClosNoProperty() {
+        return seasonalClosNo;
     }
 
     public StringProperty transportationProperty() {
         return transportation;
     }
 
-    public Property<Boolean> trafficJamProperty() {
-        return trafficJam;
+    public BooleanProperty trafficJamYesProperty() {
+        return trafficJamYes;
+    }
+
+    public BooleanProperty trafficJamNoProperty() {
+        return trafficJamNo;
     }
 
     public StringProperty fuelUsedProperty() {
@@ -88,8 +98,6 @@ public class AddLogViewModel {
     }
 
     public void addTourLog(Stage stage, String logName, String totalTime, String weather, String transportation, Boolean seasonalClosure, Boolean trafficJam, double distance, double rating, double fuelUsed, double averageSpeed) throws IOException {
-        Log log = new Log(logName, totalTime, weather, transportation, seasonalClosure, trafficJam, distance, rating, fuelUsed, averageSpeed);
-
         logList.clear();
         logList.add(logName);
         logList.add(distance);

@@ -1,5 +1,6 @@
 package BuissnessLayer.StageSceneViewHelper;
 
+import TourPlanner.LogTable;
 import TourPlanner.Tour;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,6 +14,7 @@ public class StageLoader {
 
     private Stage stage;
     private Tour tour;
+    private LogTable log;
 
     public StageLoader(Stage s) {
         stage = s;
@@ -23,6 +25,11 @@ public class StageLoader {
         tour = tn;
     }
 
+    public StageLoader(Stage s, LogTable l) {
+        stage = s;
+        log = l;
+    }
+
     public StageLoader() {
 
     }
@@ -30,7 +37,7 @@ public class StageLoader {
     public void changeStage(String methode) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("../../Views/"+methode+"Window.fxml"));
         stage.setTitle("Tour Planner - Add Tour");
-        stage.setScene(new Scene(root, 500, 350)); //v=breite v1=höhe
+        stage.setScene(new Scene(root, 500, 500)); //v=breite v1=höhe
         stage.show();
     }
 
@@ -46,12 +53,17 @@ public class StageLoader {
         Parent root = FXMLLoader.load(getClass().getResource("../../Views/"+methode+"Window.fxml"));
         stage.setTitle("Tour Planner - Tour Log");
         stage.setScene(new Scene(root, 490, 450)); //v=breite v1=höhe
-        switch (methode){
-            case "TourLog/AddTourLog":
+        if(methode.equals("TourLog/AddTourLog"))
                 new SceneDataHelper(root, tour).setDataForAddLog();
-            case "TourLog/EditTourLog":
-                new SceneDataHelper(root, tour).setDataForEditLog();
-        }
+        else if(methode.equals("TourLog/EditTourLog"))
+                new SceneDataHelper(root, log).setDataForEditLog();
+        stage.show();
+    }
+
+    public void changeMainStage() throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("../../TourPlanner/mainWindow.fxml"));
+        stage.setTitle("Tour Planner - Tour Log");
+        stage.setScene(new Scene(root, 500, 350)); //v=breite v1=höhe
         stage.show();
     }
 

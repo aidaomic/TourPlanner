@@ -27,11 +27,11 @@ public class AddTourLogWindowController implements Initializable {
         totalTime.textProperty().bindBidirectional(addModel.totalTimeProperty());
         rating.valueProperty().bindBidirectional(addModel.ratingProperty());
         weather.textProperty().bindBidirectional(addModel.weatherProperty());
-        seasClosYes.selectedProperty().bindBidirectional(addModel.seasonalClosProperty());
-        seasClosNo.selectedProperty().bindBidirectional(addModel.seasonalClosProperty());
+        seasClosYes.selectedProperty().bindBidirectional(addModel.seasonalClosYesProperty());
+        seasClosNo.selectedProperty().bindBidirectional(addModel.seasonalClosNoProperty());
         transportation.textProperty().bindBidirectional(addModel.transportationProperty());
-        trafJamYes.selectedProperty().bindBidirectional(addModel.trafficJamProperty());
-        trafJamNo.selectedProperty().bindBidirectional(addModel.trafficJamProperty());
+        trafJamYes.selectedProperty().bindBidirectional(addModel.trafficJamYesProperty());
+        trafJamNo.selectedProperty().bindBidirectional(addModel.trafficJamNoProperty());
         fuelUsed.textProperty().bindBidirectional(addModel.fuelUsedProperty());
         averageSpeed.textProperty().bindBidirectional(addModel.averageSpeedProperty());
     }

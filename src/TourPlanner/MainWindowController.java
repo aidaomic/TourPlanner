@@ -3,6 +3,7 @@ package TourPlanner;
 import DataAccessLayer.Database_Logs;
 import DataAccessLayer.Database_Tours;
 import Models.*;
+import com.fasterxml.jackson.databind.annotation.JsonAppend;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -36,18 +37,14 @@ public class MainWindowController implements Initializable {
     public Label tourInformationDisplay, titleOutput;
     public ImageView tourImageDisplay;
     public TableView logTable;
-    public TableColumn tourName, dateAndTime, distance, totalTime, rating, weather, seasClos, transportation, traffic, fuelUsed, speed;
+    public TableColumn<LogTable, String> tourName, dateAndTime, distance, totalTime, rating, weather, seasClos, transportation, traffic, fuelUsed, speed;
 
     public MainWindowController(){
         System.out.println("Controller created");
     }
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        textForSearch.textProperty().bindBidirectional(viewModel.inputProperty());
-        tourInformationDisplay.textProperty().bindBidirectional(viewModel.informationProperty());
-        tourImageDisplay.imageProperty().bindBidirectional(viewModel.tourImageProperty());
-        titleOutput.textProperty().bindBidirectional(viewModel.outputPropertyTitle());
-        tourList.itemsProperty().bindBidirectional(viewModel.tourListProperty());
+        bindProperties();
 
         Database_Tours data_t = new Database_Tours();
         ArrayList list = data_t.getTourNames();
@@ -58,6 +55,27 @@ public class MainWindowController implements Initializable {
         ArrayList logs = data_l.getLogs();
         ObservableList obList_l = FXCollections.observableList(logs);
         logTable.setItems(obList_l);
+
+    }
+
+    private void bindProperties(){
+        textForSearch.textProperty().bindBidirectional(viewModel.inputProperty());
+        tourInformationDisplay.textProperty().bindBidirectional(viewModel.informationProperty());
+        tourImageDisplay.imageProperty().bindBidirectional(viewModel.tourImageProperty());
+        titleOutput.textProperty().bindBidirectional(viewModel.outputPropertyTitle());
+        tourList.itemsProperty().bindBidirectional(viewModel.tourListProperty());
+
+        tourName.setCellValueFactory(new PropertyValueFactory<>("tourName"));
+        dateAndTime.setCellValueFactory(new PropertyValueFactory<>("dateAndTime"));
+        distance.setCellValueFactory(new PropertyValueFactory<>("distance"));
+        totalTime.setCellValueFactory(new PropertyValueFactory<>("totalTime"));
+        rating.setCellValueFactory(new PropertyValueFactory<>("rating"));
+        weather.setCellValueFactory(new PropertyValueFactory<>("weather"));
+        seasClos.setCellValueFactory(new PropertyValueFactory<>("seasClos"));
+        transportation.setCellValueFactory(new PropertyValueFactory<>("transportation"));
+        traffic.setCellValueFactory(new PropertyValueFactory<>("traffic"));
+        fuelUsed.setCellValueFactory(new PropertyValueFactory<>("fuelUsed"));
+        speed.setCellValueFactory(new PropertyValueFactory<>("speed"));
     }
 
     public void searchForTour(ActionEvent actionEvent) throws SQLException {
@@ -88,7 +106,10 @@ public class MainWindowController implements Initializable {
         addLogModel.addTourLogStage(stage, String.valueOf(tourList.getSelectionModel().getSelectedItem()));
     }
 
-    public void deleteLog(ActionEvent actionEvent) {
+    public void deleteLog(ActionEvent actionEvent) throws IOException {
+        LogTable l = (LogTable) logTable.getSelectionModel().getSelectedItem();
+        Stage stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        viewModel.deleteTourLog(stage, l.tourName, l.dateAndTime);
     }
 
     public void logFile(ActionEvent actionEvent) {
@@ -96,7 +117,7 @@ public class MainWindowController implements Initializable {
 
     public void editLog(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
-        editLogModel.editTourLogStage(stage, String.valueOf(tourList.getSelectionModel().getSelectedItem()));
+        editLogModel.editTourLogStage(stage, (LogTable) logTable.getSelectionModel().getSelectedItem());
     }
 
     public void report(ActionEvent actionEvent) {

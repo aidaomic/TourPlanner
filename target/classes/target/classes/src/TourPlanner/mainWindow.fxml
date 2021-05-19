@@ -92,13 +92,14 @@
 
                 <VBox minHeight="200">
                     <HBox>
-                        <Label alignment="CENTER_LEFT" prefWidth="280" text="Logs:">
+                        <Label alignment="CENTER_LEFT" prefHeight="18.0" prefWidth="254.0" text="Logs:">
                             <HBox.margin>
                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                             </HBox.margin>
                         </Label>
-                        <Button alignment="TOP_CENTER" onAction="#addLog" text="+" />
-                        <Button alignment="TOP_CENTER" onAction="#deleteLog" text="-" />
+                        <Button alignment="TOP_CENTER" onAction="#addLog" prefHeight="26.0" text="+" />
+                        <Button alignment="TOP_CENTER" onAction="#deleteLog" prefHeight="26.0" text="-" />
+                        <Button alignment="TOP_CENTER" onAction="#editLog" text="[]" />
                     </HBox>
 
                     <TableView fx:id="LogTable">

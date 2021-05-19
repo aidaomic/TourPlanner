@@ -44,14 +44,19 @@ public class StageLoader {
 
     public void changeStageForLog(String methode) throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("../../Views/"+methode+"Window.fxml"));
-        stage.setTitle("Tour Planner - Add Log");
-        stage.setScene(new Scene(root, 500, 350)); //v=breite v1=höhe
-        new SceneDataHelper(root, tour).setDataForAddLog();
+        stage.setTitle("Tour Planner - Tour Log");
+        stage.setScene(new Scene(root, 490, 450)); //v=breite v1=höhe
+        switch (methode){
+            case "TourLog/AddTourLog":
+                new SceneDataHelper(root, tour).setDataForAddLog();
+            case "TourLog/EditTourLog":
+                new SceneDataHelper(root, tour).setDataForEditLog();
+        }
         stage.show();
     }
 
-    public void chnageImageStage(String name, Image img) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../Views/ImageWindow.fxml"));
+    public void changeImageStage(String name, Image img) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../../Views/ImageWindow.fxml"));
         Stage tourStage = new Stage();
         tourStage.setTitle("Tour Planner - " + name.substring(7)+".jpg");
         tourStage.setScene(new Scene(root, 640, 480)); //v=breite v1=höhe

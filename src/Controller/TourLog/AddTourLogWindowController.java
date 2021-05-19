@@ -1,23 +1,51 @@
 package Controller.TourLog;
 
-import Models.AddTourViewModel;
 import javafx.event.ActionEvent;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.Slider;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
+import Models.AddLogViewModel;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class AddTourLogWindowController {
+public class AddTourLogWindowController implements Initializable {
 
-    private AddTourViewModel addModel = new AddTourViewModel();
+    private AddLogViewModel addModel = new AddLogViewModel();
 
-    public void initialize(URL url, ResourceBundle resourceBundle) {}
+    public TextField tourName, tourDistance, totalTime, weather, transportation, fuelUsed, averageSpeed;
+    public Slider rating;
+    public RadioButton seasClosYes, seasClosNo, trafJamYes, trafJamNo;
+    public Boolean seasClos, trafJam;
 
-    public void createTourLog(ActionEvent actionEvent) {
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        tourName.textProperty().bindBidirectional(addModel.tourNameProperty());
+        tourDistance.textProperty().bindBidirectional(addModel.distanceProperty());
+        totalTime.textProperty().bindBidirectional(addModel.totalTimeProperty());
+        rating.valueProperty().bindBidirectional(addModel.ratingProperty());
+        weather.textProperty().bindBidirectional(addModel.weatherProperty());
+        seasClosYes.selectedProperty().bindBidirectional(addModel.seasonalClosProperty());
+        seasClosNo.selectedProperty().bindBidirectional(addModel.seasonalClosProperty());
+        transportation.textProperty().bindBidirectional(addModel.transportationProperty());
+        trafJamYes.selectedProperty().bindBidirectional(addModel.trafficJamProperty());
+        trafJamNo.selectedProperty().bindBidirectional(addModel.trafficJamProperty());
+        fuelUsed.textProperty().bindBidirectional(addModel.fuelUsedProperty());
+        averageSpeed.textProperty().bindBidirectional(addModel.averageSpeedProperty());
+    }
+
+    public void createTourLog(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
-        //addModel.addTour();
+        if (seasClosYes.isSelected())
+            seasClos = true;
+        else seasClos = false;
+        if (trafJamYes.isSelected())
+            trafJam = true;
+        else trafJam = false;
+
+        addModel.addTourLog(stage, tourName.getText(), totalTime.getText(), weather.getText(), transportation.getText(), seasClos, trafJam, Double.valueOf(tourDistance.getText()), rating.getValue(), Double.valueOf(fuelUsed.getText()), Double.valueOf(averageSpeed.getText()));
     }
 
     public void exit(ActionEvent actionEvent) throws IOException {

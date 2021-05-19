@@ -70,10 +70,8 @@ public class MainViewModel {
     }
 
     public void zoomPicture(String name) throws IOException {
-
         Image img = new ImageHandler().getImageFromFS(name);
-        new StageLoader().chnageImageStage(name, img);
-
+        new StageLoader().changeImageStage(name, img);
     }
 
 }

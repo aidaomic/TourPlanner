@@ -1,10 +1,7 @@
 package TourPlanner;
 
 import DataAccessLayer.Database_Tours;
-import Models.AddLogViewModel;
-import Models.AddTourViewModel;
-import Models.EditTourViewModel;
-import Models.MenuBarViewModel;
+import Models.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -31,6 +28,7 @@ public class MainWindowController implements Initializable {
     private EditTourViewModel editTourModel = new EditTourViewModel();
     private MenuBarViewModel menuModel = new MenuBarViewModel();
     private AddLogViewModel addLogModel = new AddLogViewModel();
+    private EditLogViewModel editLogModel = new EditLogViewModel();
 
     // add fx:id and use intelliJ to create field in controller
     public TextField textForSearch;
@@ -88,6 +86,11 @@ public class MainWindowController implements Initializable {
     public void logFile(ActionEvent actionEvent) {
     }
 
+    public void editLog(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        editLogModel.editTourLogStage(stage, String.valueOf(tourList.getSelectionModel().getSelectedItem()));
+    }
+
     public void report(ActionEvent actionEvent) {
     }
 
@@ -122,4 +125,5 @@ public class MainWindowController implements Initializable {
     public void exportDataToursTable(ActionEvent actionEvent) {
         menuModel.exportToursTable();
     }
+
 }

@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane prefHeight="443.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TourLog.AddTourLogWindowController">
+<BorderPane prefHeight="420.0" prefWidth="490.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TourLog.AddTourLogWindowController">
 
     <top>
         <Label alignment="CENTER" prefWidth="Infinity" text="Please fill out the form down below!">
@@ -43,7 +43,7 @@
                     <HBox.margin>
                         <Insets top="5.0" />
                     </HBox.margin></Label>
-                <TextField fx:id="totalTime" disable="true" prefHeight="20" prefWidth="380">
+                <TextField fx:id="totalTime" prefHeight="20" prefWidth="380">
                     <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </HBox.margin></TextField>
@@ -60,7 +60,7 @@
                     <HBox.margin>
                         <Insets top="5.0" />
                     </HBox.margin></Label>
-                <TextField fx:id="weather" disable="true" prefHeight="20" prefWidth="380">
+                <TextField fx:id="weather" prefHeight="20" prefWidth="380">
                     <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </HBox.margin></TextField>
@@ -78,7 +78,7 @@
                     <HBox.margin>
                         <Insets top="5.0" />
                     </HBox.margin></Label>
-                <TextField fx:id="transportation" disable="true" prefHeight="20" prefWidth="380">
+                <TextField fx:id="transportation" prefHeight="20" prefWidth="380">
                     <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </HBox.margin></TextField>
@@ -100,7 +100,7 @@
                     <HBox.margin>
                         <Insets top="5.0" />
                     </HBox.margin></Label>
-                <TextField fx:id="fuelUsed" disable="true" prefHeight="20" prefWidth="380">
+                <TextField fx:id="fuelUsed" prefHeight="20" prefWidth="380">
                     <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </HBox.margin></TextField>
@@ -110,7 +110,7 @@
                     <HBox.margin>
                         <Insets top="5.0" />
                     </HBox.margin></Label>
-                <TextField fx:id="averageSpeed" disable="true" prefHeight="20" prefWidth="380">
+                <TextField fx:id="averageSpeed" prefHeight="20" prefWidth="380">
                     <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </HBox.margin></TextField>

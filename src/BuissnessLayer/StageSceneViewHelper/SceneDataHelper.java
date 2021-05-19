@@ -61,4 +61,7 @@ public class SceneDataHelper {
         txtD.setText(String.valueOf(tour.tourDistance));
         txtD.setDisable(true);
     }
+
+    public void setDataForEditLog() {
+    }
 }

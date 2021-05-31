@@ -1,8 +1,7 @@
 package DataAccessLayer;
 
-import BuissnessLayer.Handler.ImageHandler;
-import BuissnessLayer.Handler.PropertyHandler;
-import TourPlanner.Log;
+import BusinessLayer.Handler.ImageHandler;
+import BusinessLayer.Handler.PropertyHandler;
 import TourPlanner.Tour;
 import com.itextpdf.text.pdf.PdfPTable;
 import javafx.embed.swing.SwingFXUtils;
@@ -40,7 +39,7 @@ public class Database_Tours implements Database{
     public Tour specificTour(String name){
         try {
             connection = connectDatabase();
-            preparedStatement = connection.prepareStatement(new PropertyHandler().getConnectionProperty().getProperty("specificTour"));
+            preparedStatement = connection.prepareStatement(new PropertyHandler().getSqlQuery("specificTour"));
             preparedStatement.setString(1, name);
             rs = preparedStatement.executeQuery();
             if(rs.next()){
@@ -52,6 +51,7 @@ public class Database_Tours implements Database{
                 mapImage = ImageIO.read( new ByteArrayInputStream(rs.getBytes (6)));
                 new ImageHandler().storeOnFS(tourN, mapImage);
             }
+            connection.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } catch (IOException e) {
@@ -63,7 +63,7 @@ public class Database_Tours implements Database{
     public ArrayList getTourNames(){
         try {
             connection = connectDatabase();
-            preparedStatement = connection.prepareStatement(new PropertyHandler().getConnectionProperty().getProperty("allTourNames"));
+            preparedStatement = connection.prepareStatement(new PropertyHandler().getSqlQuery("allTourNames"));
             rs = preparedStatement.executeQuery();
             while (rs.next()){
                 nameList.add(rs.getString(1));
@@ -78,7 +78,7 @@ public class Database_Tours implements Database{
     public void save(ArrayList tour){
         try {
             connection = connectDatabase();
-            preparedStatement = connection.prepareStatement(new PropertyHandler().getConnectionProperty().getProperty("saveTour"));
+            preparedStatement = connection.prepareStatement(new PropertyHandler().getSqlQuery("saveTour"));
             preparedStatement.setString(1, String.valueOf(tour.get(0)));
             preparedStatement.setString(2, String.valueOf(tour.get(1)));
             preparedStatement.setString(3,String.valueOf(tour.get(2)));
@@ -100,7 +100,7 @@ public class Database_Tours implements Database{
     public ArrayList getSearchedTours(String searchText) {
         try {
             connection = connectDatabase();
-            preparedStatement = connection.prepareStatement(new PropertyHandler().getConnectionProperty().getProperty("searchedTours"));
+            preparedStatement = connection.prepareStatement(new PropertyHandler().getSqlQuery("searchedTours"));
             preparedStatement.setString(1, "%" + searchText + "%");
             rs = preparedStatement.executeQuery();
             while (rs.next()) {
@@ -119,7 +119,7 @@ public class Database_Tours implements Database{
     public PdfPTable toFileTable(PdfPTable exportTable) {
         try {
             connection = connectDatabase();
-            preparedStatement = connection.prepareStatement(new PropertyHandler().getConnectionProperty().getProperty("exportTours"));
+            preparedStatement = connection.prepareStatement(new PropertyHandler().getSqlQuery("exportTours"));
             rs = preparedStatement.executeQuery();
             while(rs.next()){
 
@@ -142,7 +142,7 @@ public class Database_Tours implements Database{
         String output = "";
         try {
             connection = connectDatabase();
-            preparedStatement = connection.prepareStatement(new PropertyHandler().getConnectionProperty().getProperty("exportTours"));
+            preparedStatement = connection.prepareStatement(new PropertyHandler().getSqlQuery("exportTours"));
             rs = preparedStatement.executeQuery();
             while(rs.next()){
                 for(int i = 1; i <=5; i++){
@@ -162,7 +162,7 @@ public class Database_Tours implements Database{
     public void delete(String name) {
         connection = connectDatabase();
         try {
-            preparedStatement = connection.prepareStatement(new PropertyHandler().getConnectionProperty().getProperty("deleteTour"));
+            preparedStatement = connection.prepareStatement(new PropertyHandler().getSqlQuery("deleteTour"));
             preparedStatement.setString(1, name);
             preparedStatement.execute();
             connection.close();
@@ -178,7 +178,7 @@ public class Database_Tours implements Database{
         try{
             BufferedImage img;
             connection = connectDatabase();
-            preparedStatement = connection.prepareStatement(new PropertyHandler().getConnectionProperty().getProperty("saveTour"));
+            preparedStatement = connection.prepareStatement(new PropertyHandler().getSqlQuery("saveTour"));
             preparedStatement.setString(1, String.valueOf(tour.tourName+"_COPY_"+new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date())));
             preparedStatement.setString(2, String.valueOf(tour.tourDescription));
             preparedStatement.setString(3,String.valueOf(tour.tourSart));

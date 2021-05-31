@@ -1,6 +1,6 @@
 package Controller.Tour;
 
-import BuissnessLayer.MapQuest.MapQuest;
+import BusinessLayer.MapQuest.MapQuest;
 import Models.EditTourViewModel;
 import Models.AddTourViewModel;
 import TourPlanner.Tour;

@@ -1,12 +1,9 @@
 package Models;
 
-import BuissnessLayer.StageSceneViewHelper.EditTourInspector;
-import BuissnessLayer.Handler.ImageHandler;
-import BuissnessLayer.MapQuest.MapQuest;
-import BuissnessLayer.StageSceneViewHelper.StageLoader;
+import BusinessLayer.MapQuest.MapQuest;
+import BusinessLayer.StageSceneViewHelper.StageLoader;
 import DataAccessLayer.Database_EditTours;
 import DataAccessLayer.Database_Tours;
-import TourPlanner.Tour;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXMLLoader;

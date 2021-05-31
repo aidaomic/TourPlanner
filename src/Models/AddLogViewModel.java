@@ -1,10 +1,9 @@
 package Models;
 
-import BuissnessLayer.Notification.Allerts;
-import BuissnessLayer.StageSceneViewHelper.StageLoader;
+import BusinessLayer.Notification.Allerts;
+import BusinessLayer.StageSceneViewHelper.StageLoader;
 import DataAccessLayer.Database_Logs;
 import DataAccessLayer.Database_Tours;
-import TourPlanner.Log;
 import TourPlanner.Tour;
 import javafx.beans.property.*;
 import javafx.fxml.FXMLLoader;
@@ -32,6 +31,42 @@ public class AddLogViewModel {
     public final StringProperty fuelUsed = new SimpleStringProperty("");
     public final StringProperty averageSpeed = new SimpleStringProperty("");
 
+    public void changeSceneToMain(Stage stage) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../TourPlanner/mainWindow.fxml"));
+        stage.setTitle("Tour Planner");
+        stage.setScene(new Scene(root, 500, 500)); //v=breite v1=höhe
+        stage.show();
+    }
+
+    public void addTourLogStage(Stage stage, String tourName) throws IOException {
+        if(tourName.equals("null"))
+            new Allerts().tourIsNull();
+        else {
+            Database_Tours dbt = new Database_Tours();
+            Tour t = dbt.specificTour(tourName);
+            new StageLoader(stage, t).changeStageForLog("TourLog/AddTourLog");
+        }
+    }
+
+    public void addTourLog(Stage stage, String logName, String totalTime, String weather, String transportation, Boolean seasonalClosure, Boolean trafficJam, double distance, double rating, double fuelUsed, double averageSpeed) throws IOException {
+        logList.clear();
+        logList.add(logName);
+        logList.add(distance);
+        logList.add(totalTime);
+        logList.add(rating);
+        logList.add(weather);
+        logList.add(seasonalClosure);
+        logList.add(transportation);
+        logList.add(trafficJam);
+        logList.add(fuelUsed);
+        logList.add(averageSpeed);
+
+        new Database_Logs().save(logList);
+        changeSceneToMain(stage);
+    }
+
+
+    //Getter
     public StringProperty tourNameProperty(){
         return tourName;
     }
@@ -79,39 +114,4 @@ public class AddLogViewModel {
     public StringProperty averageSpeedProperty() {
         return averageSpeed;
     }
-
-    public void changeSceneToMain(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../TourPlanner/mainWindow.fxml"));
-        stage.setTitle("Tour Planner");
-        stage.setScene(new Scene(root, 500, 500)); //v=breite v1=höhe
-        stage.show();
-    }
-
-    public void addTourLogStage(Stage stage, String tourName) throws IOException {
-        if(tourName.equals("null"))
-            new Allerts().tourIsNull();
-        else {
-            Database_Tours dbt = new Database_Tours();
-            Tour t = dbt.specificTour(tourName);
-            new StageLoader(stage, t).changeStageForLog("TourLog/AddTourLog");
-        }
-    }
-
-    public void addTourLog(Stage stage, String logName, String totalTime, String weather, String transportation, Boolean seasonalClosure, Boolean trafficJam, double distance, double rating, double fuelUsed, double averageSpeed) throws IOException {
-        logList.clear();
-        logList.add(logName);
-        logList.add(distance);
-        logList.add(totalTime);
-        logList.add(rating);
-        logList.add(weather);
-        logList.add(seasonalClosure);
-        logList.add(transportation);
-        logList.add(trafficJam);
-        logList.add(fuelUsed);
-        logList.add(averageSpeed);
-
-        new Database_Logs().save(logList);
-        changeSceneToMain(stage);
-    }
-
 }

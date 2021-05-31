@@ -1,10 +1,10 @@
 package Models;
 
-import BuissnessLayer.Handler.ImageHandler;
-import BuissnessLayer.MapQuest.MapQuest;
-import BuissnessLayer.Notification.Allerts;
-import BuissnessLayer.StageSceneViewHelper.EditTourInspector;
-import BuissnessLayer.StageSceneViewHelper.StageLoader;
+import BusinessLayer.Handler.ImageHandler;
+import BusinessLayer.MapQuest.MapQuest;
+import BusinessLayer.Notification.Allerts;
+import BusinessLayer.StageSceneViewHelper.EditTourInspector;
+import BusinessLayer.StageSceneViewHelper.StageLoader;
 import DataAccessLayer.Database_EditTours;
 import DataAccessLayer.Database_Tours;
 import TourPlanner.Tour;

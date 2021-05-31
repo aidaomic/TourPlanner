@@ -1,8 +1,8 @@
 package TourPlanner;
 
-import BuissnessLayer.Handler.ImageHandler;
-import BuissnessLayer.Notification.Allerts;
-import BuissnessLayer.StageSceneViewHelper.StageLoader;
+import BusinessLayer.Handler.ImageHandler;
+import BusinessLayer.Notification.Allerts;
+import BusinessLayer.StageSceneViewHelper.StageLoader;
 import DataAccessLayer.Database_Logs;
 import DataAccessLayer.Database_Tours;
 import javafx.beans.property.*;
@@ -46,6 +46,7 @@ public class MainViewModel {
         if(new Allerts().allertDelete(tourToDelete)==1)
             return;
         new Database_Tours().delete(tourToDelete);
+        new Database_Logs().deleteAllLogs(tourToDelete);
         ObservableList obList = FXCollections.observableList(new Database_Tours().getTourNames());
         tourList.setValue(obList);
     }

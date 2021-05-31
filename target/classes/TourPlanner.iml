@@ -53,6 +53,8 @@
     <orderEntry type="library" name="jackson-databind-2.11.1" level="application" />
     <orderEntry type="library" name="json-20201115" level="application" />
     <orderEntry type="library" name="jackson-annotations-2.11.1" level="application" />
+    <orderEntry type="library" name="postgresql-42.2.18" level="application" />
+    <orderEntry type="library" name="mockito-core-3.5.13" level="project" />
     <orderEntry type="library" name="Maven: com.itextpdf:itextpdf:5.5.6" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-controls:11.0.1" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-controls:win:11.0.1" level="project" />
@@ -70,6 +72,13 @@
     <orderEntry type="library" name="Maven: org.glassfish.hk2.external:jakarta.inject:2.6.1" level="project" />
     <orderEntry type="library" name="Maven: org.glassfish.hk2:osgi-resource-locator:1.0.3" level="project" />
     <orderEntry type="library" name="Maven: com.sun.activation:jakarta.activation:1.2.2" level="project" />
-    <orderEntry type="library" name="postgresql-42.2.18" level="application" />
+    <orderEntry type="library" name="Maven: org.mockito:mockito-core:3.5.13" level="project" />
+    <orderEntry type="library" name="Maven: net.bytebuddy:byte-buddy:1.10.15" level="project" />
+    <orderEntry type="library" name="Maven: net.bytebuddy:byte-buddy-agent:1.10.15" level="project" />
+    <orderEntry type="library" name="Maven: org.objenesis:objenesis:3.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.logging.log4j:log4j-api:2.14.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.logging.log4j:log4j-core:2.14.1" level="project" />
+    <orderEntry type="library" name="log4j-api-2.14.1" level="project" />
+    <orderEntry type="library" name="log4j-core-2.14.1" level="project" />
   </component>
 </module>

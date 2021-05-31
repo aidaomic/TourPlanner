@@ -1,12 +1,10 @@
 package Models;
 
-import BuissnessLayer.Notification.Allerts;
-import BuissnessLayer.StageSceneViewHelper.StageLoader;
+import BusinessLayer.Notification.Allerts;
+import BusinessLayer.StageSceneViewHelper.StageLoader;
 import DataAccessLayer.Database_Logs;
-import DataAccessLayer.Database_Tours;
 import TourPlanner.Log;
 import TourPlanner.LogTable;
-import TourPlanner.Tour;
 import javafx.beans.property.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

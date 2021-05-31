@@ -1,6 +1,6 @@
 package DataAccessLayer;
 
-import BuissnessLayer.Handler.PropertyHandler;
+import BusinessLayer.Handler.PropertyHandler;
 
 import javax.imageio.ImageIO;
 import java.awt.image.RenderedImage;
@@ -33,7 +33,7 @@ public class Database_EditTours {
     public void edit(ArrayList list){
         try {
             connection = connectDatabase();
-            preparedStatement = connection.prepareStatement(new PropertyHandler().getConnectionProperty().getProperty("editTour"));
+            preparedStatement = connection.prepareStatement(new PropertyHandler().getSqlQuery("editTour"));
             preparedStatement.setString(1,String.valueOf(list.get(0)));
             preparedStatement.setString(2,String.valueOf(list.get(1)));
             preparedStatement.setString(3,String.valueOf(list.get(2)));
@@ -51,7 +51,7 @@ public class Database_EditTours {
     public void editNewRoute(ArrayList list) {
         try {
             connection = connectDatabase();
-            preparedStatement = connection.prepareStatement(new PropertyHandler().getConnectionProperty().getProperty("editTourRoute"));
+            preparedStatement = connection.prepareStatement(new PropertyHandler().getSqlQuery("editTourRoute"));
             preparedStatement.setString(1,String.valueOf(list.get(0)));
             preparedStatement.setString(2,String.valueOf(list.get(1)));
             preparedStatement.setString(3,String.valueOf(list.get(2)));

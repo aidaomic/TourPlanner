@@ -1,8 +1,8 @@
 package Models;
 
-import BuissnessLayer.Notification.Allerts;
-import BuissnessLayer.Pdf.PdfGenerator;
-import BuissnessLayer.Pdf.PdfReader;
+import BusinessLayer.Notification.Allerts;
+import BusinessLayer.Pdf.PdfGenerator;
+import BusinessLayer.Pdf.PdfReader;
 import DataAccessLayer.Database_Logs;
 import DataAccessLayer.Database_Tours;
 import javafx.beans.property.ListProperty;

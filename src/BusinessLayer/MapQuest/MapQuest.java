@@ -1,6 +1,7 @@
 package BusinessLayer.MapQuest;
 
 import BusinessLayer.Handler.PropertyHandler;
+import BusinessLayer.Logging.LoggingHandler;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -21,6 +22,7 @@ public class MapQuest {
     public double distance;
     private Scanner sc;
     private BufferedImage map;
+    private LoggingHandler log = new LoggingHandler();
 
     public BufferedImage getDirections(String startPoint, String destination){
 
@@ -29,6 +31,7 @@ public class MapQuest {
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
             con.connect();
+            log.logDebug("MapQuest Request (Drections) sent -MapQuest-");
             //to check if done correctily
             int responsecode = con.getResponseCode();
             if(responsecode != 200)
@@ -52,17 +55,18 @@ public class MapQuest {
             boundingBox = boundingBox_ul_lat + "," + boundingBox_ul_lng + "," +
                     boundingBox_lr_lat + "," + boundingBox_lr_lng;
 
+            log.logDebug("Retrieved directions succesfully -MapQuest-");
+
             map = getStaticMap(session, boundingBox);
-
         } catch (MalformedURLException e) {
-            e.printStackTrace();
+            log.logError("Data could not be retrieved from MapQuest because of malformed URL -MapQuest-");
         } catch (JsonMappingException e) {
-            e.printStackTrace();
+            log.logError("Problem with translating JSON, request has been closed -MapQuest-");
         } catch (IOException e) {
-            e.printStackTrace();
+            log.logError("IOException while retrieving data from MapQuest -MapQuest-");
         }
+        log.logInfo("Retrieved Data from MapQuest successfully -MapQuest-");
         return map;
-
     }
 
     public BufferedImage getStaticMap(String sessionId, String boundBox) throws IOException {
@@ -71,19 +75,22 @@ public class MapQuest {
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
             con.connect();
+            log.logDebug("MapQuest Request (Drections) sent -MapQuest-");
 
             //to check if done correctily
             int responsecode = con.getResponseCode();
             if(responsecode != 200)
                throw new RuntimeException("HttpResponseCode: " + responsecode);
 
+            log.logDebug("Retrieved map image from MapQuest successfully -MapQuest-");
             return ImageIO.read(con.getInputStream());
 
         } catch (MalformedURLException e) {
-            e.printStackTrace();
+            log.logError("Data could not be retrieved from MapQuest because of malformed URL -MapQuest-");
         } catch (IOException e) {
-            e.printStackTrace();
+            log.logError("IOException while retrieving data from MapQuest -MapQuest-");
         }
+        log.logError("No Image found -MapQuest-");
         return ImageIO.read(new File("image_not_found.jpg"));
     }
 

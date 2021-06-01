@@ -1,5 +1,6 @@
 package Controller.TourLog;
 
+import BusinessLayer.Logging.LoggingHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -15,6 +16,7 @@ import java.util.ResourceBundle;
 public class AddTourLogWindowController implements Initializable {
 
     private AddLogViewModel addModel = new AddLogViewModel();
+    private LoggingHandler log = new LoggingHandler();
 
     public TextField tourName, tourDistance, totalTime, weather, transportation, fuelUsed, averageSpeed;
     public Slider rating;
@@ -34,6 +36,7 @@ public class AddTourLogWindowController implements Initializable {
         trafJamNo.selectedProperty().bindBidirectional(addModel.trafficJamNoProperty());
         fuelUsed.textProperty().bindBidirectional(addModel.fuelUsedProperty());
         averageSpeed.textProperty().bindBidirectional(addModel.averageSpeedProperty());
+        log.logInfo("Controller -AddTourLogWindowController- created");
     }
 
     public void createTourLog(ActionEvent actionEvent) throws IOException {
@@ -46,10 +49,12 @@ public class AddTourLogWindowController implements Initializable {
         else trafJam = false;
 
         addModel.addTourLog(stage, tourName.getText(), totalTime.getText(), weather.getText(), transportation.getText(), seasClos, trafJam, Double.valueOf(tourDistance.getText()), rating.getValue(), Double.valueOf(fuelUsed.getText()), Double.valueOf(averageSpeed.getText()));
+        log.logDebug("Creating Tour log finished -AddTourLogWindowController-");
     }
 
     public void exit(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
         addModel.changeSceneToMain(stage);
+        log.logDebug("Main Stage loaded -AddTourLogWindowController-");
     }
 }

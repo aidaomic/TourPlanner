@@ -1,10 +1,8 @@
 package TourPlanner;
 
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 
 import java.awt.image.BufferedImage;
-import java.nio.Buffer;
 
 public class Tour {
 

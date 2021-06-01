@@ -1,5 +1,6 @@
 package TourPlanner;
 
+import BusinessLayer.Logging.LoggingHandler;
 import DataAccessLayer.Database_Logs;
 import DataAccessLayer.Database_Tours;
 import Models.*;
@@ -39,23 +40,26 @@ public class MainWindowController implements Initializable {
     public TableView logTable;
     public TableColumn<LogTable, String> logId, tourName, dateAndTime, distance, totalTime, rating, weather, seasClos, transportation, traffic, fuelUsed, speed;
 
+    private LoggingHandler log = new LoggingHandler();
+
     public MainWindowController(){
-        System.out.println("Controller created");
+        log.logDebug("Controller -MainWindowController- created");
     }
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         bindProperties();
-
+        //Tours
         Database_Tours data_t = new Database_Tours();
         ArrayList list = data_t.getTourNames();
         ObservableList obList = FXCollections.observableList(list);
         tourList.setItems(obList);
-
+        //Logs
         Database_Logs data_l = new Database_Logs();
         ArrayList logs = data_l.getLogs();
         ObservableList obList_l = FXCollections.observableList(logs);
         logTable.setItems(obList_l);
-
+        //log
+        log.logInfo("MainWindowController initialized");
     }
 
     private void bindProperties(){
@@ -77,46 +81,56 @@ public class MainWindowController implements Initializable {
         fuelUsed.setCellValueFactory(new PropertyValueFactory<>("fuelUsed"));
         speed.setCellValueFactory(new PropertyValueFactory<>("speed"));
         logId.setCellValueFactory(new PropertyValueFactory<>("logId"));
+
+        log.logDebug("MainWindowController Property binding finished");
     }
 
     public void searchForTour(ActionEvent actionEvent) throws SQLException {
         tourList.setItems(menuModel.searchForTour(textForSearch.getText()));
         logTable.setItems(menuModel.searchForLog(textForSearch.getText()));
+        log.logDebug("Search finished -MainWindowController-");
     }
 
     public void getHelp(ActionEvent actionEvent) {
         menuModel.getHelp();
+        log.logDebug("Help finished -MainWindowController-");
     }
 
     public void doEdit(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
         editTourModel.editTourStage(stage, String.valueOf(tourList.getSelectionModel().getSelectedItem()));
+        log.logDebug("Tour '"+tourList.getSelectionModel().getSelectedItem()+"' edited -MainWindowController-");
     }
 
     public void addTour(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
         addTourModel.addTourStage(stage);
+        log.logDebug("New tour added -MainWindowController-");
     }
 
     public void deleteTour(ActionEvent actionEvent) throws IOException, SQLException {
         //Stage stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
         viewModel.deleteTour(String.valueOf(tourList.getSelectionModel().getSelectedItem()));
+        log.logDebug("Tour '"+tourList.getSelectionModel().getSelectedItem()+"' deleted -MainWindowController-");
     }
 
     public void addLog(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
         addLogModel.addTourLogStage(stage, String.valueOf(tourList.getSelectionModel().getSelectedItem()));
+        log.logDebug("new Log created for Tour '"+tourList.getSelectionModel().getSelectedItem()+"' -MainWindowController-");
     }
 
     public void deleteLog(ActionEvent actionEvent) throws IOException {
         LogTable l = (LogTable) logTable.getSelectionModel().getSelectedItem();
         Stage stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
         viewModel.deleteTourLog(stage, l.logId);
+        log.logDebug("Log deleted -MainWindowController-");
     }
 
     public void editLog(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
         editLogModel.editTourLogStage(stage, (LogTable) logTable.getSelectionModel().getSelectedItem());
+        log.logDebug("Log edited -MainWindowController-");
     }
 
     public void importDataTours(ActionEvent actionEvent) {
@@ -125,18 +139,22 @@ public class MainWindowController implements Initializable {
         ArrayList list = data.getTourNames();
         ObservableList obList = FXCollections.observableList(list);
         tourList.setItems(obList);
+        log.logDebug("Tour Data imported successfully -MainWindowController-");
     }
 
     public void exportDataTours(ActionEvent actionEvent) {
         menuModel.exportTours();
+        log.logDebug("Tour Data exported to Pdf successfully -MainWindowController-");
     }
 
     public void showTour(MouseEvent mouseEvent) {
         viewModel.showTour(String.valueOf(tourList.getSelectionModel().getSelectedItem()));
+        log.logDebug("Tour -"+tourList.getSelectionModel().getSelectedItem()+"- displayed successfully -MainWindowController-");
     }
 
     public void zoom(MouseEvent mouseEvent) throws IOException {
         viewModel.zoomPicture(titleOutput.getText());
+        log.logDebug("Zoomed into tour map -MainWindowController-");
     }
 
     public void copyTour(ActionEvent actionEvent) {
@@ -145,10 +163,12 @@ public class MainWindowController implements Initializable {
         ArrayList list = data.getTourNames();
         ObservableList obList = FXCollections.observableList(list);
         tourList.setItems(obList);
+        log.logDebug("Tour '"+tourList.getSelectionModel().getSelectedItem()+"' copied -MainWindowController-");
     }
 
     public void exportDataToursTable(ActionEvent actionEvent) {
         menuModel.exportToursTable();
+        log.logDebug("Tour Data exported as Table View successfully -MainWindowController-");
     }
 
     public void importDataTourLogs(ActionEvent actionEvent) {
@@ -157,16 +177,20 @@ public class MainWindowController implements Initializable {
         ArrayList list = data.getLogs();
         ObservableList obList = FXCollections.observableList(list);
         logTable.setItems(obList);
+        log.logDebug("Tour Log Data imported successfully -MainWindowController-");
     }
 
     public void exportDataTourLogsTable(ActionEvent actionEvent) {
         menuModel.exportTourLogsTable();
+        log.logDebug("Tour Log Data exported as Table View successfully -MainWindowController-");
     }
 
     public void exportDataTourLogs(ActionEvent actionEvent) {
         menuModel.exportTourLogs();
+        log.logDebug("Tour Log Data exported to Pdf successfully -MainWindowController-");
     }
 
     public void report(ActionEvent actionEvent) {
+        log.logDebug("Tour report finished -MainWindowController-");
     }
 }

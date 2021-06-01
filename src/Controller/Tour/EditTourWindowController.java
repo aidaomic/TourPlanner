@@ -1,5 +1,6 @@
 package Controller.Tour;
 
+import BusinessLayer.Logging.LoggingHandler;
 import BusinessLayer.MapQuest.MapQuest;
 import Models.EditTourViewModel;
 import Models.AddTourViewModel;
@@ -19,7 +20,7 @@ public class EditTourWindowController implements Initializable {
     private AddTourViewModel tourModel = new AddTourViewModel();
     private EditTourViewModel editTourModel = new EditTourViewModel();
     private MapQuest mq = new MapQuest();
-
+    private LoggingHandler log = new LoggingHandler();
 
     // add fx:id and use intelliJ to create field in controller
     public TextField tourEditStart, tourEditEnd, tourEditName, tourEditDescription;
@@ -30,10 +31,12 @@ public class EditTourWindowController implements Initializable {
         editedEnd.textProperty().bindBidirectional(tourModel.inputPropertyEnd());
         editedName.textProperty().bindBidirectional(tourModel.inputPropertyName());
         editedDescription.textProperty().bindBidirectional(tourModel.inputPropertyDescription());
+        log.logInfo("Controller -EditTourWindowController- created");
     }
 
     public void editTour(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
         editTourModel.editTour((new Tour(tourEditName.getText(), tourEditDescription.getText(), tourEditStart.getText(), tourEditEnd.getText())),(new Tour(editedName.getText(), editedDescription.getText(), editedStart.getText(), editedEnd.getText())), stage);
+        log.logDebug("Editing Tour finished -EditTourWindowController-");
     }
 }

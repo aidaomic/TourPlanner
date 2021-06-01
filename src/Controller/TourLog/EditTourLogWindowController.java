@@ -1,5 +1,6 @@
 package Controller.TourLog;
 
+import BusinessLayer.Logging.LoggingHandler;
 import Models.EditLogViewModel;
 import TourPlanner.Log;
 import javafx.event.ActionEvent;
@@ -17,6 +18,8 @@ import java.util.ResourceBundle;
 public class EditTourLogWindowController implements Initializable {
 
     private EditLogViewModel editModel = new EditLogViewModel();
+    private LoggingHandler log = new LoggingHandler();
+
     public TextField tourName, tourDistance, totalTime, weather, transportation, fuelUsed, averageSpeed;
     public Slider rating;
     public RadioButton seasClosYes, seasClosNo, trafJamYes, trafJamNo;
@@ -36,6 +39,7 @@ public class EditTourLogWindowController implements Initializable {
         trafJamNo.selectedProperty().bindBidirectional(editModel.trafficJamNoProperty());
         fuelUsed.textProperty().bindBidirectional(editModel.fuelUsedProperty());
         averageSpeed.textProperty().bindBidirectional(editModel.averageSpeedProperty());
+        log.logInfo("Controller -EditTourLogWindowController- created");
     }
 
     public void editTourLog(ActionEvent actionEvent) throws IOException {
@@ -46,14 +50,16 @@ public class EditTourLogWindowController implements Initializable {
             trafJam = true;
         else trafJam = false;
 
-        Log log = new Log(tourName.getText(), totalTime.getText(), rating.getValue(), weather.getText(), seasClos,
+        Log tourLog = new Log(tourName.getText(), totalTime.getText(), rating.getValue(), weather.getText(), seasClos,
                 transportation.getText(), trafJam, fuelUsed.getText(), averageSpeed.getText());
         Stage stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
-        editModel.editTour(stage, log);
+        editModel.editTour(stage, tourLog);
+        log.logDebug("Editing Tour Log finished -EditTourLogController-");
     }
 
     public void exit(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
         editModel.changeSceneToMain(stage);
+        log.logInfo("Main Stage loaded -EditTourLogController-");
     }
 }

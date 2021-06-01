@@ -2,6 +2,7 @@ package DataAccessLayer;
 
 import BusinessLayer.Handler.ImageHandler;
 import BusinessLayer.Handler.PropertyHandler;
+import BusinessLayer.Logging.LoggingHandler;
 import TourPlanner.Tour;
 import com.itextpdf.text.pdf.PdfPTable;
 import javafx.embed.swing.SwingFXUtils;
@@ -23,15 +24,17 @@ public class Database_Tours implements Database{
     private ArrayList nameList = new ArrayList();
     public String tourN, tourS, tourD, tourE, tourDist;
     private BufferedImage mapImage;
+    private LoggingHandler log = new LoggingHandler();
 
     public Connection connectDatabase(){
         try {
             Properties prop = new PropertyHandler().getConnectionProperty();
             connection = DriverManager.getConnection(prop.getProperty("connectionURL"), prop.getProperty("connectionUser"), prop.getProperty("connectionPW"));
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            log.logDebug("Database Connection established -Database_Tours-");
+        } catch (SQLException e) {
+            log.logError("SQL Exception while connecting to database -Database_Tours-");
         } catch (IOException e) {
-            e.printStackTrace();
+            log.logError("IOException while connecting to database -Database_Tours-");
         }
         return connection;
     }
@@ -52,10 +55,11 @@ public class Database_Tours implements Database{
                 new ImageHandler().storeOnFS(tourN, mapImage);
             }
             connection.close();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            log.logInfo("Retrieved specific Tour Data successfully from database -Database_Tours-");
+        } catch (SQLException e) {
+            log.logError("SQL Exception specific searched Tour Data from database -Database_Tours-");
         } catch (IOException e) {
-            e.printStackTrace();
+            log.logError("IO Exception specific searched Tour Data from database -Database_Tours-");
         }
         return new Tour(tourN, tourD, tourS, tourE, tourDist, mapImage);
     }
@@ -69,8 +73,11 @@ public class Database_Tours implements Database{
                 nameList.add(rs.getString(1));
             }
 
-        } catch (SQLException | IOException throwables) {
-            throwables.printStackTrace();
+            log.logInfo("Tour Data retrieved successfully from database -Database_Tours-");
+        } catch (SQLException e) {
+            log.logError("SQL Exception retrieving Tour Data from database -Database_Tours-");
+        } catch (IOException e) {
+            log.logError("IO Exception retrieving Tour Data from database -Database_Tours-");
         }
         return nameList;
     }
@@ -90,10 +97,11 @@ public class Database_Tours implements Database{
             preparedStatement.setBinaryStream(6, is);
             preparedStatement.execute();
             connection.close();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            log.logInfo("Tour saved successfully to database -Database_Tours-");
+        } catch (SQLException e) {
+            log.logError("SQL Exception saving Tour to database -Database_Tours-");
         } catch (IOException e) {
-            e.printStackTrace();
+            log.logError("IO Exception saving Tour to database -Database_Tours-");
         }
     }
 
@@ -107,10 +115,11 @@ public class Database_Tours implements Database{
                 nameList.add(rs.getString(1));
             }
             connection.close();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            log.logInfo("Retrieved searched Tour Data successfully from database -Database_Tours-");
+        } catch (SQLException e) {
+            log.logError("SQL Exception retrieving searched Tour Data from database -Database_Tours-");
         } catch (IOException e) {
-            e.printStackTrace();
+            log.logError("IO Exception retrieving searched Tour Data from database -Database_Tours-");
         }
         return nameList;
     }
@@ -130,10 +139,11 @@ public class Database_Tours implements Database{
                 exportTable.addCell(rs.getString(5));
                 exportTable.completeRow();
             }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            log.logInfo("Successfully exporting Tours to TableView -Database_Tours-");
+        } catch (SQLException e) {
+            log.logError("SQL Exception exporting Tours to TableView -Database_Tours-");
         } catch (IOException e) {
-            e.printStackTrace();
+            log.logError("IO Exception exporting Tours to TableView -Database_Tours-");
         }
         return exportTable;
     }
@@ -150,10 +160,11 @@ public class Database_Tours implements Database{
                 }
                 output += "\n";
             }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            log.logInfo("Successfully exporting Tours to Pdf -Database_Tours-");
+        } catch (SQLException e) {
+            log.logError("SQL Exception exporting Tours to Pdf -Database_Tours-");
         } catch (IOException e) {
-            e.printStackTrace();
+            log.logError("IO Exception exporting Tours to Pdf -Database_Tours-");
         }
         return output;
     }
@@ -166,10 +177,11 @@ public class Database_Tours implements Database{
             preparedStatement.setString(1, name);
             preparedStatement.execute();
             connection.close();
+            log.logInfo("Tour deleted successfully from database -Database_Tours-");
+        } catch (SQLException e) {
+            log.logError("SQL Exception deleting Tour from database -Database_Tours-");
         } catch (IOException e) {
-            e.printStackTrace();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            log.logError("IO Exception deleting Tour from database -Database_Tours-");
         }
 
     }
@@ -194,8 +206,11 @@ public class Database_Tours implements Database{
             preparedStatement.setBinaryStream(6, is);
             preparedStatement.execute();
             connection.close();
-        } catch (SQLException | IOException throwables) {
-            throwables.printStackTrace();
+            log.logInfo("Tour copied successfully -Database_Tours-");
+        } catch (SQLException e) {
+            log.logError("SQL Exception copying Tour -Database_Tours-");
+        } catch (IOException e) {
+            log.logError("IO Exception copying Tour -Database_Tours-");
         }
     }
 

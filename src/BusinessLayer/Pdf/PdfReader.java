@@ -1,5 +1,6 @@
 package BusinessLayer.Pdf;
 
+import BusinessLayer.Logging.LoggingHandler;
 import BusinessLayer.MapQuest.MapQuest;
 import BusinessLayer.Handler.PathHandler;
 import DataAccessLayer.Database_Logs;
@@ -12,6 +13,8 @@ import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 public class PdfReader {
+
+    private LoggingHandler log = new LoggingHandler();
 
     public void pdfToTours() {
         try {
@@ -41,11 +44,11 @@ public class PdfReader {
                 dbt.save(t);
                 counter++;
             }
-            System.out.println("Added "+counter+" Tours!");
+            log.logInfo("Added "+counter+" Tours from Pdf to Database successfully -PdfReader-");
             reader.close();
 
         } catch (IOException e) {
-            e.printStackTrace();
+            log.logError("IOException: Problem reading Tours from Pdf -PdfReader-");
         }
     }
 
@@ -71,11 +74,11 @@ public class PdfReader {
                 dbt.save(t);
                 counter++;
             }
-            System.out.println("Added "+counter+" TourLogs!");
+            log.logInfo("Added "+counter+" Tour Logs from Pdf to Database -PdfReader-");
             reader.close();
 
         } catch (IOException e) {
-            e.printStackTrace();
+            log.logError("IOException: Problem reading Tour Logss from Pdf -PdfReader-");
         }
     }
 

@@ -1,12 +1,12 @@
 package BusinessLayer.Pdf;
 
+import BusinessLayer.Logging.LoggingHandler;
 import DataAccessLayer.Database_Logs;
 import DataAccessLayer.Database_Tours;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -14,6 +14,7 @@ import java.util.Date;
 public class PdfGenerator {
 
     private Document doc = new Document();
+    private LoggingHandler log = new LoggingHandler();
 
     public void toursToPdfTable(){
         try {
@@ -38,8 +39,9 @@ public class PdfGenerator {
 
             doc.add(new Database_Tours().toFileTable(table));
             doc.close();
+            log.logInfo("Tours exported to Table View successfully -PdfGenerator-");
         } catch (Exception e) {
-            e.printStackTrace();
+            log.logError("Proplem generating/exporting Tour Table View -PfdGenerator-");
         }
     }
 
@@ -49,14 +51,15 @@ public class PdfGenerator {
             doc.open();
             doc.add(new Paragraph(new Database_Tours().toFile()));
             doc.close();
+            log.logInfo("Tours exported successfully to Pdf -PdfGenerator-");
         } catch (Exception e) {
-            e.printStackTrace();
+            log.logError("Proplem generating/exporting Tours to Pdf -PdfGenerator-");
         }
     }
 
     public void tourLogsToPdfTable(){
         try {
-            PdfWriter.getInstance(doc, new FileOutputStream("TourLogssFromDatabase-TableView-"+ new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date()) +".pdf"));
+            PdfWriter.getInstance(doc, new FileOutputStream("TourLogsFromDatabase-TableView-"+ new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date()) +".pdf"));
             doc.open();
 
             PdfPTable table = new PdfPTable(13); // 5 columns w/o image
@@ -85,8 +88,9 @@ public class PdfGenerator {
 
             doc.add(new Database_Logs().toFileTable(table));
             doc.close();
+            log.logInfo("Exported Tour Logs to Table View successfully -PdfGenerator-");
         } catch (Exception e) {
-            e.printStackTrace();
+            log.logError("Problem generating/exporting Tour Logs to Table View -PdfGenerator-");
         }
     }
 
@@ -96,11 +100,9 @@ public class PdfGenerator {
             doc.open();
             doc.add(new Paragraph(new Database_Logs().toFile()));
             doc.close();
-        } catch (DocumentException e) {
-            e.printStackTrace();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            log.logInfo("Exported Tour Logs successfully to Pdf -PdfGenerator-");
+        } catch (Exception e) {
+            log.logError("Problem generating/exporting Tour Logs to Pdf -PdfGenerator-");
         }
-
     }
 }

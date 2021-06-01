@@ -1,6 +1,7 @@
 package DataAccessLayer;
 
 import BusinessLayer.Handler.PropertyHandler;
+import BusinessLayer.Logging.LoggingHandler;
 
 import javax.imageio.ImageIO;
 import java.awt.image.RenderedImage;
@@ -17,15 +18,17 @@ public class Database_EditTours {
     private Connection connection = null;
     public PreparedStatement preparedStatement = null;
     private ArrayList nameList = new ArrayList();
+    private LoggingHandler log = new LoggingHandler();
 
     public Connection connectDatabase(){
         try {
             Properties prop = new PropertyHandler().getConnectionProperty();
             connection = DriverManager.getConnection(prop.getProperty("connectionURL"), prop.getProperty("connectionUser"), prop.getProperty("connectionPW"));
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            log.logDebug("Database Connection established -Database_EditTours-");
+        } catch (SQLException e) {
+            log.logError("SQL Exception while connecting to database -Database_EditTours-");
         } catch (IOException e) {
-            e.printStackTrace();
+            log.logError("IOException while connecting to database -Database_EditTours-");
         }
         return connection;
     }
@@ -41,10 +44,11 @@ public class Database_EditTours {
             preparedStatement.setString(5,String.valueOf(list.get(4)));
             preparedStatement.execute();
             connection.close();
+            log.logInfo("Tour editing saved to database successfully -Database_EditTours-");
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            log.logError("SQL Exception while editing Tour -Database_EditTours-");
         } catch (IOException e) {
-            e.printStackTrace();
+            log.logError("IOException while editing Tour -Database_EditTours-");
         }
     }
 
@@ -64,10 +68,11 @@ public class Database_EditTours {
             preparedStatement.setString(7,String.valueOf(list.get(6)));
             preparedStatement.execute();
             connection.close();
+            log.logInfo("Tour editing saved to database successfully -Database_EditTours-");
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            log.logError("SQL Exception while editing Tour -Database_EditTours-");
         } catch (IOException e) {
-            e.printStackTrace();
+            log.logError("IOException while editing Tour -Database_EditTours-");
         }
     }
 }

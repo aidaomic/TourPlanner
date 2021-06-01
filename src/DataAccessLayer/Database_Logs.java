@@ -1,6 +1,7 @@
 package DataAccessLayer;
 
 import BusinessLayer.Handler.PropertyHandler;
+import BusinessLayer.Logging.LoggingHandler;
 import TourPlanner.Log;
 import TourPlanner.LogTable;
 import com.itextpdf.text.pdf.PdfPTable;
@@ -19,15 +20,17 @@ public class Database_Logs implements Database{
     public PreparedStatement preparedStatement = null;
     private ResultSet rs = null;
     private ArrayList logArray = new ArrayList();
+    private LoggingHandler log = new LoggingHandler();
 
     public Connection connectDatabase(){
         try {
             Properties prop = new PropertyHandler().getConnectionProperty();
             connection = DriverManager.getConnection(prop.getProperty("connectionURL"), prop.getProperty("connectionUser"), prop.getProperty("connectionPW"));
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            log.logDebug("Database Connection established -Database_Logs-");
+        } catch (SQLException e) {
+            log.logError("SQL Exception while connecting to database -Database_Logs-");
         } catch (IOException e) {
-            e.printStackTrace();
+            log.logError("IOException while connecting to database -Database_Logs-");
         }
         return connection;
     }
@@ -50,10 +53,11 @@ public class Database_Logs implements Database{
             preparedStatement.setDouble(12, Double.valueOf(String.valueOf(list.get(9))));
             preparedStatement.execute();
             connection.close();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            log.logInfo("Tour Log saved successfully to database -Database_Logs-");
+        } catch (SQLException e) {
+            log.logError("SQL Exception saving Tour Log to database -Database_Logs-");
         } catch (IOException e) {
-            e.printStackTrace();
+            log.logError("IO Exception saving Tour Log to database -Database_Logs-");
         }
     }
 
@@ -64,20 +68,21 @@ public class Database_Logs implements Database{
             preparedStatement = connectDatabase().prepareStatement(new PropertyHandler().getSqlQuery("allLogs"));
             rs = preparedStatement.executeQuery();
             while (rs.next()){
-                LogTable log = new LogTable(rs.getInt(1),
+                LogTable tourLog= new LogTable(rs.getInt(1),
                         rs.getString(2), rs.getString(3) + " " +
                         rs.getString(4), rs.getDouble(5), rs.getString(6),
                         rs.getDouble(7), rs.getString(8), rs.getString(9),
                         rs.getString(10), rs.getString(11), rs.getDouble(12),
                         rs.getDouble(13));
-                logArray.add(log);
+                logArray.add(tourLog);
 
             }
             connection.close();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            log.logInfo("Tour Log Data retrieved successfully from database -Database_Logs-");
+        } catch (SQLException e) {
+            log.logError("SQL Exception retrieving Tour Log Data from database -Database_Logs-");
         } catch (IOException e) {
-            e.printStackTrace();
+            log.logError("IO Exception retrieving Tour Log Data from database -Database_Logs-");
         }
         return logArray;
     }
@@ -89,32 +94,34 @@ public class Database_Logs implements Database{
             preparedStatement.setInt(1, Integer.parseInt(name));
             preparedStatement.execute();
             connection.close();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            log.logInfo("Tour Log deleted successfully from database -Database_Logs-");
+        } catch (SQLException e) {
+            log.logError("SQL Exception deleting Tour Log from database -Database_Logs-");
         } catch (IOException e) {
-            e.printStackTrace();
+            log.logError("IO Exception deleting Tour Log from database -Database_Logs-");
         }
     }
 
-    public void edit(Log log){
+    public void edit(Log tourLog){
         try {
             connection = connectDatabase();
             preparedStatement = connectDatabase().prepareStatement(new PropertyHandler().getSqlQuery("editLog"));
-            preparedStatement.setString(1, log.totalTime);
-            preparedStatement.setInt(2, (int) log.rating);
-            preparedStatement.setString(3, log.weather);
-            preparedStatement.setBoolean(4, log.seas);
-            preparedStatement.setString(5, log.transportation);
-            preparedStatement.setBoolean(6, log.traf);
-            preparedStatement.setDouble(7, log.fuelUsed);
-            preparedStatement.setDouble(8, log.averageSpeed);
-            preparedStatement.setString(9, log.logName);
+            preparedStatement.setString(1, tourLog.totalTime);
+            preparedStatement.setInt(2, (int) tourLog.rating);
+            preparedStatement.setString(3, tourLog.weather);
+            preparedStatement.setBoolean(4, tourLog.seas);
+            preparedStatement.setString(5, tourLog.transportation);
+            preparedStatement.setBoolean(6, tourLog.traf);
+            preparedStatement.setDouble(7, tourLog.fuelUsed);
+            preparedStatement.setDouble(8, tourLog.averageSpeed);
+            preparedStatement.setString(9, tourLog.logName);
             preparedStatement.execute();
             connection.close();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            log.logInfo("Tour Log saved edited changes successfully to database -Database_Logs-");
+        } catch (SQLException e) {
+            log.logError("SQL Exception saving edited Tour Log to database -Database_Logs-");
         } catch (IOException e) {
-            e.printStackTrace();
+            log.logError("IO Exception saving edited Tour Log to database -Database_Logs-");
         }
     }
 
@@ -125,19 +132,20 @@ public class Database_Logs implements Database{
             preparedStatement.setString(1, "%"+text+"%");
             rs = preparedStatement.executeQuery();
             while(rs.next()){
-                LogTable log = new LogTable(rs.getInt(1),
+                LogTable tourLog= new LogTable(rs.getInt(1),
                         rs.getString(2), rs.getString(3) + " " +
                         rs.getString(4), rs.getDouble(5), rs.getString(6),
                         rs.getDouble(7), rs.getString(8), rs.getString(9),
                         rs.getString(10), rs.getString(11), rs.getDouble(12),
                         rs.getDouble(13));
-                logArray.add(log);
+                logArray.add(tourLog);
             }
             connection.close();
-        } catch (SQLException throwables) {
-        throwables.printStackTrace();
+            log.logInfo("Retrieved searched Tour Log Data successfully from database -Database_Logs-");
+        } catch (SQLException e) {
+            log.logError("SQL Exception retrieving searched Tour Log Data from database -Database_Logs-");
         } catch (IOException e) {
-            e.printStackTrace();
+            log.logError("IO Exception retrieving searched Tour Log Data from database -Database_Logs-");
         }
         return logArray;
     }
@@ -153,10 +161,11 @@ public class Database_Logs implements Database{
                 }
                 exportTable.completeRow();
             }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            log.logInfo("Successfully exporting Tour Logs to TableView -Database_Logs-");
+        } catch (SQLException e) {
+            log.logError("SQL Exception exporting Tour Logs to TableView -Database_Logs-");
         } catch (IOException e) {
-            e.printStackTrace();
+            log.logError("IO Exception exporting Tour Logs to TableView -Database_Logs-");
         }
         return exportTable;
     }
@@ -174,10 +183,11 @@ public class Database_Logs implements Database{
                 output += "\n";
             }
             connection.close();
-        } catch (SQLException e){
-            return "SQL Exception";
+            log.logInfo("Successfully exporting Tour Logs to Pdf -Database_Logs-");
+        } catch (SQLException e) {
+            log.logError("SQL Exception exporting Tour Logs to Pdf -Database_Logs-");
         } catch (IOException e) {
-            e.printStackTrace();
+            log.logError("IO Exception exporting Tour Logs to Pdf -Database_Logs-");
         }
         return output;
     }
@@ -189,10 +199,11 @@ public class Database_Logs implements Database{
             preparedStatement.setString(1, name);
             preparedStatement.execute();
             connection.close();
-        } catch (SQLException e){
-            e.printStackTrace();
+            log.logInfo("All Tour Logs deleted successfully from database -Database_Logs-");
+        } catch (SQLException e) {
+            log.logError("SQL Exception deleting all Tour Logs from database -Database_Logs-");
         } catch (IOException e) {
-            e.printStackTrace();
+            log.logError("IO Exception deleting all Tour Logs from database -Database_Logs-");
         }
     }
 }

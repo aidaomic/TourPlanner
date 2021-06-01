@@ -1,5 +1,6 @@
 package Models;
 
+import BusinessLayer.Logging.LoggingHandler;
 import BusinessLayer.Notification.Allerts;
 import BusinessLayer.StageSceneViewHelper.StageLoader;
 import DataAccessLayer.Database_Logs;
@@ -15,6 +16,8 @@ import java.io.IOException;
 
 public class EditLogViewModel {
 
+    public LoggingHandler log = new LoggingHandler();
+
     public final StringProperty tourName = new SimpleStringProperty("");
     public final StringProperty distance = new SimpleStringProperty("");
     public final StringProperty totalTime = new SimpleStringProperty("");
@@ -28,6 +31,31 @@ public class EditLogViewModel {
     public final StringProperty fuelUsed = new SimpleStringProperty("");
     public final StringProperty averageSpeed = new SimpleStringProperty("");
 
+    //Methods
+    public void changeSceneToMain(Stage stage) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../TourPlanner/mainWindow.fxml"));
+        stage.setTitle("Tour Planner");
+        stage.setScene(new Scene(root, 500, 500)); //v=breite v1=höhe
+        stage.show();
+        log.logDebug("Main View loaded -EditLogViewModel-");
+    }
+
+    public void editTourLogStage(Stage stage, LogTable logToEdit) throws IOException {
+        if(logToEdit == null) {
+            new Allerts().tourIsNull();
+            log.logDebug("Stage for editing TourLog not loaded, because no Tour was selected -EditLogViewModel-");
+        }else {
+            new StageLoader(stage, logToEdit).changeStageForLog("TourLog/EditTourLog");
+        }
+    }
+
+    public void editTour(Stage stage, Log tourLog) throws IOException {
+        new Database_Logs().edit(tourLog);
+        changeSceneToMain(stage);
+        log.logDebug("Stage for editing Tour Log loaded -EditLogViewModel-");
+    }
+
+    //Properties
     public StringProperty tourNameProperty(){
         return tourName;
     }
@@ -74,25 +102,5 @@ public class EditLogViewModel {
 
     public StringProperty averageSpeedProperty() {
         return averageSpeed;
-    }
-
-    public void changeSceneToMain(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../TourPlanner/mainWindow.fxml"));
-        stage.setTitle("Tour Planner");
-        stage.setScene(new Scene(root, 500, 500)); //v=breite v1=höhe
-        stage.show();
-    }
-
-    public void editTourLogStage(Stage stage, LogTable logToEdit) throws IOException {
-        if(logToEdit == null)
-            new Allerts().tourIsNull();
-        else {
-            new StageLoader(stage, logToEdit).changeStageForLog("TourLog/EditTourLog");
-        }
-    }
-
-    public void editTour(Stage stage, Log log) throws IOException {
-        new Database_Logs().edit(log);
-        changeSceneToMain(stage);
     }
 }

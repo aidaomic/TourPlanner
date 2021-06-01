@@ -1,5 +1,6 @@
 package Models;
 
+import BusinessLayer.Logging.LoggingHandler;
 import BusinessLayer.Notification.Allerts;
 import BusinessLayer.StageSceneViewHelper.StageLoader;
 import DataAccessLayer.Database_Logs;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 public class AddLogViewModel {
 
     private ArrayList logList = new ArrayList();
+    private LoggingHandler log = new LoggingHandler();
 
     public final StringProperty tourName = new SimpleStringProperty("");
     public final StringProperty distance = new SimpleStringProperty("");
@@ -36,15 +38,18 @@ public class AddLogViewModel {
         stage.setTitle("Tour Planner");
         stage.setScene(new Scene(root, 500, 500)); //v=breite v1=höhe
         stage.show();
+        log.logDebug("Main View loaded -AddLogViewModel-");
     }
 
     public void addTourLogStage(Stage stage, String tourName) throws IOException {
-        if(tourName.equals("null"))
+        if(tourName.equals("null")) {
+            log.logDebug("No Tour selected to add Log to -AddLogViewModel-");
             new Allerts().tourIsNull();
-        else {
+        }else {
             Database_Tours dbt = new Database_Tours();
             Tour t = dbt.specificTour(tourName);
             new StageLoader(stage, t).changeStageForLog("TourLog/AddTourLog");
+            log.logDebug("Loaded Stage to add Tour Log -AddLogViewModel-");
         }
     }
 
@@ -63,8 +68,8 @@ public class AddLogViewModel {
 
         new Database_Logs().save(logList);
         changeSceneToMain(stage);
+        log.logDebug("Tour Log added -AddLogViewModel-");
     }
-
 
     //Getter
     public StringProperty tourNameProperty(){

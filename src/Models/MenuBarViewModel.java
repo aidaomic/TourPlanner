@@ -81,6 +81,7 @@ public class MenuBarViewModel {
                 log.logDebug("Printing Report stopped from user interaction -MenuBarViewModel-");
             else{
                 log.logDebug("Printing Report for all Tours starting... -MenuBarViewModel-");
+                new Report().tourReport(new Database_Tours().getTourNames());
             }
 
         }

@@ -32,7 +32,7 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="9126f4bc-4811-46ac-9404-cc4db8c18723">
-      <console name="Connection" type="STANDARD" schema="" session="Main"><![CDATA[select * from "public".tours;]]></console>
+      <console name="Connection" type="STANDARD" schema="" session="Main"><![CDATA[select * from "public".logs;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">

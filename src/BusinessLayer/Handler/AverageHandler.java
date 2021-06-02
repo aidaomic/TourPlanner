@@ -49,7 +49,6 @@ public class AverageHandler {
             }
                 int minutes = Integer.parseInt(token.nextToken())*60;
                 seconds += minutes + Integer.parseInt(token.nextToken());
-                System.out.println(seconds);
         }
         seconds = seconds/counter;
         int minute = 0;

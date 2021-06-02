@@ -37,4 +37,31 @@ public class PdfTableHandler {
         }
         return table;
     }
+
+    public PdfPTable createTableHeader_AverageLog(){
+
+        PdfPTable table = new PdfPTable(9);
+        try {
+            table.setWidthPercentage(100); //Width 100%
+            table.setSpacingBefore(10f); //Space before table
+            table.setSpacingAfter(10f); //Space after table
+
+            //Set Column widths
+            float[] columnWidths = {1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f,};
+            table.setWidths(columnWidths);
+            table.addCell(new Paragraph("Distance", FontFactory.getFont(FontFactory.HELVETICA, 10)));
+            table.addCell(new Paragraph("Total Time", FontFactory.getFont(FontFactory.HELVETICA, 10)));
+            table.addCell(new Paragraph("Rating", FontFactory.getFont(FontFactory.HELVETICA, 10)));
+            table.addCell(new Paragraph("Weather", FontFactory.getFont(FontFactory.HELVETICA, 10)));
+            table.addCell(new Paragraph("Seasonal Closure", FontFactory.getFont(FontFactory.HELVETICA, 10)));
+            table.addCell(new Paragraph("Transportation", FontFactory.getFont(FontFactory.HELVETICA, 10)));
+            table.addCell(new Paragraph("Traffic Jam", FontFactory.getFont(FontFactory.HELVETICA, 10)));
+            table.addCell(new Paragraph("Fuel Used", FontFactory.getFont(FontFactory.HELVETICA, 10)));
+            table.addCell(new Paragraph("Average Speed", FontFactory.getFont(FontFactory.HELVETICA, 10)));
+            table.completeRow();
+        } catch (DocumentException e) {
+            e.printStackTrace();
+        }
+        return table;
+    }
 }

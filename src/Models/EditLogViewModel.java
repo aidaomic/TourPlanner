@@ -18,6 +18,7 @@ public class EditLogViewModel {
 
     public LoggingHandler log = new LoggingHandler();
 
+    public final StringProperty logId= new SimpleStringProperty("");
     public final StringProperty tourName = new SimpleStringProperty("");
     public final StringProperty distance = new SimpleStringProperty("");
     public final StringProperty totalTime = new SimpleStringProperty("");
@@ -102,5 +103,9 @@ public class EditLogViewModel {
 
     public StringProperty averageSpeedProperty() {
         return averageSpeed;
+    }
+
+    public Property<String> logIdProperty() {
+        return logId;
     }
 }

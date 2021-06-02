@@ -46,9 +46,11 @@ public class PdfExportSingleTourReport {
             doc.add(map);
 
             PdfPTable table = new PdfTableHandler().createTableHeader_TourLogs();
-
             doc.add(new Database_Report().toFileTable(table, name));
 
+            doc.add(new Paragraph("Average Tour Log: \n"));
+            PdfPTable tableAverage = new PdfTableHandler().createTableHeader_AverageLog();
+            doc.add(new Database_Report().getAverage(tableAverage, name));
 
             doc.close();
             log.logInfo("SingleTour Report for Tour '"+name+"' created successfully -PdfExportSingleTourReport-");

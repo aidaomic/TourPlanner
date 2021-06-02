@@ -20,13 +20,14 @@ public class EditTourLogWindowController implements Initializable {
     private EditLogViewModel editModel = new EditLogViewModel();
     private LoggingHandler log = new LoggingHandler();
 
-    public TextField tourName, tourDistance, totalTime, weather, transportation, fuelUsed, averageSpeed;
+    public TextField logId, tourName, tourDistance, totalTime, weather, transportation, fuelUsed, averageSpeed;
     public Slider rating;
     public RadioButton seasClosYes, seasClosNo, trafJamYes, trafJamNo;
     public Boolean seasClos, trafJam;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        logId.textProperty().bindBidirectional(editModel.logIdProperty());
         tourName.textProperty().bindBidirectional(editModel.tourNameProperty());
         tourDistance.textProperty().bindBidirectional(editModel.distanceProperty());
         totalTime.textProperty().bindBidirectional(editModel.totalTimeProperty());
@@ -51,7 +52,7 @@ public class EditTourLogWindowController implements Initializable {
         else trafJam = false;
 
         Log tourLog = new Log(tourName.getText(), totalTime.getText(), rating.getValue(), weather.getText(), seasClos,
-                transportation.getText(), trafJam, fuelUsed.getText(), averageSpeed.getText());
+                transportation.getText(), trafJam, fuelUsed.getText(), averageSpeed.getText(), logId.getText());
         Stage stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
         editModel.editTour(stage, tourLog);
         log.logDebug("Editing Tour Log finished -EditTourLogController-");

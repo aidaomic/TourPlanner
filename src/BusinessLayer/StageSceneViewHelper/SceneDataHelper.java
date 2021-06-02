@@ -74,6 +74,9 @@ public class SceneDataHelper {
     }
 
     public void setDataForEditLog() {
+        TextField txtId = (TextField) root.lookup("#logId");
+        txtId.setText(String.valueOf(logTable.logId));
+        txtId.setDisable(true);
         TextField txtN = (TextField) root.lookup("#tourName");
         txtN.setText(String.valueOf(logTable.tourName));
         txtN.setDisable(true);

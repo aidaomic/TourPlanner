@@ -16,6 +16,19 @@
     <center>
         <VBox prefWidth="Infinity">
             <HBox>
+                <Label prefHeight="20" prefWidth="100" text="Tour Log Id:">
+                    <HBox.margin>
+                        <Insets top="5.0" />
+                    </HBox.margin>
+                    <opaqueInsets>
+                        <Insets left="15.0" />
+                    </opaqueInsets></Label>
+                <TextField fx:id="logId" disable="true" prefHeight="20" prefWidth="380">
+                    <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </HBox.margin></TextField>
+            </HBox>
+            <HBox>
                 <Label prefHeight="20" prefWidth="100" text="Tour Name:">
                     <HBox.margin>
                         <Insets top="5.0" />

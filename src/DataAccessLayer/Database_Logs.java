@@ -117,6 +117,7 @@ public class Database_Logs implements Database{
             preparedStatement.setDouble(7, tourLog.fuelUsed);
             preparedStatement.setDouble(8, tourLog.averageSpeed);
             preparedStatement.setString(9, tourLog.logName);
+            preparedStatement.setInt(10, Integer.parseInt(tourLog.id));
             preparedStatement.execute();
             connection.close();
             log.logInfo("Tour Log saved edited changes successfully to database -Database_Logs-");

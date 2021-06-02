@@ -4,6 +4,8 @@ import BusinessLayer.Handler.PropertyHandler;
 import BusinessLayer.Logging.LoggingHandler;
 import TourPlanner.Log;
 import TourPlanner.LogTable;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPTable;
 
 import java.io.IOException;
@@ -157,7 +159,7 @@ public class Database_Logs implements Database{
             rs = preparedStatement.executeQuery();
             while(rs.next()){
                 for (int i = 1; i<=13; i++) {
-                    exportTable.addCell(rs.getString(i));
+                    exportTable.addCell(new Paragraph(rs.getString(i), FontFactory.getFont(FontFactory.HELVETICA, 10)));
                 }
                 exportTable.completeRow();
             }

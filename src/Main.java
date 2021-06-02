@@ -1,4 +1,5 @@
 import BusinessLayer.Logging.LoggingHandler;
+import BusinessLayer.Pdf.PdfExportSingleTourReport;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,6 +13,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
 
         new LoggingHandler().logInfo("Application Started");
+        //new PdfExportSingleTourReport().singleTourReport("Test 1");
 
         // fxml created with SceneBuilder
         Parent root = FXMLLoader.load(getClass().getResource("TourPlanner/mainWindow.fxml"));

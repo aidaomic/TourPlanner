@@ -2,14 +2,16 @@ package Models;
 
 import BusinessLayer.Logging.LoggingHandler;
 import BusinessLayer.Notification.Allerts;
-import BusinessLayer.Pdf.PdfGenerator;
-import BusinessLayer.Pdf.PdfReader;
+import BusinessLayer.Pdf.*;
+import BusinessLayer.Report.Report;
+import BusinessLayer.StageSceneViewHelper.StageLoader;
 import DataAccessLayer.Database_Logs;
 import DataAccessLayer.Database_Tours;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
 import java.util.ArrayList;
 
 public class MenuBarViewModel {
@@ -33,19 +35,19 @@ public class MenuBarViewModel {
     }
 
     public void exportTours(){
-        new PdfGenerator().toursToPdf();
+        new PdfExportTours().toursToPdf();
         new Allerts().allertExportSuccess();
         log.logDebug("Exporting Tours to Pdf finished -MenuBarViewModel-");
     }
 
     public void exportToursTable(){
-        new PdfGenerator().toursToPdfTable();
+        new PdfExportTours().toursToPdfTable();
         new Allerts().allertExportSuccess();
         log.logDebug("Exporting Tours to Table View finished -MenuBarViewModel-");
     }
 
     public void importTours(){
-        new PdfReader().pdfToTours();
+        new PdfImportTours().pdfToTours();
         log.logDebug("Importing Tours from Pdf finished -MenuBarViewModel-");
     }
 
@@ -54,20 +56,34 @@ public class MenuBarViewModel {
     }
 
     public void importTourLogs(){
-        new PdfReader().pdfToTourLogs();
+        new PdfImportTourLogs().pdfToTourLogs();
         log.logDebug("Importing Tour Logs from Pdf finished -MenuBarViewModel-");
     }
 
     public void exportTourLogsTable() {
-        new PdfGenerator().tourLogsToPdfTable();
+        new PdfExportTourLogs().tourLogsToPdfTable();
         new Allerts().allertExportSuccess();
         log.logDebug("Exporting Tour Logs to Table View finished -MenuBarViewModel-");
     }
 
     public void exportTourLogs(){
-        new PdfGenerator().logsToPdf();
+        new PdfExportTourLogs().tourLogsToPdf();
         new Allerts().allertExportSuccess();
         log.logDebug("Exporting Tour Logs to Pdf finished -MenuBarViewModel-");
+    }
+
+    public void createReport(String tourName) {
+        if(tourName.equals("null") == false)
+            new Report().singleTourReport(tourName);
+        else {
+            int alert = new Allerts().reportTourNull();
+            if (alert != 0)
+                log.logDebug("Printing Report stopped from user interaction -MenuBarViewModel-");
+            else{
+                log.logDebug("Printing Report for all Tours starting... -MenuBarViewModel-");
+            }
+
+        }
     }
 
     //Properties

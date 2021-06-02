@@ -191,6 +191,7 @@ public class MainWindowController implements Initializable {
     }
 
     public void report(ActionEvent actionEvent) {
+        menuModel.createReport(String.valueOf(tourList.getSelectionModel().getSelectedItem()));
         log.logDebug("Tour report finished -MainWindowController-");
     }
 }

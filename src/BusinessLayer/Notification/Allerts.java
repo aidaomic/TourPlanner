@@ -59,4 +59,20 @@ public class Allerts {
         alert.showAndWait();
         log.logDebug("Alert => Exported successfully -Allerts-");
     }
+
+    public int reportTourNull() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation Dialog");
+        alert.setHeaderText("Report - No Tour Chosen");
+        alert.setContentText("No Tour has been chosen for Report, do you want to print a Report over all Tours?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            log.logDebug("Alert => Report over all Tours -Allerts-");
+            return 0;
+        }else{
+            log.logDebug("Alert => Stopping generating Report -Allerts-");
+            return 1;
+        }
+    }
 }

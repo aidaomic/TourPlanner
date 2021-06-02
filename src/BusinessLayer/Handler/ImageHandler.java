@@ -1,11 +1,13 @@
 package BusinessLayer.Handler;
 
 import BusinessLayer.Logging.LoggingHandler;
+import com.itextpdf.text.BadElementException;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 
@@ -38,5 +40,17 @@ public class ImageHandler {
         BufferedImage bufImage = ImageIO.read(new File(name.substring(7)+".jpg"));
         log.logDebug("Loaded Image from FS -ImageHandler-");
         return SwingFXUtils.toFXImage(bufImage, null);
+    }
+
+    public com.itextpdf.text.Image bufferedImageToItextImage(BufferedImage bufferedImage) throws IOException {
+        com.itextpdf.text.Image map = null;
+        try {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            ImageIO.write(bufferedImage, "jpg", baos);
+            map = com.itextpdf.text.Image.getInstance(baos.toByteArray());
+        } catch (BadElementException e) {
+            log.logError("Could not parse Instance to Image -ImageHandler- ");
+        }
+        return map;
     }
 }

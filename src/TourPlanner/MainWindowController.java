@@ -194,4 +194,9 @@ public class MainWindowController implements Initializable {
         menuModel.createReport(String.valueOf(tourList.getSelectionModel().getSelectedItem()));
         log.logDebug("Tour report finished -MainWindowController-");
     }
+
+    public void changeLogLevel(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        menuModel.loadLogLevelSelector(stage);
+    }
 }

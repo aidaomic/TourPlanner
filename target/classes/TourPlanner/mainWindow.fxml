@@ -20,8 +20,8 @@
                             <MenuItem mnemonicParsing="false" onAction="#exportDataTourLogsTable" text="Export Tour Logs as Table" />
                             <MenuItem mnemonicParsing="false" onAction="#exportDataTourLogs" text="Export Tour Logs" />
                         </items>
-                    </MenuButton>
-                    <Button mnemonicParsing="false" onAction="#doEdit" prefWidth="80" text="Options" />
+                    </MenuButton >
+                    <Button mnemonicParsing="false" onAction="#changeLogLevel" prefWidth="80" text="Log Options" />
                     <MenuButton mnemonicParsing="false" prefWidth="190" text="Features">
                         <items>
                             <MenuItem mnemonicParsing="false" onAction="#copyTour" text="Copy Tour" />

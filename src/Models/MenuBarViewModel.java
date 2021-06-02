@@ -11,7 +11,13 @@ import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class MenuBarViewModel {
@@ -20,6 +26,14 @@ public class MenuBarViewModel {
     private LoggingHandler log = new LoggingHandler();
 
     //Methoden
+    public void changeSceneToMain(Stage stage) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../TourPlanner/mainWindow.fxml"));
+        stage.setTitle("Tour Planner");
+        stage.setScene(new Scene(root, 500, 500)); //v=breite v1=höhe
+        stage.show();
+        log.logDebug("Main View loaded -AddTourViewModel-");
+    }
+
     public ObservableList searchForTour(String searchText){
         ArrayList searchedList = new Database_Tours().getSearchedTours(searchText);
         ObservableList obList = FXCollections.observableList(searchedList);
@@ -85,6 +99,10 @@ public class MenuBarViewModel {
             }
 
         }
+    }
+
+    public void loadLogLevelSelector(Stage stage) throws IOException {
+        new StageLoader(stage).changeStageLogLevel();
     }
 
     //Properties

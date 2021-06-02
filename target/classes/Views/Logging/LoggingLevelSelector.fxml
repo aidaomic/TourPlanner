@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane prefHeight="200.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Logging.LoggingLevelSelectorController">
+
+    <top>
+        <Label alignment="CENTER" prefWidth="Infinity" text="Please chose your Log Level!">
+         <font>
+            <Font size="21.0" />
+         </font></Label>
+    </top>
+
+    <center>
+        <VBox alignment="CENTER" prefHeight="228.0" prefWidth="600.0">
+            <RadioButton fx:id="all" prefHeight="18.0" prefWidth="80.0" text="ALL">
+            <toggleGroup>
+               <ToggleGroup fx:id="LogLevel" />
+            </toggleGroup></RadioButton>
+            <RadioButton fx:id="debug" prefWidth="80.0" text="DEBUG" toggleGroup="$LogLevel" />
+            <RadioButton fx:id="info" prefHeight="18.0" prefWidth="80.0" text="INFO" toggleGroup="$LogLevel" />
+            <RadioButton fx:id="error" prefHeight="18.0" prefWidth="80.0" text="ERROR" toggleGroup="$LogLevel" />
+        </VBox>
+    </center>
+
+    <bottom>
+        <HBox alignment="TOP_CENTER">
+            <Button onAction="#setLogLevel">Set Log Level</Button>
+            <Button onAction="#exit">Exit</Button>
+        </HBox>
+    </bottom>
+
+</BorderPane>

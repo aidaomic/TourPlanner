@@ -45,6 +45,16 @@ public class StageLoader {
         log.logInfo("Stage AddTour loaded -StageLoader-");
     }
 
+    public void changeStageLogLevel() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../../Views/Logging/LoggingLevelSelector.fxml"));
+      //  Parent root = FXMLLoader.load(getClass().getResource("../../Views/Tour/AddTOurWindow.fxml"));
+
+        stage.setTitle("Tour Planner - Log Level");
+        stage.setScene(new Scene(root, 400, 200)); //v=breite v1=höhe
+        stage.show();
+        log.logInfo("Stage AddTour loaded -StageLoader-");
+    }
+
     public void changeStageForEdit(String methode) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("../../Views/"+methode+"Window.fxml"));
         stage.setTitle("Tour Planner - Edit Tour");

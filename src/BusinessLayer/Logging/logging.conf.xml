@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- based on: https://logging.apache.org/log4j/2.x/manual/configuration.html -->
-<Configuration status="trace" strict="true" name="XMLConfigTest"
+<Configuration strict="true" name="XMLConfigTest"
                packages="org.apache.logging.log4j.test">
     <Properties>
         <Property name="filename">TourPlanner_LogFile.log</Property>
@@ -19,7 +19,7 @@
             <AppenderRef ref="File"/>
         </Logger>-->
 
-        <Root level="trace">
+        <Root level="error">
             <AppenderRef ref="File"/>
         </Root>
     </Loggers>

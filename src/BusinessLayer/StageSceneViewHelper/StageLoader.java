@@ -58,6 +58,8 @@ public class StageLoader {
             case "imageWindow":
                 new SceneDataHelper(root).setImage(img);
                 break;
+            case "help":
+                break;
         }
         stage.show();
         log.logInfo("Stage "+methode+" loaded -StageLoader-");

@@ -71,7 +71,8 @@ public class MenuBarViewModel {
         log.logDebug("Importing Tours from Pdf finished -MenuBarViewModel-");
     }
 
-    public void getHelp() {
+    public void getHelp(Stage stage) throws IOException {
+        new StageLoader(stage).changeStage("help");
         log.logDebug("help -MenuBarViewModel-");
     }
 

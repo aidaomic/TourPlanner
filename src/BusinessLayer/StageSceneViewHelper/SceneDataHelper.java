@@ -4,9 +4,7 @@ import BusinessLayer.Logging.LoggingHandler;
 import TourPlanner.LogTable;
 import TourPlanner.Tour;
 import javafx.scene.Parent;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.Slider;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -111,9 +109,4 @@ public class SceneDataHelper {
         speed.setText(String.valueOf(logTable.speed));
         log.logDebug("Data set for editing Tour Log -SceneDataHelper-");
     }
-
-    public Tour getTour() {
-        return tour;
-    }
-
 }

@@ -93,8 +93,9 @@ public class MainWindowController implements Initializable {
         log.logDebug("Search finished -MainWindowController-");
     }
 
-    public void getHelp(ActionEvent actionEvent) {
-        menuModel.getHelp();
+    public void getHelp(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        menuModel.getHelp(stage);
         log.logDebug("Help finished -MainWindowController-");
     }
 

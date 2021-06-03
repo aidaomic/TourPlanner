@@ -62,6 +62,11 @@ public class PathHandler {
                 x = 400;
                 y = 200;
                 return "../../Views/Logging/LoggingLevelSelector.fxml";
+            case "help":
+                title = "Tour Planner - Help";
+                x = 400;
+                y = 400;
+                return "../../Views/HelpWindow.fxml";
         }
 
         new LoggingHandler().logError("Problem with Path -PathHandler-");

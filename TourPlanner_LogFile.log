@@ -1,0 +1,34 @@
+2021-06-03 16:31:03,132 INFO B.L.LoggingHandler [JavaFX Application Thread] Application Started
+2021-06-03 16:31:03,171 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Controller -MainWindowController- created
+2021-06-03 16:31:03,402 DEBUG B.L.LoggingHandler [JavaFX Application Thread] MainWindowController Property binding finished
+2021-06-03 16:31:03,405 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandler-
+2021-06-03 16:31:03,584 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Tours-
+2021-06-03 16:31:03,589 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved SQL Query -PropertyHandler-
+2021-06-03 16:31:03,601 INFO B.L.LoggingHandler [JavaFX Application Thread] Tour Data retrieved successfully from database -Database_Tours-
+2021-06-03 16:31:03,605 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandler-
+2021-06-03 16:31:03,644 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Logs-
+2021-06-03 16:31:03,645 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandler-
+2021-06-03 16:31:03,689 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Logs-
+2021-06-03 16:31:03,690 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved SQL Query -PropertyHandler-
+2021-06-03 16:31:03,694 INFO B.L.LoggingHandler [JavaFX Application Thread] Tour Log Data retrieved successfully from database -Database_Logs-
+2021-06-03 16:31:03,694 INFO B.L.LoggingHandler [JavaFX Application Thread] MainWindowController initialized
+2021-06-03 16:31:06,732 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieving Path -PathHandler-
+2021-06-03 16:31:06,818 INFO B.L.LoggingHandler [JavaFX Application Thread] Stage help loaded -StageLoader-
+2021-06-03 16:31:06,818 DEBUG B.L.LoggingHandler [JavaFX Application Thread] help -MenuBarViewModel-
+2021-06-03 16:31:06,819 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Help finished -MainWindowController-
+2021-06-03 16:31:09,003 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieving Path -PathHandler-
+2021-06-03 16:31:09,006 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Controller -MainWindowController- created
+2021-06-03 16:31:09,021 DEBUG B.L.LoggingHandler [JavaFX Application Thread] MainWindowController Property binding finished
+2021-06-03 16:31:09,022 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandler-
+2021-06-03 16:31:09,060 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Tours-
+2021-06-03 16:31:09,061 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved SQL Query -PropertyHandler-
+2021-06-03 16:31:09,063 INFO B.L.LoggingHandler [JavaFX Application Thread] Tour Data retrieved successfully from database -Database_Tours-
+2021-06-03 16:31:09,064 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandler-
+2021-06-03 16:31:09,100 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Logs-
+2021-06-03 16:31:09,100 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandler-
+2021-06-03 16:31:09,135 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Logs-
+2021-06-03 16:31:09,136 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved SQL Query -PropertyHandler-
+2021-06-03 16:31:09,138 INFO B.L.LoggingHandler [JavaFX Application Thread] Tour Log Data retrieved successfully from database -Database_Logs-
+2021-06-03 16:31:09,138 INFO B.L.LoggingHandler [JavaFX Application Thread] MainWindowController initialized
+2021-06-03 16:31:09,301 INFO B.L.LoggingHandler [JavaFX Application Thread] Stage mainWindow loaded -StageLoader-
+2021-06-03 16:31:09,301 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Exiting HelpWindow -HelpWindowController-

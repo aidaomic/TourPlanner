@@ -63,15 +63,15 @@ public class MainViewModel {
         }
     }
 
-    public void zoomPicture(String name) throws IOException {
+    public void zoomPicture(Stage stage, String name) throws IOException {
         Image img = new ImageHandler().getImageFromFS(name);
-        new StageLoader().changeImageStage(name, img);
+        new StageLoader(stage, img).changeStage("imageWindow");
         log.logDebug("Loaded Stage for zoomed in map -MainViewModel-");
     }
 
     public void deleteTourLog(Stage stage, int id) throws IOException {
         new Database_Logs().delete(String.valueOf(id));
-        new StageLoader(stage).changeMainStage();
+        new StageLoader(stage).changeStage("mainWindow");
         log.logDebug("Tour Log deleted -MainViewModel-");
     }
 

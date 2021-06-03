@@ -34,11 +34,7 @@ public class AddLogViewModel {
     public final StringProperty averageSpeed = new SimpleStringProperty("");
 
     public void changeSceneToMain(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../TourPlanner/mainWindow.fxml"));
-        stage.setTitle("Tour Planner");
-        stage.setScene(new Scene(root, 500, 500)); //v=breite v1=höhe
-        stage.show();
-        log.logDebug("Main View loaded -AddLogViewModel-");
+        new StageLoader(stage).changeStage("mainWindow");
     }
 
     public void addTourLogStage(Stage stage, String tourName) throws IOException {
@@ -48,7 +44,7 @@ public class AddLogViewModel {
         }else {
             Database_Tours dbt = new Database_Tours();
             Tour t = dbt.specificTour(tourName);
-            new StageLoader(stage, t).changeStageForLog("TourLog/AddTourLog");
+            new StageLoader(stage, t).changeStage("addLog");
             log.logDebug("Loaded Stage to add Tour Log -AddLogViewModel-");
         }
     }
@@ -67,7 +63,7 @@ public class AddLogViewModel {
         logList.add(averageSpeed);
 
         new Database_Logs().save(logList);
-        changeSceneToMain(stage);
+        new StageLoader(stage).changeStage("mainWindow");
         log.logDebug("Tour Log added -AddLogViewModel-");
     }
 

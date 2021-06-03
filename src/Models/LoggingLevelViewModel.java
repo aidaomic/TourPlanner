@@ -1,11 +1,13 @@
 package Models;
 
+import BusinessLayer.Logging.LoggingHandler;
+import BusinessLayer.StageSceneViewHelper.StageLoader;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.stage.Stage;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -19,7 +21,14 @@ public class LoggingLevelViewModel {
     public final BooleanProperty info = new SimpleBooleanProperty();
     public final BooleanProperty error = new SimpleBooleanProperty();
 
-    public void changeLogLevel(String level){
+    private LoggingHandler log = new LoggingHandler();
+
+    public void changeToMain(Stage stage) throws IOException {
+        new StageLoader(stage).changeStage("mainWindow");
+        log.logDebug("Changin Stage to Main -LoggingLevelViewModel-");
+    }
+
+    public void changeLogLevel(Stage stage, String level){
         try {
             DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
@@ -30,9 +39,10 @@ public class LoggingLevelViewModel {
             Node lev = conf.getNamedItem("level");
             lev.setTextContent(level);
 
-
+            new StageLoader(stage).changeStage("mainWindow");
             //Node Logge = document.getElementsByTagName("Configuration").item(0);
 
+            log.logDebug("Log Level changed -LoggingLevelViewModel-");
         } catch (SAXException e) {
             e.printStackTrace();
         } catch (IOException e) {

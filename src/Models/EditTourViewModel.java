@@ -28,11 +28,7 @@ public class EditTourViewModel {
     private LoggingHandler log = new LoggingHandler();
 
     public void changeSceneToMain(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../TourPlanner/mainWindow.fxml"));
-        stage.setTitle("Tour Planner");
-        stage.setScene(new Scene(root, 500, 500)); //v=breite v1=höhe
-        stage.show();
-        log.logDebug("Main View loaded -EditTourViewModel-");
+        new StageLoader(stage).changeStage("mainWindow");
     }
 
     public void editTourStage(Stage stage, String tourName) throws IOException {
@@ -42,7 +38,7 @@ public class EditTourViewModel {
         }else{
             Database_Tours dbt = new Database_Tours();
             Tour t = dbt.specificTour(tourName);
-            new StageLoader(stage, t).changeStageForEdit("Tour/EditTour");
+            new StageLoader(stage, t).changeStage("editTour");
             log.logDebug("Stage for editing Tour loaded -EditTourViewModel-");
         }
     }
@@ -68,7 +64,7 @@ public class EditTourViewModel {
             list.add(tour.tourName);
             dbt.editNewRoute(list);
             new ImageHandler().updateImage((String) list.get(0), (BufferedImage)list.get(5));
-            changeSceneToMain(stage);
+            new StageLoader(stage).changeStage("mainWindow");
             log.logDebug("Route changed during editing -EditTourViewModel-");
             return;
         }
@@ -80,7 +76,7 @@ public class EditTourViewModel {
         list.add(tourEdited.tourEnd);
         list.add(tour.tourName);
         dbt.edit(list);
-        changeSceneToMain(stage);
+        new StageLoader(stage).changeStage("mainWindow");
         log.logDebug("Editing Tour '"+tour.tourName+"' finished");
     }
 }

@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<?import javafx.scene.image.ImageView?>
-<Pane xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="Controller.ImageWindowController"
-      prefHeight="480.0" prefWidth="640.0">
+<Pane prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ImageWindowController">
     <ImageView fx:id="image" />
+    <Button alignment="BOTTOM_CENTER" layoutX="263.0" layoutY="441.0" onAction="#exit" prefHeight="25.0" prefWidth="114.0">Exit</Button>
 </Pane>

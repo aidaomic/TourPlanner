@@ -36,15 +36,8 @@ public class LoggingLevelSelectorController implements Initializable {
         log.logInfo("Controller -LoggingLevelSelectorController- created");
     }
 
-    public void changeSceneToMain(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../../TourPlanner/mainWindow.fxml"));
-        stage.setTitle("Tour Planner");
-        stage.setScene(new Scene(root, 500, 500)); //v=breite v1=höhe
-        stage.show();
-        log.logDebug("Main View loaded -AddTourViewModel-");
-    }
-
     public void setLogLevel(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
         String level = "";
         if (all.isSelected())
             level = "TRUCE";
@@ -54,15 +47,13 @@ public class LoggingLevelSelectorController implements Initializable {
             level = "INFO";
         else if(error.isSelected())
             level = "ERROR";
-        logModel.changeLogLevel(level);
-        Stage stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
-        changeSceneToMain(stage);
+        logModel.changeLogLevel(stage, level);
         log.logDebug("changed Log level -LoggingLevelSelectorController-");
     }
 
     public void exit(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
-        menuModel.changeSceneToMain(stage);
+        logModel.changeToMain(stage);
         log.logDebug("Main Stage loaded -LoggingLevelSelectorController-");
     }
 }

@@ -15,7 +15,7 @@
 
     <center>
         <VBox prefWidth="Infinity">
-            <HBox>
+            <HBox prefWidth="494.0">
                 <Label prefHeight="20" prefWidth="100" text="Tour Name:">
                     <HBox.margin>
                         <Insets top="5.0" />

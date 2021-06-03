@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane prefHeight="443.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TourLog.EditTourLogWindowController">
+<BorderPane prefHeight="450.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TourLog.EditTourLogWindowController">
 
     <top>
         <Label alignment="CENTER" prefWidth="Infinity" text="Please edit Tour Log down below!">

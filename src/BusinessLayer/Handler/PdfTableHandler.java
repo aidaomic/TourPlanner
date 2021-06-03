@@ -18,19 +18,20 @@ public class PdfTableHandler {
         //Set Column widths
         float[] columnWidths = {1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f,};
         table.setWidths(columnWidths);
-        table.addCell(new Paragraph("Log Id", FontFactory.getFont(FontFactory.HELVETICA, 10)));
-        table.addCell(new Paragraph("Tour Name", FontFactory.getFont(FontFactory.HELVETICA, 10)));
-        table.addCell(new Paragraph("Creation Date", FontFactory.getFont(FontFactory.HELVETICA, 10)));
-        table.addCell(new Paragraph("Creation Time", FontFactory.getFont(FontFactory.HELVETICA, 10)));
-        table.addCell(new Paragraph("Distance", FontFactory.getFont(FontFactory.HELVETICA, 10)));
-        table.addCell(new Paragraph("Total Time", FontFactory.getFont(FontFactory.HELVETICA, 10)));
-        table.addCell(new Paragraph("Rating", FontFactory.getFont(FontFactory.HELVETICA, 10)));
-        table.addCell(new Paragraph("Weather", FontFactory.getFont(FontFactory.HELVETICA, 10)));
-        table.addCell(new Paragraph("Seasonal Closure", FontFactory.getFont(FontFactory.HELVETICA, 10)));
-        table.addCell(new Paragraph("Transportation", FontFactory.getFont(FontFactory.HELVETICA, 10)));
-        table.addCell(new Paragraph("Traffic Jam", FontFactory.getFont(FontFactory.HELVETICA, 10)));
-        table.addCell(new Paragraph("Fuel Used", FontFactory.getFont(FontFactory.HELVETICA, 10)));
-        table.addCell(new Paragraph("Average Speed", FontFactory.getFont(FontFactory.HELVETICA, 10)));
+        FontHandler font = new FontHandler();
+        table.addCell(new Paragraph("Log Id", font.helvetica(10)));
+        table.addCell(new Paragraph("Tour Name", font.helvetica(10)));
+        table.addCell(new Paragraph("Creation Date",font.helvetica(10)));
+        table.addCell(new Paragraph("Creation Time", font.helvetica(10)));
+        table.addCell(new Paragraph("Distance", font.helvetica(10)));
+        table.addCell(new Paragraph("Total Time", font.helvetica(10)));
+        table.addCell(new Paragraph("Rating", font.helvetica(10)));
+        table.addCell(new Paragraph("Weather", font.helvetica(10)));
+        table.addCell(new Paragraph("Seasonal Closure", font.helvetica(10)));
+        table.addCell(new Paragraph("Transportation",font.helvetica(10)));
+        table.addCell(new Paragraph("Traffic Jam",font.helvetica(10)));
+        table.addCell(new Paragraph("Fuel Used", font.helvetica(10)));
+        table.addCell(new Paragraph("Average Speed",font.helvetica(10)));
         table.completeRow();
         } catch (DocumentException e) {
             e.printStackTrace();
@@ -49,15 +50,16 @@ public class PdfTableHandler {
             //Set Column widths
             float[] columnWidths = {1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f,};
             table.setWidths(columnWidths);
-            table.addCell(new Paragraph("Distance", FontFactory.getFont(FontFactory.HELVETICA, 10)));
-            table.addCell(new Paragraph("Total Time", FontFactory.getFont(FontFactory.HELVETICA, 10)));
-            table.addCell(new Paragraph("Rating", FontFactory.getFont(FontFactory.HELVETICA, 10)));
-            table.addCell(new Paragraph("Weather", FontFactory.getFont(FontFactory.HELVETICA, 10)));
-            table.addCell(new Paragraph("Seasonal Closure", FontFactory.getFont(FontFactory.HELVETICA, 10)));
-            table.addCell(new Paragraph("Transportation", FontFactory.getFont(FontFactory.HELVETICA, 10)));
-            table.addCell(new Paragraph("Traffic Jam", FontFactory.getFont(FontFactory.HELVETICA, 10)));
-            table.addCell(new Paragraph("Fuel Used", FontFactory.getFont(FontFactory.HELVETICA, 10)));
-            table.addCell(new Paragraph("Average Speed", FontFactory.getFont(FontFactory.HELVETICA, 10)));
+            FontHandler font = new FontHandler();
+            table.addCell(new Paragraph("Distance", font.helvetica(10)));
+            table.addCell(new Paragraph("Total Time", font.helvetica(10)));
+            table.addCell(new Paragraph("Rating", font.helvetica(10)));
+            table.addCell(new Paragraph("Weather", font.helvetica(10)));
+            table.addCell(new Paragraph("Seasonal Closure", font.helvetica(10)));
+            table.addCell(new Paragraph("Transportation", font.helvetica(10)));
+            table.addCell(new Paragraph("Traffic Jam", font.helvetica(10)));
+            table.addCell(new Paragraph("Fuel Used", font.helvetica(10)));
+            table.addCell(new Paragraph("Average Speed", font.helvetica(10)));
             table.completeRow();
         } catch (DocumentException e) {
             e.printStackTrace();

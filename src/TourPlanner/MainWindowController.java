@@ -1,6 +1,7 @@
 package TourPlanner;
 
 import BusinessLayer.Logging.LoggingHandler;
+import BusinessLayer.StageSceneViewHelper.StageLoader;
 import DataAccessLayer.Database_Logs;
 import DataAccessLayer.Database_Tours;
 import Models.*;
@@ -153,7 +154,8 @@ public class MainWindowController implements Initializable {
     }
 
     public void zoom(MouseEvent mouseEvent) throws IOException {
-        viewModel.zoomPicture(titleOutput.getText());
+        Stage stage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
+        viewModel.zoomPicture(stage, titleOutput.getText());
         log.logDebug("Zoomed into tour map -MainWindowController-");
     }
 
@@ -198,5 +200,12 @@ public class MainWindowController implements Initializable {
     public void changeLogLevel(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
         menuModel.loadLogLevelSelector(stage);
+        log.logDebug("chnage Log Level finished -MainWindowController-");
+    }
+
+    public void exit(ActionEvent event) throws IOException {
+        Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+        new StageLoader(stage).changeStage("mainWindow");
+        log.logDebug("Undo Search -MainWindowController-");
     }
 }

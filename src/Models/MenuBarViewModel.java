@@ -26,13 +26,6 @@ public class MenuBarViewModel {
     private LoggingHandler log = new LoggingHandler();
 
     //Methoden
-    public void changeSceneToMain(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../TourPlanner/mainWindow.fxml"));
-        stage.setTitle("Tour Planner");
-        stage.setScene(new Scene(root, 500, 500)); //v=breite v1=höhe
-        stage.show();
-        log.logDebug("Main View loaded -AddTourViewModel-");
-    }
 
     public ObservableList searchForTour(String searchText){
         ArrayList searchedList = new Database_Tours().getSearchedTours(searchText);
@@ -102,7 +95,7 @@ public class MenuBarViewModel {
     }
 
     public void loadLogLevelSelector(Stage stage) throws IOException {
-        new StageLoader(stage).changeStageLogLevel();
+        new StageLoader(stage).changeStage("logLevel");
     }
 
     //Properties

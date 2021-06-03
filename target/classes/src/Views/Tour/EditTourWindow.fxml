@@ -78,9 +78,15 @@
     </center>
 
     <bottom>
-        <Button alignment="BASELINE_CENTER" contentDisplay="CENTER" onAction="#editTour" text="Save Changes" BorderPane.alignment="CENTER">
-         <BorderPane.margin>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </BorderPane.margin></Button>
+        <HBox alignment="CENTER">
+            <Button alignment="BASELINE_CENTER" contentDisplay="CENTER" onAction="#editTour" text="Save Changes" BorderPane.alignment="CENTER">
+                <BorderPane.margin>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </BorderPane.margin></Button>
+            <Button alignment="BASELINE_CENTER" contentDisplay="CENTER" onAction="#exit" text="Exit" BorderPane.alignment="CENTER">
+                <BorderPane.margin>
+                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                </BorderPane.margin></Button>
+        </HBox>
     </bottom>
 </BorderPane>

@@ -19,7 +19,7 @@
             <AppenderRef ref="File"/>
         </Logger>-->
 
-        <Root level="truce">
+        <Root level="trace">
             <AppenderRef ref="File"/>
         </Root>
     </Loggers>

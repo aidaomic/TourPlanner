@@ -34,11 +34,7 @@ public class EditLogViewModel {
 
     //Methods
     public void changeSceneToMain(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../TourPlanner/mainWindow.fxml"));
-        stage.setTitle("Tour Planner");
-        stage.setScene(new Scene(root, 500, 500)); //v=breite v1=höhe
-        stage.show();
-        log.logDebug("Main View loaded -EditLogViewModel-");
+        new StageLoader(stage).changeStage("mainWindow");
     }
 
     public void editTourLogStage(Stage stage, LogTable logToEdit) throws IOException {
@@ -46,13 +42,13 @@ public class EditLogViewModel {
             new Allerts().tourIsNull();
             log.logDebug("Stage for editing TourLog not loaded, because no Tour was selected -EditLogViewModel-");
         }else {
-            new StageLoader(stage, logToEdit).changeStageForLog("TourLog/EditTourLog");
+            new StageLoader(stage, logToEdit).changeStage("editLog");
         }
     }
 
     public void editTour(Stage stage, Log tourLog) throws IOException {
         new Database_Logs().edit(tourLog);
-        changeSceneToMain(stage);
+        new StageLoader(stage).changeStage("mainWindow");
         log.logDebug("Stage for editing Tour Log loaded -EditLogViewModel-");
     }
 

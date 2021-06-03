@@ -39,4 +39,10 @@ public class EditTourWindowController implements Initializable {
         editTourModel.editTour((new Tour(tourEditName.getText(), tourEditDescription.getText(), tourEditStart.getText(), tourEditEnd.getText())),(new Tour(editedName.getText(), editedDescription.getText(), editedStart.getText(), editedEnd.getText())), stage);
         log.logDebug("Editing Tour finished -EditTourWindowController-");
     }
+
+    public void exit(ActionEvent event) throws IOException {
+        Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+        editTourModel.changeSceneToMain(stage);
+        log.logDebug("Exiting Edit Tour -EditTourWindowController-");
+    }
 }

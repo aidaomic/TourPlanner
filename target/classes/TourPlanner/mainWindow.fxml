@@ -8,7 +8,7 @@
 <BorderPane prefHeight="500" prefWidth="500" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TourPlanner.MainWindowController">
 
     <top>
-        <VBox alignment="BASELINE_CENTER" maxWidth="500" prefHeight="100">
+        <VBox alignment="CENTER" maxWidth="500" prefHeight="100">
             <ToolBar prefHeight="40.0" prefWidth="500.0">
                 <items>
                     <MenuButton mnemonicParsing="false" prefWidth="80" text="File">
@@ -20,31 +20,35 @@
                             <MenuItem mnemonicParsing="false" onAction="#exportDataTourLogsTable" text="Export Tour Logs as Table" />
                             <MenuItem mnemonicParsing="false" onAction="#exportDataTourLogs" text="Export Tour Logs" />
                         </items>
-                    </MenuButton >
-                    <Button mnemonicParsing="false" onAction="#changeLogLevel" prefWidth="80" text="Log Options" />
-                    <MenuButton mnemonicParsing="false" prefWidth="190" text="Features">
+                    </MenuButton>
+                    <Button mnemonicParsing="false" onAction="#changeLogLevel" prefHeight="26.0" prefWidth="136.0" text="Log Options" />
+                    <MenuButton mnemonicParsing="false" prefHeight="26.0" prefWidth="129.0" text="Features">
                         <items>
                             <MenuItem mnemonicParsing="false" onAction="#copyTour" text="Copy Tour" />
                             <!--<MenuItem mnemonicParsing="false" onAction="#logFile" text="Log-File" />-->
                             <MenuItem mnemonicParsing="false" onAction="#report" text="Report" />
                         </items>
                     </MenuButton>
-                    <Button onAction="#getHelp" prefWidth="120" text="Help" />
+                    <Button onAction="#getHelp" prefHeight="26.0" prefWidth="126.0" text="Help" />
                 </items>
             </ToolBar>
 
 
             <HBox alignment="TOP_CENTER">
-                <TextField fx:id="textForSearch" prefHeight="30" prefWidth="380" text="Search for Tours">
+                <TextField fx:id="textForSearch" prefHeight="30" prefWidth="323.0" text="Search for Tours">
                     <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="10" />
                     </HBox.margin>
                 </TextField>
-                <Button alignment="BASELINE_CENTER" onAction="#searchForTour" prefHeight="30" prefWidth="120" text="Search">
+                <Button onAction="#searchForTour" prefHeight="30" prefWidth="116.0" text="Search">
                     <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="10" />
                     </HBox.margin>
                 </Button>
+                <Button alignment="CENTER" contentDisplay="CENTER" onAction="#exit" prefHeight="31.0" prefWidth="23.0" text="X" textFill="#e50b0b">
+                    <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="10" />
+                    </HBox.margin></Button>
                 <VBox.margin>
                     <Insets top="10.0" />
                 </VBox.margin>
@@ -107,18 +111,18 @@
 
                     <TableView fx:id="logTable">
                         <columns>
-                            <TableColumn fx:id="logId" text="Log ID"/>
-                            <TableColumn fx:id="tourName" text="Tour"/>
-                            <TableColumn fx:id="dateAndTime" text="Date and Creation Time"/>
+                            <TableColumn fx:id="logId" text="Log ID" />
+                            <TableColumn fx:id="tourName" text="Tour" />
+                            <TableColumn fx:id="dateAndTime" text="Date and Creation Time" />
                             <TableColumn fx:id="distance" text="Distance" />
                             <TableColumn fx:id="totalTime" text="Total Time" />
-                            <TableColumn fx:id="rating" text="Rating"/>
-                            <TableColumn fx:id="weather" text="Weather"/>
-                            <TableColumn fx:id="seasClos" text="Seasonal Closure"/>
-                            <TableColumn fx:id="transportation" text="Transportation"/>
-                            <TableColumn fx:id="traffic" text="Traffic Jam"/>
-                            <TableColumn fx:id="fuelUsed" text="Fuel Used"/>
-                            <TableColumn fx:id="speed" text="Average Speed"/>
+                            <TableColumn fx:id="rating" text="Rating" />
+                            <TableColumn fx:id="weather" text="Weather" />
+                            <TableColumn fx:id="seasClos" text="Seasonal Closure" />
+                            <TableColumn fx:id="transportation" text="Transportation" />
+                            <TableColumn fx:id="traffic" text="Traffic Jam" />
+                            <TableColumn fx:id="fuelUsed" text="Fuel Used" />
+                            <TableColumn fx:id="speed" text="Average Speed" />
                         </columns>
                     </TableView>
 

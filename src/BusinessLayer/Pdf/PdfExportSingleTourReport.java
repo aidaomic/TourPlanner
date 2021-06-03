@@ -1,5 +1,6 @@
 package BusinessLayer.Pdf;
 
+import BusinessLayer.Handler.FontHandler;
 import BusinessLayer.Handler.ImageHandler;
 import BusinessLayer.Handler.PdfTableHandler;
 import BusinessLayer.Logging.LoggingHandler;
@@ -27,7 +28,7 @@ public class PdfExportSingleTourReport {
         try {
             for(int i = 0; i<names.size();i++) {
 
-                Paragraph title = new Paragraph(new Phrase(20f, "Tour Report: " + names.get(i) + "\n", FontFactory.getFont(FontFactory.COURIER_BOLD, 20f)));
+                Paragraph title = new Paragraph(new Phrase(20f, "Tour Report: " + names.get(i) + "\n", new FontHandler().courierBold(20f)));
                 doc.add(title);
 
                 Tour tour = dbt.specificTour(String.valueOf(names.get(i)));

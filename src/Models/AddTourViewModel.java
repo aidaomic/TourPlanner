@@ -30,15 +30,11 @@ public class AddTourViewModel {
 
     //Methods
     public void changeSceneToMain(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../TourPlanner/mainWindow.fxml"));
-        stage.setTitle("Tour Planner");
-        stage.setScene(new Scene(root, 500, 500)); //v=breite v1=höhe
-        stage.show();
-        log.logDebug("Main View loaded -AddTourViewModel-");
+        new StageLoader(stage).changeStage("mainWindow");
     }
 
     public void addTourStage(Stage stage) throws IOException {
-        new StageLoader(stage).changeStage("Tour/AddTour");
+        new StageLoader(stage).changeStage("addTour");
         log.logDebug("Loaded Stage for adding new Tour -AddTourViewModel-");
     }
 

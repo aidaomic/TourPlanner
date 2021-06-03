@@ -78,7 +78,7 @@ public class Database_Report {
                 speed += rs.getDouble(13);
                 counter++;
             }
-            AverageHandler average = new AverageHandler(counter, distance, time, rating, weather, seasClos, transport, traf, fuel, speed);
+            AverageHandler average = new AverageHandler(counter, distance, time, rating, seasClos, traf, fuel, speed);
             log.logInfo("Successfully exporting Tour Logs to TableView -Database_Report-");
             return average.getAverages(exportTable);
         } catch (SQLException e) {

@@ -25,18 +25,55 @@ public class AverageHandler {
         this.traf = traf;
     }
 
+    public AverageHandler(int counter, double distance, ArrayList time, int rating, ArrayList seasClos, ArrayList traf, double fuel, double speed) {
+        this.counter = counter;
+        this.distance = distance;
+        this.time = time;
+        this.fuel = fuel;
+        this.speed = speed;
+        this.rating =rating;
+        this.weather = weather;
+        this.seasClos = seasClos;
+        this.traf = traf;
+    }
+
+
     public PdfPTable getAverages(PdfPTable table){
-        table.addCell(new Paragraph(String.valueOf(distance/counter), FontFactory.getFont(FontFactory.HELVETICA, 10)));
-        table.addCell(new Paragraph(String.valueOf(getAverageTime()), FontFactory.getFont(FontFactory.HELVETICA, 10)));
-        table.addCell(new Paragraph(String.valueOf(rating/counter), FontFactory.getFont(FontFactory.HELVETICA, 10)));
+        table.addCell(new Paragraph(avgDistance(), FontFactory.getFont(FontFactory.HELVETICA, 10)));
+        table.addCell(new Paragraph(getAverageTime(), FontFactory.getFont(FontFactory.HELVETICA, 10)));
+        table.addCell(new Paragraph(avgRating(), FontFactory.getFont(FontFactory.HELVETICA, 10)));
         //table.addCell(new Paragraph("Weather", FontFactory.getFont(FontFactory.HELVETICA, 10)));
-        table.addCell(new Paragraph(new CounterHandler().countTrueFalse(seasClos), FontFactory.getFont(FontFactory.HELVETICA, 10)));
+        table.addCell(new Paragraph(avgSeasClos(), FontFactory.getFont(FontFactory.HELVETICA, 10)));
         //table.addCell(new Paragraph("Transport", FontFactory.getFont(FontFactory.HELVETICA, 10)));
-        table.addCell(new Paragraph(new CounterHandler().countTrueFalse(traf), FontFactory.getFont(FontFactory.HELVETICA, 10)));
-        table.addCell(new Paragraph(String.valueOf(fuel/counter), FontFactory.getFont(FontFactory.HELVETICA, 10)));
-        table.addCell(new Paragraph(String.valueOf(speed/counter), FontFactory.getFont(FontFactory.HELVETICA, 10)));
+        table.addCell(new Paragraph(avgTrafJam(), FontFactory.getFont(FontFactory.HELVETICA, 10)));
+        table.addCell(new Paragraph(avgFuel(), FontFactory.getFont(FontFactory.HELVETICA, 10)));
+        table.addCell(new Paragraph(avgSpeed(), FontFactory.getFont(FontFactory.HELVETICA, 10)));
         table.completeRow();
         return table;
+    }
+
+    public String avgDistance(){
+        return String.valueOf(distance/counter);
+    }
+
+    public String avgRating(){
+        return String.valueOf(rating/counter);
+    }
+
+    public String avgSeasClos(){
+        return new CounterHandler().countTrueFalse(seasClos);
+    }
+
+    public String avgTrafJam(){
+        return new CounterHandler().countTrueFalse(traf);
+    }
+
+    public String avgFuel(){
+        return String.valueOf(fuel/counter);
+    }
+
+    public String avgSpeed(){
+        return String.valueOf(speed/counter);
     }
 
     public String getAverageTime(){

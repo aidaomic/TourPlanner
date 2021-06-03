@@ -19,7 +19,7 @@ public class Report {
     private Document doc = new Document(PageSize.A4);
     private LoggingHandler log = new LoggingHandler();
 
-    //wird vllt noch ausgebaut zu nur gewählten attrbuten!
+    //wird vllt noch ausgebaut zu nur gewählten Attributen
 
     public void singleTourReport(String name){
         try {

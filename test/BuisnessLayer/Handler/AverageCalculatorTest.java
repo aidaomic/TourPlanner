@@ -1,5 +1,6 @@
 package BuisnessLayer.Handler;
 
+import BusinessLayer.Handler.AverageCalculator;
 import BusinessLayer.Handler.AverageHandler;
 import BusinessLayer.Handler.PdfTableHandler;
 import com.itextpdf.text.Document;
@@ -14,15 +15,14 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
 
-public class AverageHandlerTest {
+public class AverageCalculatorTest {
 
 
     private Document doc = new Document(PageSize.A4);
 
     private static int counter, rating;
     private static double distance, fuel, speed;
-    private static ArrayList time = new ArrayList(), seasonalClos = new ArrayList(), trafficJam = new ArrayList();
-
+    private static ArrayList time = new ArrayList();
     @BeforeAll
     public static void setUp(){
         counter = 5;
@@ -40,53 +40,32 @@ public class AverageHandlerTest {
 
 
     @Test
-    public void getAveragesTest_seasTrue_trafFalse(){
-        seasonalClos.clear();
-        trafficJam.clear();
-
-        seasonalClos.add("t");
-        seasonalClos.add("t");
-        seasonalClos.add("f");
-        seasonalClos.add("t");
-        seasonalClos.add("t");
-
-        trafficJam.add("f");
-        trafficJam.add("t");
-        trafficJam.add("f");
-        trafficJam.add("t");
-        trafficJam.add("f");
-
-        AverageHandler avg = new AverageHandler(counter, distance, time, rating, seasonalClos, trafficJam, fuel, speed);
-
-        /*Assertions.assertEquals(String.valueOf(distance/counter), avg.avgDistance());
-        Assertions.assertEquals("0:49:19", avg.getAverageTime());
-        Assertions.assertEquals(String.valueOf(rating/counter), avg.avgRating());
-        Assertions.assertEquals("t", avg.avgSeasClos());
-        Assertions.assertEquals("f", avg.avgTrafJam());
-        Assertions.assertEquals(String.valueOf(fuel/counter), avg.avgFuel());
-        Assertions.assertEquals(String.valueOf(speed/counter), avg.avgSpeed());*/
+    public void getAveragesDistanceTest(){
+        AverageCalculator avg = new AverageCalculator(counter);
+        Assertions.assertEquals(String.valueOf(distance/counter), avg.avgDouble(distance));
     }
 
     @Test
-    public void getAveragesTest_seasFalse_trafTrue() {
-        seasonalClos.clear();
-        trafficJam.clear();
+    public void getAveragesTimeTest(){
+        AverageCalculator avg = new AverageCalculator(counter);
+        Assertions.assertEquals("0:49:19", avg.getAverageTime(time));
+    }
 
-        seasonalClos.add("f");
-        seasonalClos.add("f");
-        seasonalClos.add("f");
-        seasonalClos.add("t");
-        seasonalClos.add("t");
+    @Test
+    public void getAveragesRatingTest(){
+        AverageCalculator avg = new AverageCalculator(counter);
+        Assertions.assertEquals(String.valueOf(rating/counter), avg.avgInt(rating));
+    }
 
-        trafficJam.add("t");
-        trafficJam.add("t");
-        trafficJam.add("f");
-        trafficJam.add("t");
-        trafficJam.add("t");
+    @Test
+    public void getAveragesFuelTest(){
+        AverageCalculator avg = new AverageCalculator(counter);
+        Assertions.assertEquals(String.valueOf(fuel/counter), avg.avgDouble(fuel));
+    }
 
-        AverageHandler avg = new AverageHandler(counter, distance, time, rating, seasonalClos, trafficJam, fuel, speed);
-
-        //Assertions.assertEquals("f", avg.avgSeasClos());
-        //Assertions.assertEquals("t", avg.avgTrafJam());
+    @Test
+    public void getAveragesSpeedTest(){
+        AverageCalculator avg = new AverageCalculator(counter);
+        Assertions.assertEquals(String.valueOf(speed/counter), avg.avgDouble(speed));
     }
 }

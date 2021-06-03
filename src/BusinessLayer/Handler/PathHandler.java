@@ -43,7 +43,7 @@ public class PathHandler {
                 y = 420;
                 return "../../Views/TourLog/AddTourLogWindow.fxml";
             case "editLog":
-                title = "Tour Planner - Edit tour Log";
+                title = "Tour Planner - Edit Tour Log";
                 x = 500;
                 y = 450;
                 return "../../Views/TourLog/EditTourLogWindow.fxml";

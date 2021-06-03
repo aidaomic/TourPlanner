@@ -1,289 +1,38 @@
-2021-06-03 11:43:16,127 INFO B.L.LoggingHandler [JavaFX Application Thread] Application Started
-2021-06-03 11:43:16,211 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Controller -MainWindowController- created
-2021-06-03 11:43:16,438 DEBUG B.L.LoggingHandler [JavaFX Application Thread] MainWindowController Property binding finished
-2021-06-03 11:43:16,443 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandler-
-2021-06-03 11:43:16,768 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Tours-
-2021-06-03 11:43:16,773 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved SQL Query -PropertyHandler-
-2021-06-03 11:43:16,784 INFO B.L.LoggingHandler [JavaFX Application Thread] Tour Data retrieved successfully from database -Database_Tours-
-2021-06-03 11:43:16,788 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandler-
-2021-06-03 11:43:16,825 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Logs-
-2021-06-03 11:43:16,825 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandler-
-2021-06-03 11:43:16,868 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Logs-
-2021-06-03 11:43:16,869 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved SQL Query -PropertyHandler-
-2021-06-03 11:43:16,879 INFO B.L.LoggingHandler [JavaFX Application Thread] Tour Log Data retrieved successfully from database -Database_Logs-
-2021-06-03 11:43:16,879 INFO B.L.LoggingHandler [JavaFX Application Thread] MainWindowController initialized
-2021-06-03 11:43:20,031 INFO B.L.LoggingHandler [JavaFX Application Thread] Controller -AddTourWindowController- initialized
-2021-06-03 11:43:20,060 INFO B.L.LoggingHandler [JavaFX Application Thread] Stage addTour loaded -StageLoader-
-2021-06-03 11:43:20,060 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Loaded Stage for adding new Tour -AddTourViewModel-
-2021-06-03 11:43:20,060 DEBUG B.L.LoggingHandler [JavaFX Application Thread] New tour added -MainWindowController-
-2021-06-03 11:43:21,592 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Controller -MainWindowController- created
-2021-06-03 11:43:21,604 DEBUG B.L.LoggingHandler [JavaFX Application Thread] MainWindowController Property binding finished
-2021-06-03 11:43:21,605 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandler-
-2021-06-03 11:43:21,645 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Tours-
-2021-06-03 11:43:21,646 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved SQL Query -PropertyHandler-
-2021-06-03 11:43:21,647 INFO B.L.LoggingHandler [JavaFX Application Thread] Tour Data retrieved successfully from database -Database_Tours-
-2021-06-03 11:43:21,648 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandler-
-2021-06-03 11:43:21,686 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Logs-
-2021-06-03 11:43:21,687 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandler-
-2021-06-03 11:43:21,723 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Logs-
-2021-06-03 11:43:21,724 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved SQL Query -PropertyHandler-
-2021-06-03 11:43:21,726 INFO B.L.LoggingHandler [JavaFX Application Thread] Tour Log Data retrieved successfully from database -Database_Logs-
-2021-06-03 11:43:21,726 INFO B.L.LoggingHandler [JavaFX Application Thread] MainWindowController initialized
-2021-06-03 11:43:21,872 INFO B.L.LoggingHandler [JavaFX Application Thread] Stage mainWindow loaded -StageLoader-
-2021-06-03 11:43:21,873 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Main Stage loaded -AddTourWindowController-
-2021-06-03 11:43:23,313 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandler-
-2021-06-03 11:43:23,351 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Tours-
-2021-06-03 11:43:23,351 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved SQL Query -PropertyHandler-
-2021-06-03 11:43:23,432 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Image stored on FS -ImageHandler-
-2021-06-03 11:43:23,432 INFO B.L.LoggingHandler [JavaFX Application Thread] Retrieved specific Tour Data successfully from database -Database_Tours-
-2021-06-03 11:43:23,481 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Image resized -ImageHandler-
-2021-06-03 11:43:23,487 INFO B.L.LoggingHandler [JavaFX Application Thread] Tour 'Tour' displayed -MainViewModel-
-2021-06-03 11:43:23,487 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Tour -Tour- displayed successfully -MainWindowController-
-2021-06-03 11:43:24,765 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandler-
-2021-06-03 11:43:24,802 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Tours-
-2021-06-03 11:43:24,803 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved SQL Query -PropertyHandler-
-2021-06-03 11:43:24,827 INFO B.L.LoggingHandler [JavaFX Application Thread] Retrieved specific Tour Data successfully from database -Database_Tours-
-2021-06-03 11:43:24,851 INFO B.L.LoggingHandler [JavaFX Application Thread] Controller -EditTourWindowController- created
-2021-06-03 11:43:24,884 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Data set for editing Tour -SceneDataHelper-
-2021-06-03 11:50:34,868 INFO B.L.LoggingHandler [JavaFX Application Thread] Application Started
-2021-06-03 11:50:34,895 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Controller -MainWindowController- created
-2021-06-03 11:50:35,125 DEBUG B.L.LoggingHandler [JavaFX Application Thread] MainWindowController Property binding finished
-2021-06-03 11:50:35,128 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandler-
-2021-06-03 11:50:35,330 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Tours-
-2021-06-03 11:50:35,331 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved SQL Query -PropertyHandler-
-2021-06-03 11:50:35,343 INFO B.L.LoggingHandler [JavaFX Application Thread] Tour Data retrieved successfully from database -Database_Tours-
-2021-06-03 11:50:35,347 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandler-
-2021-06-03 11:50:35,385 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Logs-
-2021-06-03 11:50:35,386 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandler-
-2021-06-03 11:50:35,429 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Logs-
-2021-06-03 11:50:35,430 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved SQL Query -PropertyHandler-
-2021-06-03 11:50:35,433 INFO B.L.LoggingHandler [JavaFX Application Thread] Tour Log Data retrieved successfully from database -Database_Logs-
-2021-06-03 11:50:35,434 INFO B.L.LoggingHandler [JavaFX Application Thread] MainWindowController initialized
-2021-06-03 11:50:38,413 INFO B.L.LoggingHandler [JavaFX Application Thread] Controller -AddTourWindowController- initialized
-2021-06-03 11:50:38,440 INFO B.L.LoggingHandler [JavaFX Application Thread] Stage addTour loaded -StageLoader-
-2021-06-03 11:50:38,441 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Loaded Stage for adding new Tour -AddTourViewModel-
-2021-06-03 11:50:38,441 DEBUG B.L.LoggingHandler [JavaFX Application Thread] New tour added -MainWindowController-
-2021-06-03 11:50:39,610 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Controller -MainWindowController- created
-2021-06-03 11:50:39,622 DEBUG B.L.LoggingHandler [JavaFX Application Thread] MainWindowController Property binding finished
-2021-06-03 11:50:39,623 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandler-
-2021-06-03 11:50:39,672 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Tours-
-2021-06-03 11:50:39,673 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved SQL Query -PropertyHandler-
-2021-06-03 11:50:39,675 INFO B.L.LoggingHandler [JavaFX Application Thread] Tour Data retrieved successfully from database -Database_Tours-
-2021-06-03 11:50:39,675 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandler-
-2021-06-03 11:50:39,713 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Logs-
-2021-06-03 11:50:39,714 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandler-
-2021-06-03 11:50:39,852 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Logs-
-2021-06-03 11:50:39,853 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved SQL Query -PropertyHandler-
-2021-06-03 11:50:39,855 INFO B.L.LoggingHandler [JavaFX Application Thread] Tour Log Data retrieved successfully from database -Database_Logs-
-2021-06-03 11:50:39,855 INFO B.L.LoggingHandler [JavaFX Application Thread] MainWindowController initialized
-2021-06-03 11:50:40,002 INFO B.L.LoggingHandler [JavaFX Application Thread] Stage mainWindow loaded -StageLoader-
-2021-06-03 11:50:40,002 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Main Stage loaded -AddTourWindowController-
-2021-06-03 11:50:41,249 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandler-
-2021-06-03 11:50:41,285 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Tours-
-2021-06-03 11:50:41,286 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved SQL Query -PropertyHandler-
-2021-06-03 11:50:41,341 INFO B.L.LoggingHandler [JavaFX Application Thread] Retrieved specific Tour Data successfully from database -Database_Tours-
-2021-06-03 11:50:41,388 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Image resized -ImageHandler-
-2021-06-03 11:50:41,394 INFO B.L.LoggingHandler [JavaFX Application Thread] Tour 'Tour' displayed -MainViewModel-
-2021-06-03 11:50:41,394 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Tour -Tour- displayed successfully -MainWindowController-
-2021-06-03 11:50:42,111 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandler-
-2021-06-03 11:50:42,147 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Tours-
-2021-06-03 11:50:42,148 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved SQL Query -PropertyHandler-
-2021-06-03 11:50:42,166 INFO B.L.LoggingHandler [JavaFX Application Thread] Retrieved specific Tour Data successfully from database -Database_Tours-
-2021-06-03 11:50:42,188 INFO B.L.LoggingHandler [JavaFX Application Thread] Controller -EditTourWindowController- created
-2021-06-03 11:50:42,221 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Data set for editing Tour -SceneDataHelper-
-2021-06-03 11:50:42,221 INFO B.L.LoggingHandler [JavaFX Application Thread] Stage editTour loaded -StageLoader-
-2021-06-03 11:50:42,221 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Stage for editing Tour loaded -EditTourViewModel-
-2021-06-03 11:50:42,221 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Tour 'Tour' edited -MainWindowController-
-2021-06-03 11:50:44,387 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Controller -MainWindowController- created
-2021-06-03 11:50:44,395 DEBUG B.L.LoggingHandler [JavaFX Application Thread] MainWindowController Property binding finished
-2021-06-03 11:50:44,396 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandler-
-2021-06-03 11:50:44,434 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Tours-
-2021-06-03 11:50:44,434 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved SQL Query -PropertyHandler-
-2021-06-03 11:50:44,436 INFO B.L.LoggingHandler [JavaFX Application Thread] Tour Data retrieved successfully from database -Database_Tours-
-2021-06-03 11:50:44,437 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandler-
-2021-06-03 11:50:44,473 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Logs-
-2021-06-03 11:50:44,473 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandler-
-2021-06-03 11:50:44,511 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Logs-
-2021-06-03 11:50:44,512 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved SQL Query -PropertyHandler-
-2021-06-03 11:50:44,514 INFO B.L.LoggingHandler [JavaFX Application Thread] Tour Log Data retrieved successfully from database -Database_Logs-
-2021-06-03 11:50:44,514 INFO B.L.LoggingHandler [JavaFX Application Thread] MainWindowController initialized
-2021-06-03 11:50:44,633 INFO B.L.LoggingHandler [JavaFX Application Thread] Stage mainWindow loaded -StageLoader-
-2021-06-03 11:50:44,633 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Exiting Edit Tour -EditTourWindowController-
-2021-06-03 11:50:46,696 DEBUG B.L.LoggingHandler [JavaFX Application Thread] No Tour selected to add Log to -AddLogViewModel-
-2021-06-03 11:50:48,444 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Alert => No Tour chosen -Allerts-
-2021-06-03 11:50:48,445 DEBUG B.L.LoggingHandler [JavaFX Application Thread] new Log created for Tour 'null' -MainWindowController-
-2021-06-03 11:50:49,365 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandler-
-2021-06-03 11:50:49,402 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Tours-
-2021-06-03 11:50:49,403 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved SQL Query -PropertyHandler-
-2021-06-03 11:50:49,445 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Image stored on FS -ImageHandler-
-2021-06-03 11:50:49,446 INFO B.L.LoggingHandler [JavaFX Application Thread] Retrieved specific Tour Data successfully from database -Database_Tours-
-2021-06-03 11:50:49,454 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Image resized -ImageHandler-
-2021-06-03 11:50:49,456 INFO B.L.LoggingHandler [JavaFX Application Thread] Tour 'Test 1' displayed -MainViewModel-
-2021-06-03 11:50:49,456 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Tour -Test 1- displayed successfully -MainWindowController-
-2021-06-03 11:50:50,439 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandler-
-2021-06-03 11:50:50,483 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Tours-
-2021-06-03 11:50:50,484 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved SQL Query -PropertyHandler-
-2021-06-03 11:50:50,504 INFO B.L.LoggingHandler [JavaFX Application Thread] Retrieved specific Tour Data successfully from database -Database_Tours-
-2021-06-03 11:50:50,541 INFO B.L.LoggingHandler [JavaFX Application Thread] Controller -AddTourLogWindowController- created
-2021-06-03 11:50:50,641 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Data set for adding Log -SceneDataHelper-
-2021-06-03 11:50:50,642 INFO B.L.LoggingHandler [JavaFX Application Thread] Stage addLog loaded -StageLoader-
-2021-06-03 11:50:50,642 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Loaded Stage to add Tour Log -AddLogViewModel-
-2021-06-03 11:50:50,642 DEBUG B.L.LoggingHandler [JavaFX Application Thread] new Log created for Tour 'Test 1' -MainWindowController-
-2021-06-03 11:50:52,010 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Controller -MainWindowController- created
-2021-06-03 11:50:52,017 DEBUG B.L.LoggingHandler [JavaFX Application Thread] MainWindowController Property binding finished
-2021-06-03 11:50:52,018 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandler-
-2021-06-03 11:50:52,057 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Tours-
-2021-06-03 11:50:52,057 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved SQL Query -PropertyHandler-
-2021-06-03 11:50:52,059 INFO B.L.LoggingHandler [JavaFX Application Thread] Tour Data retrieved successfully from database -Database_Tours-
-2021-06-03 11:50:52,059 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandler-
-2021-06-03 11:50:52,096 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Logs-
-2021-06-03 11:50:52,097 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandler-
-2021-06-03 11:50:52,133 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Logs-
-2021-06-03 11:50:52,133 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved SQL Query -PropertyHandler-
-2021-06-03 11:50:52,135 INFO B.L.LoggingHandler [JavaFX Application Thread] Tour Log Data retrieved successfully from database -Database_Logs-
-2021-06-03 11:50:52,136 INFO B.L.LoggingHandler [JavaFX Application Thread] MainWindowController initialized
-2021-06-03 11:50:52,239 INFO B.L.LoggingHandler [JavaFX Application Thread] Stage mainWindow loaded -StageLoader-
-2021-06-03 11:50:52,239 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Main Stage loaded -AddTourLogWindowController-
-2021-06-03 11:50:54,256 INFO B.L.LoggingHandler [JavaFX Application Thread] Controller -EditTourLogWindowController- created
-2021-06-03 11:50:54,289 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Data set for editing Tour Log -SceneDataHelper-
-2021-06-03 11:50:54,289 INFO B.L.LoggingHandler [JavaFX Application Thread] Stage editLog loaded -StageLoader-
-2021-06-03 11:50:54,290 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Log edited -MainWindowController-
-2021-06-03 11:50:59,289 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Controller -MainWindowController- created
-2021-06-03 11:50:59,295 DEBUG B.L.LoggingHandler [JavaFX Application Thread] MainWindowController Property binding finished
-2021-06-03 11:50:59,295 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandler-
-2021-06-03 11:50:59,338 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Tours-
-2021-06-03 11:50:59,339 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved SQL Query -PropertyHandler-
-2021-06-03 11:50:59,341 INFO B.L.LoggingHandler [JavaFX Application Thread] Tour Data retrieved successfully from database -Database_Tours-
-2021-06-03 11:50:59,341 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandler-
-2021-06-03 11:50:59,384 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Logs-
-2021-06-03 11:50:59,384 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandler-
-2021-06-03 11:50:59,424 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Logs-
-2021-06-03 11:50:59,424 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved SQL Query -PropertyHandler-
-2021-06-03 11:50:59,427 INFO B.L.LoggingHandler [JavaFX Application Thread] Tour Log Data retrieved successfully from database -Database_Logs-
-2021-06-03 11:50:59,427 INFO B.L.LoggingHandler [JavaFX Application Thread] MainWindowController initialized
-2021-06-03 11:50:59,515 INFO B.L.LoggingHandler [JavaFX Application Thread] Stage mainWindow loaded -StageLoader-
-2021-06-03 11:50:59,515 INFO B.L.LoggingHandler [JavaFX Application Thread] Main Stage loaded -EditTourLogController-
-2021-06-03 11:51:03,089 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandler-
-2021-06-03 11:51:03,125 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Tours-
-2021-06-03 11:51:03,126 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved SQL Query -PropertyHandler-
-2021-06-03 11:51:03,146 INFO B.L.LoggingHandler [JavaFX Application Thread] Retrieved specific Tour Data successfully from database -Database_Tours-
-2021-06-03 11:51:03,162 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Image resized -ImageHandler-
-2021-06-03 11:51:03,164 INFO B.L.LoggingHandler [JavaFX Application Thread] Tour 'Test 1' displayed -MainViewModel-
-2021-06-03 11:51:03,164 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Tour -Test 1- displayed successfully -MainWindowController-
-2021-06-03 11:51:03,752 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Loaded Image from FS -ImageHandler-
-2021-06-03 11:51:03,779 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Image set -SceneDataHelper-
-2021-06-03 11:51:03,779 INFO B.L.LoggingHandler [JavaFX Application Thread] Stage imageWindow loaded -StageLoader-
-2021-06-03 11:51:03,779 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Loaded Stage for zoomed in map -MainViewModel-
-2021-06-03 11:51:03,779 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Zoomed into tour map -MainWindowController-
-2021-06-03 11:51:05,230 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Controller -MainWindowController- created
-2021-06-03 11:51:05,236 DEBUG B.L.LoggingHandler [JavaFX Application Thread] MainWindowController Property binding finished
-2021-06-03 11:51:05,237 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandler-
-2021-06-03 11:51:05,275 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Tours-
-2021-06-03 11:51:05,275 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved SQL Query -PropertyHandler-
-2021-06-03 11:51:05,277 INFO B.L.LoggingHandler [JavaFX Application Thread] Tour Data retrieved successfully from database -Database_Tours-
-2021-06-03 11:51:05,278 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandler-
-2021-06-03 11:51:05,314 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Logs-
-2021-06-03 11:51:05,315 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandler-
-2021-06-03 11:51:05,351 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Logs-
-2021-06-03 11:51:05,351 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved SQL Query -PropertyHandler-
-2021-06-03 11:51:05,353 INFO B.L.LoggingHandler [JavaFX Application Thread] Tour Log Data retrieved successfully from database -Database_Logs-
-2021-06-03 11:51:05,353 INFO B.L.LoggingHandler [JavaFX Application Thread] MainWindowController initialized
-2021-06-03 11:51:05,427 INFO B.L.LoggingHandler [JavaFX Application Thread] Stage mainWindow loaded -StageLoader-
-2021-06-03 11:51:05,427 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Exiting Image -ImageWindowController-
-2021-06-03 11:54:29,293 INFO B.L.LoggingHandler [JavaFX Application Thread] Application Started
-2021-06-03 11:54:29,321 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Controller -MainWindowController- created
-2021-06-03 11:54:29,564 DEBUG B.L.LoggingHandler [JavaFX Application Thread] MainWindowController Property binding finished
-2021-06-03 11:54:29,566 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandler-
-2021-06-03 11:54:29,760 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Tours-
-2021-06-03 11:54:29,761 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved SQL Query -PropertyHandler-
-2021-06-03 11:54:29,774 INFO B.L.LoggingHandler [JavaFX Application Thread] Tour Data retrieved successfully from database -Database_Tours-
-2021-06-03 11:54:29,778 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandler-
-2021-06-03 11:54:29,817 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Logs-
-2021-06-03 11:54:29,818 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandler-
-2021-06-03 11:54:29,857 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Logs-
-2021-06-03 11:54:29,858 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved SQL Query -PropertyHandler-
-2021-06-03 11:54:29,862 INFO B.L.LoggingHandler [JavaFX Application Thread] Tour Log Data retrieved successfully from database -Database_Logs-
-2021-06-03 11:54:29,862 INFO B.L.LoggingHandler [JavaFX Application Thread] MainWindowController initialized
-2021-06-03 11:54:31,971 INFO B.L.LoggingHandler [JavaFX Application Thread] Controller -LoggingLevelSelectorController- created
-2021-06-03 11:54:32,021 INFO B.L.LoggingHandler [JavaFX Application Thread] Stage logLevel loaded -StageLoader-
-2021-06-03 11:54:33,116 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Controller -MainWindowController- created
-2021-06-03 11:54:33,131 DEBUG B.L.LoggingHandler [JavaFX Application Thread] MainWindowController Property binding finished
-2021-06-03 11:54:33,131 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandler-
-2021-06-03 11:54:33,172 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Tours-
-2021-06-03 11:54:33,173 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved SQL Query -PropertyHandler-
-2021-06-03 11:54:33,175 INFO B.L.LoggingHandler [JavaFX Application Thread] Tour Data retrieved successfully from database -Database_Tours-
-2021-06-03 11:54:33,176 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandler-
-2021-06-03 11:54:33,327 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Logs-
-2021-06-03 11:54:33,328 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandler-
-2021-06-03 11:54:33,364 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Logs-
-2021-06-03 11:54:33,365 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved SQL Query -PropertyHandler-
-2021-06-03 11:54:33,367 INFO B.L.LoggingHandler [JavaFX Application Thread] Tour Log Data retrieved successfully from database -Database_Logs-
-2021-06-03 11:54:33,367 INFO B.L.LoggingHandler [JavaFX Application Thread] MainWindowController initialized
-2021-06-03 11:54:33,521 INFO B.L.LoggingHandler [JavaFX Application Thread] Stage mainWindow loaded -StageLoader-
-2021-06-03 11:54:33,522 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Main Stage loaded -LoggingLevelSelectorController-
-2021-06-03 11:56:21,753 INFO B.L.LoggingHandler [JavaFX Application Thread] Application Started
-2021-06-03 11:56:21,783 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Controller -MainWindowController- created
-2021-06-03 11:56:22,001 DEBUG B.L.LoggingHandler [JavaFX Application Thread] MainWindowController Property binding finished
-2021-06-03 11:56:22,003 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandler-
-2021-06-03 11:56:22,198 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Tours-
-2021-06-03 11:56:22,199 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved SQL Query -PropertyHandler-
-2021-06-03 11:56:22,211 INFO B.L.LoggingHandler [JavaFX Application Thread] Tour Data retrieved successfully from database -Database_Tours-
-2021-06-03 11:56:22,214 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandler-
-2021-06-03 11:56:22,254 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Logs-
-2021-06-03 11:56:22,255 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandler-
-2021-06-03 11:56:22,304 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Logs-
-2021-06-03 11:56:22,307 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved SQL Query -PropertyHandler-
-2021-06-03 11:56:22,316 INFO B.L.LoggingHandler [JavaFX Application Thread] Tour Log Data retrieved successfully from database -Database_Logs-
-2021-06-03 11:56:22,317 INFO B.L.LoggingHandler [JavaFX Application Thread] MainWindowController initialized
-2021-06-03 11:56:30,442 INFO B.L.LoggingHandler [JavaFX Application Thread] Controller -LoggingLevelSelectorController- created
-2021-06-03 11:56:30,475 INFO B.L.LoggingHandler [JavaFX Application Thread] Stage logLevel loaded -StageLoader-
-2021-06-03 11:56:32,027 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Controller -MainWindowController- created
-2021-06-03 11:56:32,041 DEBUG B.L.LoggingHandler [JavaFX Application Thread] MainWindowController Property binding finished
-2021-06-03 11:56:32,042 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandler-
-2021-06-03 11:56:32,083 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Tours-
-2021-06-03 11:56:32,083 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved SQL Query -PropertyHandler-
-2021-06-03 11:56:32,086 INFO B.L.LoggingHandler [JavaFX Application Thread] Tour Data retrieved successfully from database -Database_Tours-
-2021-06-03 11:56:32,087 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandler-
-2021-06-03 11:56:32,126 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Logs-
-2021-06-03 11:56:32,126 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandler-
-2021-06-03 11:56:32,161 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Logs-
-2021-06-03 11:56:32,162 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved SQL Query -PropertyHandler-
-2021-06-03 11:56:32,165 INFO B.L.LoggingHandler [JavaFX Application Thread] Tour Log Data retrieved successfully from database -Database_Logs-
-2021-06-03 11:56:32,165 INFO B.L.LoggingHandler [JavaFX Application Thread] MainWindowController initialized
-2021-06-03 11:56:32,322 INFO B.L.LoggingHandler [JavaFX Application Thread] Stage mainWindow loaded -StageLoader-
-2021-06-03 11:56:32,323 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Main Stage loaded -LoggingLevelSelectorController-
-2021-06-03 11:56:35,002 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Tour not copied because no Tour was selected -MainViewModel-
-2021-06-03 11:56:36,471 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Alert => No Tour chosen -Allerts-
-2021-06-03 11:56:36,472 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandler-
-2021-06-03 11:56:36,512 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Tours-
-2021-06-03 11:56:36,512 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved SQL Query -PropertyHandler-
-2021-06-03 11:56:36,514 INFO B.L.LoggingHandler [JavaFX Application Thread] Tour Data retrieved successfully from database -Database_Tours-
-2021-06-03 11:56:36,515 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Tour 'null' copied -MainWindowController-
-2021-06-03 11:56:37,502 DEBUG B.L.LoggingHandler [JavaFX Application Thread] help -MenuBarViewModel-
-2021-06-03 11:56:37,502 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Help finished -MainWindowController-
-2021-06-03 11:56:38,959 DEBUG B.L.LoggingHandler [JavaFX Application Thread] help -MenuBarViewModel-
-2021-06-03 11:56:38,959 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Help finished -MainWindowController-
-2021-06-03 11:56:39,115 DEBUG B.L.LoggingHandler [JavaFX Application Thread] help -MenuBarViewModel-
-2021-06-03 11:56:39,115 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Help finished -MainWindowController-
-2021-06-03 11:56:39,256 DEBUG B.L.LoggingHandler [JavaFX Application Thread] help -MenuBarViewModel-
-2021-06-03 11:56:39,256 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Help finished -MainWindowController-
-2021-06-03 11:56:39,405 DEBUG B.L.LoggingHandler [JavaFX Application Thread] help -MenuBarViewModel-
-2021-06-03 11:56:39,406 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Help finished -MainWindowController-
-2021-06-03 11:56:39,554 DEBUG B.L.LoggingHandler [JavaFX Application Thread] help -MenuBarViewModel-
-2021-06-03 11:56:39,554 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Help finished -MainWindowController-
-2021-06-03 11:56:39,782 DEBUG B.L.LoggingHandler [JavaFX Application Thread] help -MenuBarViewModel-
-2021-06-03 11:56:39,782 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Help finished -MainWindowController-
-2021-06-03 11:56:41,421 DEBUG B.L.LoggingHandler [JavaFX Application Thread] help -MenuBarViewModel-
-2021-06-03 11:56:41,421 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Help finished -MainWindowController-
-2021-06-03 11:56:41,808 DEBUG B.L.LoggingHandler [JavaFX Application Thread] help -MenuBarViewModel-
-2021-06-03 11:56:41,808 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Help finished -MainWindowController-
-2021-06-03 11:56:41,985 DEBUG B.L.LoggingHandler [JavaFX Application Thread] help -MenuBarViewModel-
-2021-06-03 11:56:41,986 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Help finished -MainWindowController-
-2021-06-03 11:56:42,148 DEBUG B.L.LoggingHandler [JavaFX Application Thread] help -MenuBarViewModel-
-2021-06-03 11:56:42,148 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Help finished -MainWindowController-
-2021-06-03 11:56:42,311 DEBUG B.L.LoggingHandler [JavaFX Application Thread] help -MenuBarViewModel-
-2021-06-03 11:56:42,311 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Help finished -MainWindowController-
-2021-06-03 11:56:42,496 DEBUG B.L.LoggingHandler [JavaFX Application Thread] help -MenuBarViewModel-
-2021-06-03 11:56:42,496 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Help finished -MainWindowController-
-2021-06-03 11:56:42,701 DEBUG B.L.LoggingHandler [JavaFX Application Thread] help -MenuBarViewModel-
-2021-06-03 11:56:42,701 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Help finished -MainWindowController-
+2021-06-03 12:20:00,373 DEBUG B.L.LoggingHandler [main] Retrieving average value from double -AverageCalculator-
+2021-06-03 12:20:00,381 DEBUG B.L.LoggingHandler [main] Retrieving average value from time ('00:00:00') -AverageCalculator-
+2021-06-03 12:20:00,382 DEBUG B.L.LoggingHandler [main] Retrieving average value from int -AverageCalculator-
+2021-06-03 12:20:00,382 DEBUG B.L.LoggingHandler [main] Retrieving average value from double -AverageCalculator-
+2021-06-03 12:22:12,303 DEBUG B.L.LoggingHandler [main] Retrieving average value from double -AverageCalculator-
+2021-06-03 12:22:12,312 DEBUG B.L.LoggingHandler [main] Retrieving average value from time ('00:00:00') -AverageCalculator-
+2021-06-03 12:22:12,316 DEBUG B.L.LoggingHandler [main] Retrieving average value from int -AverageCalculator-
+2021-06-03 12:22:12,316 DEBUG B.L.LoggingHandler [main] Retrieving average value from double -AverageCalculator-
+2021-06-03 12:23:50,272 DEBUG B.L.LoggingHandler [main] Retrieving average value from double -AverageCalculator-
+2021-06-03 12:23:50,276 DEBUG B.L.LoggingHandler [main] Retrieving average value from time ('00:00:00') -AverageCalculator-
+2021-06-03 12:23:50,279 DEBUG B.L.LoggingHandler [main] Retrieving average value from int -AverageCalculator-
+2021-06-03 12:23:50,279 DEBUG B.L.LoggingHandler [main] Retrieving average value from double -AverageCalculator-
+2021-06-03 12:25:15,142 DEBUG B.L.LoggingHandler [main] Retrieving average value from double -AverageCalculator-
+2021-06-03 12:25:44,103 DEBUG B.L.LoggingHandler [main] Retrieving average value from double -AverageCalculator-
+2021-06-03 12:25:58,353 DEBUG B.L.LoggingHandler [main] Retrieving average value from double -AverageCalculator-
+2021-06-03 12:25:58,353 DEBUG B.L.LoggingHandler [main] Retrieving average value from double -AverageCalculator-
+2021-06-03 12:26:17,423 DEBUG B.L.LoggingHandler [main] Retrieving average value from double -AverageCalculator-
+2021-06-03 12:26:33,373 DEBUG B.L.LoggingHandler [main] Retrieving average value from double -AverageCalculator-
+2021-06-03 12:26:33,383 DEBUG B.L.LoggingHandler [main] Retrieving average value from time ('00:00:00') -AverageCalculator-
+2021-06-03 12:26:33,383 DEBUG B.L.LoggingHandler [main] Retrieving average value from int -AverageCalculator-
+2021-06-03 12:26:33,383 DEBUG B.L.LoggingHandler [main] Retrieving average value from double -AverageCalculator-
+2021-06-03 12:29:02,213 DEBUG B.L.LoggingHandler [main] Retrieving average value from double -AverageCalculator-
+2021-06-03 12:29:02,223 DEBUG B.L.LoggingHandler [main] Retrieving average value from double -AverageCalculator-
+2021-06-03 12:29:02,232 DEBUG B.L.LoggingHandler [main] Retrieving average value from int -AverageCalculator-
+2021-06-03 12:29:02,242 DEBUG B.L.LoggingHandler [main] Retrieving average value from time ('00:00:00') -AverageCalculator-
+2021-06-03 12:29:02,243 DEBUG B.L.LoggingHandler [main] Retrieving average value from double -AverageCalculator-
+2021-06-03 12:29:27,036 DEBUG B.L.LoggingHandler [main] Retrieving average value from double -AverageCalculator-
+2021-06-03 12:29:27,043 DEBUG B.L.LoggingHandler [main] Retrieving average value from double -AverageCalculator-
+2021-06-03 12:29:27,051 DEBUG B.L.LoggingHandler [main] Retrieving average value from int -AverageCalculator-
+2021-06-03 12:29:27,053 DEBUG B.L.LoggingHandler [main] Retrieving average value from time ('00:00:00') -AverageCalculator-
+2021-06-03 12:29:27,053 DEBUG B.L.LoggingHandler [main] Retrieving average value from double -AverageCalculator-
+2021-06-03 12:37:13,273 DEBUG B.L.LoggingHandler [main] Retrieving Path -PathHandler-
+2021-06-03 12:37:13,293 DEBUG B.L.LoggingHandler [main] Retrieving Path -PathHandler-
+2021-06-03 12:37:13,293 DEBUG B.L.LoggingHandler [main] Retrieving Path -PathHandler-
+2021-06-03 12:37:13,293 DEBUG B.L.LoggingHandler [main] Retrieving Path -PathHandler-
+2021-06-03 12:37:13,293 DEBUG B.L.LoggingHandler [main] Retrieving Path -PathHandler-
+2021-06-03 12:37:13,302 DEBUG B.L.LoggingHandler [main] Retrieving Path -PathHandler-
+2021-06-03 12:37:13,302 DEBUG B.L.LoggingHandler [main] Retrieving Path -PathHandler-

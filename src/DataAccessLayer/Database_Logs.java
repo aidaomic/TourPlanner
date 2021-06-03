@@ -89,6 +89,32 @@ public class Database_Logs implements Database{
         return logArray;
     }
 
+    public ArrayList getSpecific(String name){
+        try {
+            logArray.clear();
+            connection = connectDatabase();
+            preparedStatement = connectDatabase().prepareStatement(new PropertyHandler().getSqlQuery("specificLogs"));
+            preparedStatement.setString(1, name);
+            rs = preparedStatement.executeQuery();
+            while (rs.next()){
+                LogTable tourLog= new LogTable(rs.getInt(1),
+                        rs.getString(2), rs.getString(3) + " " +
+                        rs.getString(4), rs.getDouble(5), rs.getString(6),
+                        rs.getDouble(7), rs.getString(8), rs.getString(9),
+                        rs.getString(10), rs.getString(11), rs.getDouble(12),
+                        rs.getDouble(13));
+                logArray.add(tourLog);
+            }
+            connection.close();
+            log.logInfo("Tour Log Data retrieved successfully from database -Database_Logs-");
+        } catch (SQLException e) {
+            log.logError("SQL Exception retrieving Tour Log Data from database -Database_Logs-");
+        } catch (IOException e) {
+            log.logError("IO Exception retrieving Tour Log Data from database -Database_Logs-");
+        }
+        return logArray;
+    }
+
     public void delete(String name){//name equals id in this case
         try {
             connection = connectDatabase();

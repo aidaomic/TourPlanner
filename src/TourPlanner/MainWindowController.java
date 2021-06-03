@@ -1,6 +1,7 @@
 package TourPlanner;
 
 import BusinessLayer.Logging.LoggingHandler;
+import BusinessLayer.Notification.Allerts;
 import BusinessLayer.StageSceneViewHelper.StageLoader;
 import DataAccessLayer.Database_Logs;
 import DataAccessLayer.Database_Tours;
@@ -150,7 +151,8 @@ public class MainWindowController implements Initializable {
 
     public void showTour(MouseEvent mouseEvent) {
         viewModel.showTour(String.valueOf(tourList.getSelectionModel().getSelectedItem()));
-        log.logDebug("Tour -"+tourList.getSelectionModel().getSelectedItem()+"- displayed successfully -MainWindowController-");
+        logTable.setItems(menuModel.logsForSpecificTour(String.valueOf(tourList.getSelectionModel().getSelectedItem())));
+        log.logDebug("Tour -"+tourList.getSelectionModel().getSelectedItem()+"- and its Logs displayed successfully -MainWindowController-");
     }
 
     public void zoom(MouseEvent mouseEvent) throws IOException {

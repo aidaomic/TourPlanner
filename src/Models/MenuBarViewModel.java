@@ -35,12 +35,25 @@ public class MenuBarViewModel {
     }
 
     public ObservableList searchForLog(String text) {
-        ArrayList searchedList = new Database_Logs().getSearchedTourLogs(text);
-        ObservableList obList = FXCollections.observableList(searchedList);
-        log.logDebug("Searched Tour Logs displayed -MenuBarViewModel-");
-        return obList;
+            ArrayList searchedList = new Database_Logs().getSearchedTourLogs(text);
+            ObservableList obList = FXCollections.observableList(searchedList);
+            log.logDebug("Searched/Selected Tour Logs displayed -MenuBarViewModel-");
+            return obList;
     }
 
+    public ObservableList logsForSpecificTour(String name){
+        ObservableList obList = null;
+        ArrayList logs = null;
+        if (name.equals("null")) {
+            log.logDebug("No Tour Logs shown, because no Tour was selected -MenuBarViewModel-");
+            logs = new Database_Logs().getLogs();
+            obList = FXCollections.observableList(logs);
+            return obList;
+        }
+        logs = new Database_Logs().getSpecific(name);
+        obList = FXCollections.observableList(logs);
+        return obList;
+    }
     public void exportTours(){
         new PdfExportTours().toursToPdf();
         new Allerts().allertExportSuccess();

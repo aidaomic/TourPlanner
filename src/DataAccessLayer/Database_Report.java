@@ -3,7 +3,6 @@ package DataAccessLayer;
 import BusinessLayer.Handler.AverageHandler;
 import BusinessLayer.Handler.PropertyHandler;
 import BusinessLayer.Logging.LoggingHandler;
-import com.itextpdf.text.Element;
 import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPTable;
@@ -37,7 +36,7 @@ public class Database_Report {
     public PdfPTable toFileTable(PdfPTable exportTable, String tourName) {
         try {
             connection = connectDatabase();
-            preparedStatement = connection.prepareStatement(new PropertyHandler().getSqlQuery("exportLogsSingleTour"));
+            preparedStatement = connection.prepareStatement(new PropertyHandler().getSqlQuery("specificLogs"));
             preparedStatement.setString(1, tourName);
             rs = preparedStatement.executeQuery();
             while(rs.next()){
@@ -62,7 +61,7 @@ public class Database_Report {
             ArrayList weather = new ArrayList(), time = new ArrayList(), seasClos = new ArrayList(), transport = new ArrayList(), traf = new ArrayList();
             int rating = 0;
             connection = connectDatabase();
-            preparedStatement = connection.prepareStatement(new PropertyHandler().getSqlQuery("exportLogsSingleTour"));
+            preparedStatement = connection.prepareStatement(new PropertyHandler().getSqlQuery("specificLogs"));
             preparedStatement.setString(1, tourName);
             rs = preparedStatement.executeQuery();
             while(rs.next()){

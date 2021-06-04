@@ -1,7 +1,6 @@
 package Models;
 
-import BusinessLayer.DatabaseInputHandler;
-import BusinessLayer.Handler.ImageHandler;
+import BusinessLayer.Handler.DatabaseInputHandler;
 import BusinessLayer.Logging.LoggingHandler;
 import BusinessLayer.MapQuest.MapQuest;
 import BusinessLayer.Notification.AlertWarning;

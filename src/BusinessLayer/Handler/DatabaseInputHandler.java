@@ -1,4 +1,4 @@
-package BusinessLayer;
+package BusinessLayer.Handler;
 
 import BusinessLayer.Handler.ImageHandler;
 import BusinessLayer.MapQuest.MapQuest;

@@ -1,21 +1,14 @@
 package Models;
 
-import BusinessLayer.DatabaseInputHandler;
+import BusinessLayer.Handler.DatabaseInputHandler;
 import BusinessLayer.Logging.LoggingHandler;
-import BusinessLayer.MapQuest.MapQuest;
 import BusinessLayer.StageSceneViewHelper.StageLoader;
 import DataAccessLayer.Database_EditTours;
-import DataAccessLayer.Database_Tours;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class AddTourViewModel {
     private Database_EditTours dbt = new Database_EditTours();

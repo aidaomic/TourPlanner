@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
-public class PropertyHandlerMQTest {
+public class PropertyHandlerTest {
 
     private PropertyHandlerDatabase phd = new PropertyHandlerDatabase();
     private PropertyHandlerMQ phmq = new PropertyHandlerMQ();

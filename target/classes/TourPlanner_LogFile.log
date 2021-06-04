@@ -2598,3 +2598,184 @@
 2021-06-04 11:26:28,240 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandlerDatabase-
 2021-06-04 11:26:28,284 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_EditTours-
 2021-06-04 11:26:28,285 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved SQL Query -PropertyHandlerDatabase-
+2021-06-04 11:30:12,729 INFO B.L.LoggingHandler [JavaFX Application Thread] Application Started
+2021-06-04 11:30:12,770 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Controller -MainWindowController- created
+2021-06-04 11:30:13,014 DEBUG B.L.LoggingHandler [JavaFX Application Thread] MainWindowController Property binding finished
+2021-06-04 11:30:13,017 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandlerDatabase-
+2021-06-04 11:30:13,212 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Tours-
+2021-06-04 11:30:13,214 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved SQL Query -PropertyHandlerDatabase-
+2021-06-04 11:30:13,227 INFO B.L.LoggingHandler [JavaFX Application Thread] Tour Data retrieved successfully from database -Database_Tours-
+2021-06-04 11:30:13,231 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandlerDatabase-
+2021-06-04 11:30:13,383 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Logs-
+2021-06-04 11:30:13,384 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandlerDatabase-
+2021-06-04 11:30:13,425 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Logs-
+2021-06-04 11:30:13,425 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved SQL Query -PropertyHandlerDatabase-
+2021-06-04 11:30:13,429 INFO B.L.LoggingHandler [JavaFX Application Thread] Tour Log Data retrieved successfully from database -Database_Logs-
+2021-06-04 11:30:13,429 INFO B.L.LoggingHandler [JavaFX Application Thread] MainWindowController initialized
+2021-06-04 11:30:15,020 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandlerDatabase-
+2021-06-04 11:30:15,059 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Tours-
+2021-06-04 11:30:15,060 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved SQL Query -PropertyHandlerDatabase-
+2021-06-04 11:30:15,130 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Image stored on FS -ImageHandler-
+2021-06-04 11:30:15,130 INFO B.L.LoggingHandler [JavaFX Application Thread] Retrieved specific Tour Data successfully from database -Database_Tours-
+2021-06-04 11:30:15,182 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Image resized -ImageHandler-
+2021-06-04 11:30:15,188 INFO B.L.LoggingHandler [JavaFX Application Thread] Tour 'Tour 19' displayed -MainViewModel-
+2021-06-04 11:30:15,189 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandlerDatabase-
+2021-06-04 11:30:15,225 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Logs-
+2021-06-04 11:30:15,226 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandlerDatabase-
+2021-06-04 11:30:15,263 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Logs-
+2021-06-04 11:30:15,263 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved SQL Query -PropertyHandlerDatabase-
+2021-06-04 11:30:15,266 INFO B.L.LoggingHandler [JavaFX Application Thread] Tour Log Data retrieved successfully from database -Database_Logs-
+2021-06-04 11:30:15,267 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Tour -Tour 19- and its Logs displayed successfully -MainWindowController-
+2021-06-04 11:30:16,027 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandlerDatabase-
+2021-06-04 11:30:16,063 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Tours-
+2021-06-04 11:30:16,064 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved SQL Query -PropertyHandlerDatabase-
+2021-06-04 11:30:16,082 INFO B.L.LoggingHandler [JavaFX Application Thread] Retrieved specific Tour Data successfully from database -Database_Tours-
+2021-06-04 11:30:16,084 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieving Path -TourPathHandler-
+2021-06-04 11:30:16,104 INFO B.L.LoggingHandler [JavaFX Application Thread] Controller -EditTourWindowController- created
+2021-06-04 11:30:16,157 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Data set for editing Tour -SceneDataHelper-
+2021-06-04 11:30:16,157 INFO B.L.LoggingHandler [JavaFX Application Thread] Stage editTour loaded -StageLoader-
+2021-06-04 11:30:16,157 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Stage for editing Tour loaded -EditTourViewModel-
+2021-06-04 11:30:16,157 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Tour 'Tour 19' edited -MainWindowController-
+2021-06-04 11:30:19,573 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Changes found editing Tour -EditTourInspector-
+2021-06-04 11:30:19,574 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Tour Rote changed -EditTourInspector-
+2021-06-04 11:30:19,582 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Query for MapQuest (Directions) -PropertyHandlerMQ-
+2021-06-04 11:30:19,743 DEBUG B.L.LoggingHandler [JavaFX Application Thread] MapQuest Request (Drections) sent -MapQuest-
+2021-06-04 11:30:25,332 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Alert => Problem with MapQuest -AlertWarning-
+2021-06-04 11:30:25,332 ERROR B.L.LoggingHandler [JavaFX Application Thread] Null Pointer exception, request has been closed -MapQuest-
+2021-06-04 11:30:25,333 INFO B.L.LoggingHandler [JavaFX Application Thread] Retrieved Data from MapQuest successfully -MapQuest-
+2021-06-04 11:30:25,334 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieving Path -PathHandler-
+2021-06-04 11:30:25,337 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Controller -MainWindowController- created
+2021-06-04 11:30:25,352 DEBUG B.L.LoggingHandler [JavaFX Application Thread] MainWindowController Property binding finished
+2021-06-04 11:30:25,353 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandlerDatabase-
+2021-06-04 11:30:25,392 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Tours-
+2021-06-04 11:30:25,393 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved SQL Query -PropertyHandlerDatabase-
+2021-06-04 11:30:25,396 INFO B.L.LoggingHandler [JavaFX Application Thread] Tour Data retrieved successfully from database -Database_Tours-
+2021-06-04 11:30:25,397 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandlerDatabase-
+2021-06-04 11:30:25,435 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Logs-
+2021-06-04 11:30:25,435 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandlerDatabase-
+2021-06-04 11:30:25,474 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Logs-
+2021-06-04 11:30:25,474 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved SQL Query -PropertyHandlerDatabase-
+2021-06-04 11:30:25,476 INFO B.L.LoggingHandler [JavaFX Application Thread] Tour Log Data retrieved successfully from database -Database_Logs-
+2021-06-04 11:30:25,477 INFO B.L.LoggingHandler [JavaFX Application Thread] MainWindowController initialized
+2021-06-04 11:30:25,621 INFO B.L.LoggingHandler [JavaFX Application Thread] Stage mainWindow loaded -StageLoader-
+2021-06-04 11:30:25,621 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Route changed during editing -EditTourViewModel-
+2021-06-04 11:30:25,621 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Editing Tour finished -EditTourWindowController-
+2021-06-04 11:32:13,215 DEBUG B.L.LoggingHandler [main] Retrieving average value from double -AverageCalculator-
+2021-06-04 11:32:13,231 DEBUG B.L.LoggingHandler [main] Retrieving average value from double -AverageCalculator-
+2021-06-04 11:32:13,231 DEBUG B.L.LoggingHandler [main] Retrieving average value from int -AverageCalculator-
+2021-06-04 11:32:13,231 DEBUG B.L.LoggingHandler [main] Retrieving average value from time ('00:00:00') -AverageCalculator-
+2021-06-04 11:32:13,231 DEBUG B.L.LoggingHandler [main] Retrieving average value from double -AverageCalculator-
+2021-06-04 11:32:19,843 DEBUG B.L.LoggingHandler [main] Counting data from ArrayList -CounterHandler-
+2021-06-04 11:32:19,858 DEBUG B.L.LoggingHandler [main] Counting data from ArrayList -CounterHandler-
+2021-06-04 11:32:19,858 DEBUG B.L.LoggingHandler [main] Counting data from ArrayList -CounterHandler-
+2021-06-04 11:32:26,221 DEBUG B.L.LoggingHandler [main] Retrieving Path -PathHandler-
+2021-06-04 11:32:26,221 ERROR B.L.LoggingHandler [main] Problem with Path -PathHandler-
+2021-06-04 11:32:26,252 DEBUG B.L.LoggingHandler [main] Retrieving Path -PathHandler-
+2021-06-04 11:32:26,252 ERROR B.L.LoggingHandler [main] Problem with Path -PathHandler-
+2021-06-04 11:32:26,252 DEBUG B.L.LoggingHandler [main] Retrieving Path -PathHandler-
+2021-06-04 11:32:26,252 ERROR B.L.LoggingHandler [main] Problem with Path -PathHandler-
+2021-06-04 11:32:26,252 DEBUG B.L.LoggingHandler [main] Retrieving Path -PathHandler-
+2021-06-04 11:32:26,252 DEBUG B.L.LoggingHandler [main] Retrieving Path -PathHandler-
+2021-06-04 11:32:26,267 DEBUG B.L.LoggingHandler [main] Retrieving Path -PathHandler-
+2021-06-04 11:32:26,267 ERROR B.L.LoggingHandler [main] Problem with Path -PathHandler-
+2021-06-04 11:32:26,267 DEBUG B.L.LoggingHandler [main] Retrieving Path -PathHandler-
+2021-06-04 11:33:27,139 DEBUG B.L.LoggingHandler [main] Retrieving Path -TourLogPathHandler-
+2021-06-04 11:33:27,154 DEBUG B.L.LoggingHandler [main] Retrieving Path -TourLogPathHandler-
+2021-06-04 11:33:27,154 DEBUG B.L.LoggingHandler [main] Retrieving Path -TourPathHandler-
+2021-06-04 11:33:27,170 DEBUG B.L.LoggingHandler [main] Retrieving Path -PathHandler-
+2021-06-04 11:33:27,170 DEBUG B.L.LoggingHandler [main] Retrieving Path -PathHandler-
+2021-06-04 11:33:27,170 DEBUG B.L.LoggingHandler [main] Retrieving Path -TourPathHandler-
+2021-06-04 11:33:27,170 DEBUG B.L.LoggingHandler [main] Retrieving Path -PathHandler-
+2021-06-04 11:33:54,494 DEBUG B.L.LoggingHandler [main] Retrieved Query for MapQuest (Directions) -PropertyHandlerMQ-
+2021-06-04 11:33:54,510 DEBUG B.L.LoggingHandler [main] Retrieved SQL Query -PropertyHandlerDatabase-
+2021-06-04 11:35:30,578 DEBUG B.L.LoggingHandler [main] Retrieving Path -TourLogPathHandler-
+2021-06-04 11:35:30,594 DEBUG B.L.LoggingHandler [main] Retrieving Path -TourLogPathHandler-
+2021-06-04 11:35:30,594 DEBUG B.L.LoggingHandler [main] Retrieving Path -TourPathHandler-
+2021-06-04 11:35:30,594 DEBUG B.L.LoggingHandler [main] Retrieving Path -PathHandler-
+2021-06-04 11:35:30,610 DEBUG B.L.LoggingHandler [main] Retrieving Path -PathHandler-
+2021-06-04 11:35:30,610 DEBUG B.L.LoggingHandler [main] Retrieving Path -TourPathHandler-
+2021-06-04 11:35:30,610 DEBUG B.L.LoggingHandler [main] Retrieving Path -PathHandler-
+2021-06-04 11:35:41,463 DEBUG B.L.LoggingHandler [main] Retrieved Query for MapQuest (Directions) -PropertyHandlerMQ-
+2021-06-04 11:35:41,604 DEBUG B.L.LoggingHandler [main] MapQuest Request (Drections) sent -MapQuest-
+2021-06-04 11:35:42,760 DEBUG B.L.LoggingHandler [main] Retrieved directions succesfully -MapQuest-
+2021-06-04 11:35:42,760 DEBUG B.L.LoggingHandler [main] Retrieved Data for MapQuest (Map Image) -PropertyHandlerMQ-
+2021-06-04 11:35:42,760 DEBUG B.L.LoggingHandler [main] MapQuest Request (Drections) sent -MapQuest-
+2021-06-04 11:35:43,026 DEBUG B.L.LoggingHandler [main] Retrieved map image from MapQuest successfully -MapQuest-
+2021-06-04 11:35:43,508 INFO B.L.LoggingHandler [main] Retrieved Data from MapQuest successfully -MapQuest-
+2021-06-04 11:35:43,524 DEBUG B.L.LoggingHandler [main] Retrieved Query for MapQuest (Directions) -PropertyHandlerMQ-
+2021-06-04 11:35:43,524 DEBUG B.L.LoggingHandler [main] MapQuest Request (Drections) sent -MapQuest-
+2021-06-04 11:35:44,367 DEBUG B.L.LoggingHandler [main] Retrieved directions succesfully -MapQuest-
+2021-06-04 11:35:44,367 DEBUG B.L.LoggingHandler [main] Retrieved Data for MapQuest (Map Image) -PropertyHandlerMQ-
+2021-06-04 11:35:44,367 DEBUG B.L.LoggingHandler [main] MapQuest Request (Drections) sent -MapQuest-
+2021-06-04 11:35:44,602 DEBUG B.L.LoggingHandler [main] Retrieved map image from MapQuest successfully -MapQuest-
+2021-06-04 11:35:45,071 INFO B.L.LoggingHandler [main] Retrieved Data from MapQuest successfully -MapQuest-
+2021-06-04 11:35:45,071 DEBUG B.L.LoggingHandler [main] Retrieved Query for MapQuest (Directions) -PropertyHandlerMQ-
+2021-06-04 11:35:45,071 DEBUG B.L.LoggingHandler [main] MapQuest Request (Drections) sent -MapQuest-
+2021-06-04 11:35:45,915 DEBUG B.L.LoggingHandler [main] Retrieved directions succesfully -MapQuest-
+2021-06-04 11:35:45,915 DEBUG B.L.LoggingHandler [main] Retrieved Data for MapQuest (Map Image) -PropertyHandlerMQ-
+2021-06-04 11:35:45,915 DEBUG B.L.LoggingHandler [main] MapQuest Request (Drections) sent -MapQuest-
+2021-06-04 11:35:46,133 DEBUG B.L.LoggingHandler [main] Retrieved map image from MapQuest successfully -MapQuest-
+2021-06-04 11:35:46,618 INFO B.L.LoggingHandler [main] Retrieved Data from MapQuest successfully -MapQuest-
+2021-06-04 11:36:24,675 DEBUG B.L.LoggingHandler [main] Retrieved Query for MapQuest (Directions) -PropertyHandlerMQ-
+2021-06-04 11:36:24,800 DEBUG B.L.LoggingHandler [main] MapQuest Request (Drections) sent -MapQuest-
+2021-06-04 11:36:25,670 DEBUG B.L.LoggingHandler [main] Retrieved directions succesfully -MapQuest-
+2021-06-04 11:36:25,671 DEBUG B.L.LoggingHandler [main] Retrieved Data for MapQuest (Map Image) -PropertyHandlerMQ-
+2021-06-04 11:36:25,671 DEBUG B.L.LoggingHandler [main] MapQuest Request (Drections) sent -MapQuest-
+2021-06-04 11:36:25,991 DEBUG B.L.LoggingHandler [main] Retrieved map image from MapQuest successfully -MapQuest-
+2021-06-04 11:36:26,616 INFO B.L.LoggingHandler [main] Retrieved Data from MapQuest successfully -MapQuest-
+2021-06-04 11:36:26,616 DEBUG B.L.LoggingHandler [main] Retrieved Connection Property -PropertyHandlerDatabase-
+2021-06-04 11:36:26,772 DEBUG B.L.LoggingHandler [main] Database Connection established -Database_Tours-
+2021-06-04 11:36:26,772 DEBUG B.L.LoggingHandler [main] Retrieved SQL Query -PropertyHandlerDatabase-
+2021-06-04 11:36:26,819 INFO B.L.LoggingHandler [main] Tour saved successfully to database -Database_Tours-
+2021-06-04 11:36:26,834 DEBUG B.L.LoggingHandler [main] Retrieved Connection Property -PropertyHandlerDatabase-
+2021-06-04 11:36:26,866 DEBUG B.L.LoggingHandler [main] Database Connection established -Database_EditTours-
+2021-06-04 11:36:26,866 DEBUG B.L.LoggingHandler [main] Retrieved SQL Query -PropertyHandlerDatabase-
+2021-06-04 11:36:26,866 INFO B.L.LoggingHandler [main] Tour editing saved to database successfully -Database_EditTours-
+2021-06-04 11:36:26,881 DEBUG B.L.LoggingHandler [main] Retrieved Connection Property -PropertyHandlerDatabase-
+2021-06-04 11:36:26,912 DEBUG B.L.LoggingHandler [main] Database Connection established -Database_Tours-
+2021-06-04 11:36:26,912 DEBUG B.L.LoggingHandler [main] Retrieved SQL Query -PropertyHandlerDatabase-
+2021-06-04 11:36:26,959 DEBUG B.L.LoggingHandler [main] Image stored on FS -ImageHandler-
+2021-06-04 11:36:26,959 INFO B.L.LoggingHandler [main] Retrieved specific Tour Data successfully from database -Database_Tours-
+2021-06-04 11:36:26,959 DEBUG B.L.LoggingHandler [main] Retrieved Connection Property -PropertyHandlerDatabase-
+2021-06-04 11:36:27,006 DEBUG B.L.LoggingHandler [main] Database Connection established -Database_Tours-
+2021-06-04 11:36:27,006 DEBUG B.L.LoggingHandler [main] Retrieved SQL Query -PropertyHandlerDatabase-
+2021-06-04 11:36:27,006 INFO B.L.LoggingHandler [main] Tour deleted successfully from database -Database_Tours-
+2021-06-04 11:36:27,006 DEBUG B.L.LoggingHandler [main] Retrieved Connection Property -PropertyHandlerDatabase-
+2021-06-04 11:36:27,053 DEBUG B.L.LoggingHandler [main] Database Connection established -Database_Tours-
+2021-06-04 11:36:27,053 DEBUG B.L.LoggingHandler [main] Retrieved SQL Query -PropertyHandlerDatabase-
+2021-06-04 11:36:27,053 INFO B.L.LoggingHandler [main] Retrieved specific Tour Data successfully from database -Database_Tours-
+2021-06-04 11:36:36,329 DEBUG B.L.LoggingHandler [main] Retrieved Query for MapQuest (Directions) -PropertyHandlerMQ-
+2021-06-04 11:36:36,470 DEBUG B.L.LoggingHandler [main] MapQuest Request (Drections) sent -MapQuest-
+2021-06-04 11:36:37,298 DEBUG B.L.LoggingHandler [main] Retrieved directions succesfully -MapQuest-
+2021-06-04 11:36:37,314 DEBUG B.L.LoggingHandler [main] Retrieved Data for MapQuest (Map Image) -PropertyHandlerMQ-
+2021-06-04 11:36:37,314 DEBUG B.L.LoggingHandler [main] MapQuest Request (Drections) sent -MapQuest-
+2021-06-04 11:36:37,548 DEBUG B.L.LoggingHandler [main] Retrieved map image from MapQuest successfully -MapQuest-
+2021-06-04 11:36:38,032 INFO B.L.LoggingHandler [main] Retrieved Data from MapQuest successfully -MapQuest-
+2021-06-04 11:36:38,032 DEBUG B.L.LoggingHandler [main] Retrieved Connection Property -PropertyHandlerDatabase-
+2021-06-04 11:36:38,173 DEBUG B.L.LoggingHandler [main] Database Connection established -Database_Tours-
+2021-06-04 11:36:38,173 DEBUG B.L.LoggingHandler [main] Retrieved SQL Query -PropertyHandlerDatabase-
+2021-06-04 11:36:38,220 INFO B.L.LoggingHandler [main] Tour saved successfully to database -Database_Tours-
+2021-06-04 11:36:38,236 DEBUG B.L.LoggingHandler [main] Retrieved Connection Property -PropertyHandlerDatabase-
+2021-06-04 11:36:38,282 DEBUG B.L.LoggingHandler [main] Database Connection established -Database_Logs-
+2021-06-04 11:36:38,282 DEBUG B.L.LoggingHandler [main] Retrieved SQL Query -PropertyHandlerDatabase-
+2021-06-04 11:36:38,282 INFO B.L.LoggingHandler [main] Tour Log saved successfully to database -Database_Logs-
+2021-06-04 11:36:38,282 DEBUG B.L.LoggingHandler [main] Retrieved Connection Property -PropertyHandlerDatabase-
+2021-06-04 11:36:38,329 DEBUG B.L.LoggingHandler [main] Database Connection established -Database_Logs-
+2021-06-04 11:36:38,329 DEBUG B.L.LoggingHandler [main] Retrieved Connection Property -PropertyHandlerDatabase-
+2021-06-04 11:36:38,361 DEBUG B.L.LoggingHandler [main] Database Connection established -Database_Logs-
+2021-06-04 11:36:38,361 DEBUG B.L.LoggingHandler [main] Retrieved SQL Query -PropertyHandlerDatabase-
+2021-06-04 11:36:38,376 INFO B.L.LoggingHandler [main] All Tour Logs deleted successfully from database -Database_Logs-
+2021-06-04 11:36:38,376 DEBUG B.L.LoggingHandler [main] Retrieved Connection Property -PropertyHandlerDatabase-
+2021-06-04 11:36:38,407 DEBUG B.L.LoggingHandler [main] Database Connection established -Database_Logs-
+2021-06-04 11:36:38,407 DEBUG B.L.LoggingHandler [main] Retrieved Connection Property -PropertyHandlerDatabase-
+2021-06-04 11:36:38,454 DEBUG B.L.LoggingHandler [main] Database Connection established -Database_Logs-
+2021-06-04 11:36:38,454 DEBUG B.L.LoggingHandler [main] Retrieved SQL Query -PropertyHandlerDatabase-
+2021-06-04 11:36:38,454 INFO B.L.LoggingHandler [main] Retrieved searched Tour Log Data successfully from database -Database_Logs-
+2021-06-04 11:36:38,454 DEBUG B.L.LoggingHandler [main] Retrieved Connection Property -PropertyHandlerDatabase-
+2021-06-04 11:36:38,501 DEBUG B.L.LoggingHandler [main] Database Connection established -Database_Tours-
+2021-06-04 11:36:38,501 DEBUG B.L.LoggingHandler [main] Retrieved SQL Query -PropertyHandlerDatabase-
+2021-06-04 11:36:38,501 INFO B.L.LoggingHandler [main] Tour deleted successfully from database -Database_Tours-
+2021-06-04 11:36:38,501 DEBUG B.L.LoggingHandler [main] Retrieved Connection Property -PropertyHandlerDatabase-
+2021-06-04 11:36:38,532 DEBUG B.L.LoggingHandler [main] Database Connection established -Database_Tours-
+2021-06-04 11:36:38,532 DEBUG B.L.LoggingHandler [main] Retrieved SQL Query -PropertyHandlerDatabase-
+2021-06-04 11:36:38,548 INFO B.L.LoggingHandler [main] Retrieved specific Tour Data successfully from database -Database_Tours-

@@ -2,7 +2,8 @@ package TourPlanner;
 
 import BusinessLayer.Handler.ImageHandler;
 import BusinessLayer.Logging.LoggingHandler;
-import BusinessLayer.Notification.Allerts;
+import BusinessLayer.Notification.AlertConfirmation;
+import BusinessLayer.Notification.AlertWarning;
 import BusinessLayer.StageSceneViewHelper.StageLoader;
 import DataAccessLayer.Database_Logs;
 import DataAccessLayer.Database_Tours;
@@ -26,21 +27,26 @@ public class MainViewModel {
 
     //Methoden
     public void deleteTour(String tourToDelete) throws IOException, SQLException {
-        if(new Allerts().allertDelete(tourToDelete)==1){
-            log.logDebug("Tour not deleted, because of user interaction -MainViewModel-");
-            return;
+        if (tourToDelete.equals("null")) {
+            log.logDebug("Tour not copied because no Tour was selected -MainViewModel-");
+            new AlertWarning().tourIsNull();
+        }else{
+            if(new AlertConfirmation().alertDelete(tourToDelete)==1){
+                log.logDebug("Tour not deleted, because of user interaction -MainViewModel-");
+                return;
+            }
+            new Database_Logs().deleteAllLogs(tourToDelete);
+            new Database_Tours().delete(tourToDelete);
+            ObservableList obList = FXCollections.observableList(new Database_Tours().getTourNames());
+            tourList.setValue(obList);
+            log.logDebug("Tour '"+tourToDelete+"' deleted -MainViewModel-");
         }
-        new Database_Tours().delete(tourToDelete);
-        new Database_Logs().deleteAllLogs(tourToDelete);
-        ObservableList obList = FXCollections.observableList(new Database_Tours().getTourNames());
-        tourList.setValue(obList);
-        log.logDebug("Tour '"+tourToDelete+"' deleted -MainViewModel-");
     }
 
     public void copyTour(String tourName) {
         if (tourName.equals("null")) {
             log.logDebug("Tour not copied because no Tour was selected -MainViewModel-");
-            new Allerts().tourIsNull();
+            new AlertWarning().tourIsNull();
         }else{
             Database_Tours dbt = new Database_Tours();
             Tour tour = dbt.specificTour(tourName);
@@ -52,7 +58,7 @@ public class MainViewModel {
     public void showTour(String tourName) {
         if (tourName.equals("null")) {
             log.logDebug("No Tour shown, because no Tour was selected -MainViewModel-");
-            new Allerts().tourIsNull();
+            new AlertWarning().tourIsNull();
         }else {
             Database_Tours dbt = new Database_Tours();
             Tour t = dbt.specificTour(tourName);

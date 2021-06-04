@@ -1,12 +1,10 @@
 package TourPlanner;
 
 import BusinessLayer.Logging.LoggingHandler;
-import BusinessLayer.Notification.Allerts;
 import BusinessLayer.StageSceneViewHelper.StageLoader;
 import DataAccessLayer.Database_Logs;
 import DataAccessLayer.Database_Tours;
 import Models.*;
-import com.fasterxml.jackson.databind.annotation.JsonAppend;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;

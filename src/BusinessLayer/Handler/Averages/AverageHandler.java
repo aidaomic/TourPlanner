@@ -1,5 +1,6 @@
-package BusinessLayer.Handler;
+package BusinessLayer.Handler.Averages;
 
+import BusinessLayer.Handler.FontHandler;
 import BusinessLayer.Logging.LoggingHandler;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPTable;
@@ -51,7 +52,7 @@ public class AverageHandler {
         table.addCell(new Paragraph(avg.avgDouble(fuel), font.helvetica(10)));
         table.addCell(new Paragraph(avg.avgDouble(speed), font.helvetica(10)));
         table.completeRow();
-        log.logInfo("PdfTable fr Averages created -AverageHandler-");
+        log.logInfo("PdfTable for Averages created -AverageHandler-");
         return table;
     }
 

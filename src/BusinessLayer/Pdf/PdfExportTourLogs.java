@@ -11,12 +11,12 @@ import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class PdfExportTourLogs {
+public class PdfExportTourLogs implements PdfExporter{
 
     private Document doc = new Document();
     private LoggingHandler log = new LoggingHandler();
 
-    public void tourLogsToPdfTable(){
+    public void toPdfTable(){
         try {
             PdfWriter.getInstance(doc, new FileOutputStream("TourLogsFromDatabase-TableView-"+ new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date()) +".pdf"));
             doc.open();
@@ -53,7 +53,7 @@ public class PdfExportTourLogs {
         }
     }
 
-    public void tourLogsToPdf(){
+    public void toPdf(){
         try {
             PdfWriter.getInstance(doc, new FileOutputStream("TourLogsFromDatabase-"+ new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date()) +".pdf"));
             doc.open();

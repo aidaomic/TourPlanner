@@ -1,11 +1,11 @@
-package BusinessLayer.Handler;
+package BusinessLayer.Handler.Paths;
 
 import BusinessLayer.Logging.LoggingHandler;
 import javafx.scene.control.TextInputDialog;
 
 import java.util.Optional;
 
-public class PathHandler {
+public class AllroundPathHandler implements PathHandler {
 
     public int x = 0, y = 0;
     public String title = "";
@@ -37,26 +37,6 @@ public class PathHandler {
                 x = 640;
                 y = 480;
                 return "../../Views/ImageWindow.fxml";
-            case "addLog":
-                title = "Tour Planner - Add Tour Log";
-                x = 490;
-                y = 420;
-                return "../../Views/TourLog/AddTourLogWindow.fxml";
-            case "editLog":
-                title = "Tour Planner - Edit Tour Log";
-                x = 500;
-                y = 450;
-                return "../../Views/TourLog/EditTourLogWindow.fxml";
-            case "addTour":
-                title = "Tour Planner - Add Tour";
-                x = 500;
-                y = 350;
-                return "../../Views/Tour/AddTourWindow.fxml";
-            case "editTour":
-                title = "Tour Planner - Edit Tour";
-                x = 500;
-                y = 350;
-                return "../../Views/Tour/EditTourWindow.fxml";
             case "logLevel":
                 title = "Tour Planner - Change Log Level";
                 x = 400;

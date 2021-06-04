@@ -1,8 +1,10 @@
 package DataAccessLayer;
 
 import BusinessLayer.Handler.ImageHandler;
-import BusinessLayer.Handler.PropertyHandler;
+import BusinessLayer.Handler.Properties.PropertyHandlerDatabase;
 import BusinessLayer.Logging.LoggingHandler;
+import BusinessLayer.Notification.Alert;
+import BusinessLayer.Notification.AlertWarning;
 import TourPlanner.Tour;
 import com.itextpdf.text.pdf.PdfPTable;
 import javafx.embed.swing.SwingFXUtils;
@@ -16,7 +18,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Properties;
 
-public class Database_Tours implements Database{
+public class Database_Tours implements Database, DatabaseConnect{
 
     private Connection connection = null;
     private ResultSet rs = null;
@@ -28,7 +30,7 @@ public class Database_Tours implements Database{
 
     public Connection connectDatabase(){
         try {
-            Properties prop = new PropertyHandler().getConnectionProperty();
+            Properties prop = new PropertyHandlerDatabase().getConnectionProperty();
             connection = DriverManager.getConnection(prop.getProperty("connectionURL"), prop.getProperty("connectionUser"), prop.getProperty("connectionPW"));
             log.logDebug("Database Connection established -Database_Tours-");
         } catch (SQLException e) {
@@ -42,7 +44,7 @@ public class Database_Tours implements Database{
     public Tour specificTour(String name){
         try {
             connection = connectDatabase();
-            preparedStatement = connection.prepareStatement(new PropertyHandler().getSqlQuery("specificTour"));
+            preparedStatement = connection.prepareStatement(new PropertyHandlerDatabase().getSqlQuery("specificTour"));
             preparedStatement.setString(1, name);
             rs = preparedStatement.executeQuery();
             if(rs.next()){
@@ -67,7 +69,7 @@ public class Database_Tours implements Database{
     public ArrayList getTourNames(){
         try {
             connection = connectDatabase();
-            preparedStatement = connection.prepareStatement(new PropertyHandler().getSqlQuery("allTourNames"));
+            preparedStatement = connection.prepareStatement(new PropertyHandlerDatabase().getSqlQuery("allTourNames"));
             rs = preparedStatement.executeQuery();
             while (rs.next()){
                 nameList.add(rs.getString(1));
@@ -85,7 +87,7 @@ public class Database_Tours implements Database{
     public void save(ArrayList tour){
         try {
             connection = connectDatabase();
-            preparedStatement = connection.prepareStatement(new PropertyHandler().getSqlQuery("saveTour"));
+            preparedStatement = connection.prepareStatement(new PropertyHandlerDatabase().getSqlQuery("saveTour"));
             preparedStatement.setString(1, String.valueOf(tour.get(0)));
             preparedStatement.setString(2, String.valueOf(tour.get(1)));
             preparedStatement.setString(3,String.valueOf(tour.get(2)));
@@ -99,16 +101,17 @@ public class Database_Tours implements Database{
             connection.close();
             log.logInfo("Tour saved successfully to database -Database_Tours-");
         } catch (SQLException e) {
+            new AlertWarning().duplicatedName();
             log.logError("SQL Exception saving Tour to database -Database_Tours-");
         } catch (IOException e) {
             log.logError("IO Exception saving Tour to database -Database_Tours-");
         }
     }
 
-    public ArrayList getSearchedTours(String searchText) {
+    public ArrayList getSearched(String searchText) {
         try {
             connection = connectDatabase();
-            preparedStatement = connection.prepareStatement(new PropertyHandler().getSqlQuery("searchedTours"));
+            preparedStatement = connection.prepareStatement(new PropertyHandlerDatabase().getSqlQuery("searchedTours"));
             preparedStatement.setString(1, "%" + searchText + "%");
             rs = preparedStatement.executeQuery();
             while (rs.next()) {
@@ -128,7 +131,7 @@ public class Database_Tours implements Database{
     public PdfPTable toFileTable(PdfPTable exportTable) {
         try {
             connection = connectDatabase();
-            preparedStatement = connection.prepareStatement(new PropertyHandler().getSqlQuery("exportTours"));
+            preparedStatement = connection.prepareStatement(new PropertyHandlerDatabase().getSqlQuery("exportTours"));
             rs = preparedStatement.executeQuery();
             while(rs.next()){
 
@@ -152,7 +155,7 @@ public class Database_Tours implements Database{
         String output = "";
         try {
             connection = connectDatabase();
-            preparedStatement = connection.prepareStatement(new PropertyHandler().getSqlQuery("exportTours"));
+            preparedStatement = connection.prepareStatement(new PropertyHandlerDatabase().getSqlQuery("exportTours"));
             rs = preparedStatement.executeQuery();
             while(rs.next()){
                 for(int i = 1; i <=5; i++){
@@ -173,7 +176,7 @@ public class Database_Tours implements Database{
     public void delete(String name) {
         connection = connectDatabase();
         try {
-            preparedStatement = connection.prepareStatement(new PropertyHandler().getSqlQuery("deleteTour"));
+            preparedStatement = connection.prepareStatement(new PropertyHandlerDatabase().getSqlQuery("deleteTour"));
             preparedStatement.setString(1, name);
             preparedStatement.execute();
             connection.close();
@@ -190,7 +193,7 @@ public class Database_Tours implements Database{
         try{
             BufferedImage img;
             connection = connectDatabase();
-            preparedStatement = connection.prepareStatement(new PropertyHandler().getSqlQuery("saveTour"));
+            preparedStatement = connection.prepareStatement(new PropertyHandlerDatabase().getSqlQuery("saveTour"));
             preparedStatement.setString(1, String.valueOf(tour.tourName+"_COPY_"+new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date())));
             preparedStatement.setString(2, String.valueOf(tour.tourDescription));
             preparedStatement.setString(3,String.valueOf(tour.tourSart));

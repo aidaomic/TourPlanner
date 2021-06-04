@@ -1,4 +1,4 @@
-package BusinessLayer.Handler;
+package BusinessLayer.Handler.Averages;
 
 import BusinessLayer.Logging.LoggingHandler;
 

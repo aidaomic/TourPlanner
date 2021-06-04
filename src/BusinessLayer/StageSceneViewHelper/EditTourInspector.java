@@ -1,7 +1,7 @@
 package BusinessLayer.StageSceneViewHelper;
 
 import BusinessLayer.Logging.LoggingHandler;
-import BusinessLayer.Notification.Allerts;
+import BusinessLayer.Notification.AlertWarning;
 import DataAccessLayer.Database_Tours;
 import TourPlanner.Tour;
 
@@ -19,7 +19,7 @@ public class EditTourInspector {
     public int noChanges(){
         if (old.tourName.equals(edit.tourName) && old.tourDescription.equals(edit.tourDescription) &&
                 old.tourSart.equals(edit.tourSart) && old.tourEnd.equals(edit.tourEnd)) {
-            new Allerts().nothingEdited();
+            new AlertWarning().nothingEdited();
             log.logDebug("No changes found => editing Tour interrupted -EditTourInspector-");
             return 1;
         }
@@ -32,7 +32,7 @@ public class EditTourInspector {
             return 0;
         Tour test = dbt.specificTour(edit.tourName);
         if(test.tourName != null){
-            new Allerts().duplicatedName();
+            new AlertWarning().duplicatedName();
             log.logError("Duplicating Name, while editing Tour -EditTourInspector-");
             return 1;
         }

@@ -1,6 +1,6 @@
 package BuisnessLayer.Handler;
 
-import BusinessLayer.Handler.CounterHandler;
+import BusinessLayer.Handler.Averages.CounterHandler;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

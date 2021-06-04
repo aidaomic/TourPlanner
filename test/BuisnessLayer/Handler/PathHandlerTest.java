@@ -1,12 +1,12 @@
 package BuisnessLayer.Handler;
 
-import BusinessLayer.Handler.PathHandler;
+import BusinessLayer.Handler.Paths.AllroundPathHandler;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class PathHandlerTest {
 
-    private PathHandler ph = new PathHandler();
+    private AllroundPathHandler ph = new AllroundPathHandler();
     private String methode = "";
 
     @Test

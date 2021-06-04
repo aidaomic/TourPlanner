@@ -54,7 +54,7 @@ public class Database_LogsTest {
     @Test@Order(3)
     public void deleteTourLog_deleteFromDatabase(){
         dbtl.deleteAllLogs(name);
-        Assertions.assertEquals(dbtl.getSearchedTourLogs(name).size(), 0);
+        Assertions.assertEquals(dbtl.getSearched(name).size(), 0);
     }
 
     @Test

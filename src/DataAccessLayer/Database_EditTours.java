@@ -1,6 +1,6 @@
 package DataAccessLayer;
 
-import BusinessLayer.Handler.PropertyHandler;
+import BusinessLayer.Handler.Properties.PropertyHandlerDatabase;
 import BusinessLayer.Logging.LoggingHandler;
 
 import javax.imageio.ImageIO;
@@ -13,7 +13,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Properties;
 
-public class Database_EditTours {
+public class Database_EditTours implements DatabaseConnect{
 
     private Connection connection = null;
     public PreparedStatement preparedStatement = null;
@@ -22,7 +22,7 @@ public class Database_EditTours {
 
     public Connection connectDatabase(){
         try {
-            Properties prop = new PropertyHandler().getConnectionProperty();
+            Properties prop = new PropertyHandlerDatabase().getConnectionProperty();
             connection = DriverManager.getConnection(prop.getProperty("connectionURL"), prop.getProperty("connectionUser"), prop.getProperty("connectionPW"));
             log.logDebug("Database Connection established -Database_EditTours-");
         } catch (SQLException e) {
@@ -36,7 +36,7 @@ public class Database_EditTours {
     public void edit(ArrayList list){
         try {
             connection = connectDatabase();
-            preparedStatement = connection.prepareStatement(new PropertyHandler().getSqlQuery("editTour"));
+            preparedStatement = connection.prepareStatement(new PropertyHandlerDatabase().getSqlQuery("editTour"));
             preparedStatement.setString(1,String.valueOf(list.get(0)));
             preparedStatement.setString(2,String.valueOf(list.get(1)));
             preparedStatement.setString(3,String.valueOf(list.get(2)));
@@ -55,7 +55,7 @@ public class Database_EditTours {
     public void editNewRoute(ArrayList list) {
         try {
             connection = connectDatabase();
-            preparedStatement = connection.prepareStatement(new PropertyHandler().getSqlQuery("editTourRoute"));
+            preparedStatement = connection.prepareStatement(new PropertyHandlerDatabase().getSqlQuery("editTourRoute"));
             preparedStatement.setString(1,String.valueOf(list.get(0)));
             preparedStatement.setString(2,String.valueOf(list.get(1)));
             preparedStatement.setString(3,String.valueOf(list.get(2)));

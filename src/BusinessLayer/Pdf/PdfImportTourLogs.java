@@ -1,7 +1,8 @@
 package BusinessLayer.Pdf;
 
+import BusinessLayer.Handler.Paths.TourLogPathHandler;
 import BusinessLayer.Logging.LoggingHandler;
-import BusinessLayer.Handler.PathHandler;
+import BusinessLayer.Handler.Paths.AllroundPathHandler;
 import DataAccessLayer.Database_Logs;
 import com.itextpdf.text.pdf.parser.PdfTextExtractor;
 
@@ -9,13 +10,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-public class PdfImportTourLogs {
+public class PdfImportTourLogs implements PdfImporter{
 
     private LoggingHandler log = new LoggingHandler();
 
-    public void pdfToTourLogs() {
+    public void importFromPdf() {
         try {
-            com.itextpdf.text.pdf.PdfReader reader = new com.itextpdf.text.pdf.PdfReader(new PathHandler().inputPath());
+            com.itextpdf.text.pdf.PdfReader reader = new com.itextpdf.text.pdf.PdfReader(new TourLogPathHandler().inputPath());
             String textFromPage = PdfTextExtractor.getTextFromPage(reader, 1);
 
             StringTokenizer token = new StringTokenizer(textFromPage, ";");

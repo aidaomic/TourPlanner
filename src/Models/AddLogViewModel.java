@@ -1,15 +1,12 @@
 package Models;
 
 import BusinessLayer.Logging.LoggingHandler;
-import BusinessLayer.Notification.Allerts;
+import BusinessLayer.Notification.AlertWarning;
 import BusinessLayer.StageSceneViewHelper.StageLoader;
 import DataAccessLayer.Database_Logs;
 import DataAccessLayer.Database_Tours;
 import TourPlanner.Tour;
 import javafx.beans.property.*;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -40,7 +37,7 @@ public class AddLogViewModel {
     public void addTourLogStage(Stage stage, String tourName) throws IOException {
         if(tourName.equals("null")) {
             log.logDebug("No Tour selected to add Log to -AddLogViewModel-");
-            new Allerts().tourIsNull();
+            new AlertWarning().tourIsNull();
         }else {
             Database_Tours dbt = new Database_Tours();
             Tour t = dbt.specificTour(tourName);

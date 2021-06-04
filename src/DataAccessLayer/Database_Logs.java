@@ -1,6 +1,6 @@
 package DataAccessLayer;
 
-import BusinessLayer.Handler.PropertyHandler;
+import BusinessLayer.Handler.Properties.PropertyHandlerDatabase;
 import BusinessLayer.Logging.LoggingHandler;
 import TourPlanner.Log;
 import TourPlanner.LogTable;
@@ -16,7 +16,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Properties;
 
-public class Database_Logs implements Database{
+public class Database_Logs implements Database, DatabaseConnect{
 
     private Connection connection = null;
     public PreparedStatement preparedStatement = null;
@@ -26,7 +26,7 @@ public class Database_Logs implements Database{
 
     public Connection connectDatabase(){
         try {
-            Properties prop = new PropertyHandler().getConnectionProperty();
+            Properties prop = new PropertyHandlerDatabase().getConnectionProperty();
             connection = DriverManager.getConnection(prop.getProperty("connectionURL"), prop.getProperty("connectionUser"), prop.getProperty("connectionPW"));
             log.logDebug("Database Connection established -Database_Logs-");
         } catch (SQLException e) {
@@ -40,7 +40,7 @@ public class Database_Logs implements Database{
     public void save(ArrayList list){
         try {
             connection = connectDatabase();
-            preparedStatement = connection.prepareStatement(new PropertyHandler().getSqlQuery("saveLog"));
+            preparedStatement = connection.prepareStatement(new PropertyHandlerDatabase().getSqlQuery("saveLog"));
             preparedStatement.setString(1, String.valueOf(list.get(0)));
             preparedStatement.setString(2, LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
             preparedStatement.setString(3, LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")));
@@ -67,7 +67,7 @@ public class Database_Logs implements Database{
         try {
             logArray.clear();
             connection = connectDatabase();
-            preparedStatement = connectDatabase().prepareStatement(new PropertyHandler().getSqlQuery("allLogs"));
+            preparedStatement = connectDatabase().prepareStatement(new PropertyHandlerDatabase().getSqlQuery("allLogs"));
             rs = preparedStatement.executeQuery();
             while (rs.next()){
                 LogTable tourLog= new LogTable(rs.getInt(1),
@@ -93,7 +93,7 @@ public class Database_Logs implements Database{
         try {
             logArray.clear();
             connection = connectDatabase();
-            preparedStatement = connectDatabase().prepareStatement(new PropertyHandler().getSqlQuery("specificLogs"));
+            preparedStatement = connectDatabase().prepareStatement(new PropertyHandlerDatabase().getSqlQuery("specificLogs"));
             preparedStatement.setString(1, name);
             rs = preparedStatement.executeQuery();
             while (rs.next()){
@@ -118,7 +118,7 @@ public class Database_Logs implements Database{
     public void delete(String name){//name equals id in this case
         try {
             connection = connectDatabase();
-            preparedStatement = connectDatabase().prepareStatement(new PropertyHandler().getSqlQuery("deleteLog"));
+            preparedStatement = connectDatabase().prepareStatement(new PropertyHandlerDatabase().getSqlQuery("deleteLog"));
             preparedStatement.setInt(1, Integer.parseInt(name));
             preparedStatement.execute();
             connection.close();
@@ -133,7 +133,7 @@ public class Database_Logs implements Database{
     public void edit(Log tourLog){
         try {
             connection = connectDatabase();
-            preparedStatement = connectDatabase().prepareStatement(new PropertyHandler().getSqlQuery("editLog"));
+            preparedStatement = connectDatabase().prepareStatement(new PropertyHandlerDatabase().getSqlQuery("editLog"));
             preparedStatement.setString(1, tourLog.totalTime);
             preparedStatement.setInt(2, (int) tourLog.rating);
             preparedStatement.setString(3, tourLog.weather);
@@ -154,11 +154,11 @@ public class Database_Logs implements Database{
         }
     }
 
-    public ArrayList getSearchedTourLogs(String text) {
+    public ArrayList getSearched(String searchText) {
         try{
             connection = connectDatabase();
-            preparedStatement = connectDatabase().prepareStatement(new PropertyHandler().getSqlQuery("searchedLogs"));
-            preparedStatement.setString(1, "%"+text+"%");
+            preparedStatement = connectDatabase().prepareStatement(new PropertyHandlerDatabase().getSqlQuery("searchedLogs"));
+            preparedStatement.setString(1, "%"+searchText+"%");
             rs = preparedStatement.executeQuery();
             while(rs.next()){
                 LogTable tourLog= new LogTable(rs.getInt(1),
@@ -182,7 +182,7 @@ public class Database_Logs implements Database{
     public PdfPTable toFileTable(PdfPTable exportTable) {
         try {
             connection = connectDatabase();
-            preparedStatement = connection.prepareStatement(new PropertyHandler().getSqlQuery("exportLogs"));
+            preparedStatement = connection.prepareStatement(new PropertyHandlerDatabase().getSqlQuery("exportLogs"));
             rs = preparedStatement.executeQuery();
             while(rs.next()){
                 for (int i = 1; i<=13; i++) {
@@ -203,7 +203,7 @@ public class Database_Logs implements Database{
         String output = "";
         try {
             connection = connectDatabase();
-            preparedStatement = connectDatabase().prepareStatement(new PropertyHandler().getSqlQuery("exportLogs"));
+            preparedStatement = connectDatabase().prepareStatement(new PropertyHandlerDatabase().getSqlQuery("exportLogs"));
             rs = preparedStatement.executeQuery();
             while(rs.next()){
                 for(int i = 1; i <=13; i++){
@@ -224,7 +224,7 @@ public class Database_Logs implements Database{
     public void deleteAllLogs(String name) {
         try {
             connection = connectDatabase();
-            preparedStatement = connectDatabase().prepareStatement(new PropertyHandler().getSqlQuery("deleteAllLogs"));
+            preparedStatement = connectDatabase().prepareStatement(new PropertyHandlerDatabase().getSqlQuery("deleteAllLogs"));
             preparedStatement.setString(1, name);
             preparedStatement.execute();
             connection.close();

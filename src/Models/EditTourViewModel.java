@@ -1,18 +1,15 @@
 package Models;
 
+import BusinessLayer.DatabaseInputHandler;
 import BusinessLayer.Handler.ImageHandler;
 import BusinessLayer.Logging.LoggingHandler;
 import BusinessLayer.MapQuest.MapQuest;
-import BusinessLayer.Notification.Allerts;
+import BusinessLayer.Notification.AlertWarning;
 import BusinessLayer.StageSceneViewHelper.EditTourInspector;
 import BusinessLayer.StageSceneViewHelper.StageLoader;
 import DataAccessLayer.Database_EditTours;
 import DataAccessLayer.Database_Tours;
 import TourPlanner.Tour;
-
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.awt.image.BufferedImage;
@@ -33,7 +30,7 @@ public class EditTourViewModel {
 
     public void editTourStage(Stage stage, String tourName) throws IOException {
         if (tourName.equals("null")) {
-            new Allerts().tourIsNull();
+            new AlertWarning().tourIsNull();
             log.logDebug("No Tour edited, because no Tour was selected -EditTourViewModel-");
         }else{
             Database_Tours dbt = new Database_Tours();
@@ -53,17 +50,7 @@ public class EditTourViewModel {
             log.logDebug("Name changed while editing Tour -EditTourViewModel-");
             return;
         }else if(inspector.changedRoute() == 1){
-            list.clear();
-            list.add(tourEdited.tourName);
-            list.add(tourEdited.tourDescription);
-            list.add(tourEdited.tourSart);
-            list.add(tourEdited.tourEnd);
-            map = mq.getDirections(tourEdited.tourSart, tourEdited.tourEnd);
-            list.add(mq.distance);
-            list.add(map);
-            list.add(tour.tourName);
-            dbt.editNewRoute(list);
-            new ImageHandler().updateImage((String) list.get(0), (BufferedImage)list.get(5));
+            new DatabaseInputHandler().editTour(tourEdited.tourName, tourEdited.tourDescription, tourEdited.tourSart, tourEdited.tourEnd, tour.tourName);
             new StageLoader(stage).changeStage("mainWindow");
             log.logDebug("Route changed during editing -EditTourViewModel-");
             return;

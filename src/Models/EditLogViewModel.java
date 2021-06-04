@@ -1,15 +1,12 @@
 package Models;
 
 import BusinessLayer.Logging.LoggingHandler;
-import BusinessLayer.Notification.Allerts;
+import BusinessLayer.Notification.AlertWarning;
 import BusinessLayer.StageSceneViewHelper.StageLoader;
 import DataAccessLayer.Database_Logs;
 import TourPlanner.Log;
 import TourPlanner.LogTable;
 import javafx.beans.property.*;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -39,7 +36,7 @@ public class EditLogViewModel {
 
     public void editTourLogStage(Stage stage, LogTable logToEdit) throws IOException {
         if(logToEdit == null) {
-            new Allerts().tourIsNull();
+            new AlertWarning().tourIsNull();
             log.logDebug("Stage for editing TourLog not loaded, because no Tour was selected -EditLogViewModel-");
         }else {
             new StageLoader(stage, logToEdit).changeStage("editLog");

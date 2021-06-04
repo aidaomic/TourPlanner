@@ -1,8 +1,9 @@
 package BusinessLayer.StageSceneViewHelper;
 
-import BusinessLayer.Handler.PathHandler;
+import BusinessLayer.Handler.Paths.AllroundPathHandler;
+import BusinessLayer.Handler.Paths.TourLogPathHandler;
+import BusinessLayer.Handler.Paths.TourPathHandler;
 import BusinessLayer.Logging.LoggingHandler;
-import TourPlanner.Log;
 import TourPlanner.LogTable;
 import TourPlanner.Tour;
 import javafx.fxml.FXMLLoader;
@@ -41,10 +42,24 @@ public class StageLoader {
     }
 
     public void changeStage(String methode) throws IOException {
-        PathHandler ph = new PathHandler();
-        Parent root = FXMLLoader.load(getClass().getResource(ph.viewPath(methode)));
-        stage.setTitle(ph.title);
-        stage.setScene(new Scene(root, ph.x, ph.y)); //v=breite v1=höhe
+        AllroundPathHandler ph = new AllroundPathHandler();
+        TourLogPathHandler phtl = new TourLogPathHandler();
+        TourPathHandler pht = new TourPathHandler();
+        Parent root = null;
+        if (methode.contains("Log")) {
+            root = FXMLLoader.load(getClass().getResource(phtl.viewPath(methode)));
+            stage.setTitle(phtl.title);
+            stage.setScene(new Scene(root, phtl.x, phtl.y));
+        }else if (methode.contains("Tour")) {
+            root = FXMLLoader.load(getClass().getResource(pht.viewPath(methode)));
+            stage.setTitle(pht.title);
+            stage.setScene(new Scene(root, pht.x, pht.y));
+        }else {
+            root = FXMLLoader.load(getClass().getResource(ph.viewPath(methode)));
+            stage.setTitle(ph.title);
+            stage.setScene(new Scene(root, ph.x, ph.y));
+        }
+         //v=breite v1=höhe
         switch (methode){
             case "editTour":
                 new SceneDataHelper(root, tour).setDataForTourEdit();

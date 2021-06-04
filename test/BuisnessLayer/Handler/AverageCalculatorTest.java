@@ -1,15 +1,10 @@
 package BuisnessLayer.Handler;
 
-import BusinessLayer.Handler.AverageCalculator;
-import BusinessLayer.Handler.AverageHandler;
-import BusinessLayer.Handler.PdfTableHandler;
+import BusinessLayer.Handler.Averages.AverageCalculator;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.PageSize;
-import com.itextpdf.text.pdf.PdfPTable;
-import org.apache.logging.log4j.core.util.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

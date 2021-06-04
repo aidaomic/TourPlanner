@@ -1,5 +1,6 @@
 package Models;
 
+import BusinessLayer.DatabaseInputHandler;
 import BusinessLayer.Logging.LoggingHandler;
 import BusinessLayer.MapQuest.MapQuest;
 import BusinessLayer.StageSceneViewHelper.StageLoader;
@@ -18,7 +19,6 @@ import java.util.ArrayList;
 
 public class AddTourViewModel {
     private Database_EditTours dbt = new Database_EditTours();
-    private BufferedImage map;
     private LoggingHandler log = new LoggingHandler();
 
     private final StringProperty inputStart = new SimpleStringProperty("");
@@ -26,7 +26,7 @@ public class AddTourViewModel {
     private final StringProperty inputName = new SimpleStringProperty("");
     private final StringProperty inputDescription = new SimpleStringProperty("");
 
-    MapQuest mq = new MapQuest();
+
 
     //Methods
     public void changeSceneToMain(Stage stage) throws IOException {
@@ -39,15 +39,7 @@ public class AddTourViewModel {
     }
 
     public void addTour(String tourName, String tourDescription, String tourStart, String tourEnd){
-        ArrayList list = new ArrayList();
-        list.add(tourName);
-        list.add(tourDescription);
-        list.add(tourStart);
-        list.add(tourEnd);
-        map = mq.getDirections(tourStart, tourEnd);
-        list.add(mq.distance);
-        list.add(map);
-        new Database_Tours().save(list);
+        new DatabaseInputHandler().saveTour(tourName, tourDescription, tourStart, tourEnd);
         log.logDebug("Added Tour '"+tourName+"' -AddTourViewModel-");
     }
 

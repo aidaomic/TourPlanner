@@ -1,7 +1,8 @@
 package BusinessLayer.MapQuest;
 
-import BusinessLayer.Handler.PropertyHandler;
+import BusinessLayer.Handler.Properties.PropertyHandlerMQ;
 import BusinessLayer.Logging.LoggingHandler;
+import BusinessLayer.Notification.AlertWarning;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -27,7 +28,7 @@ public class MapQuest {
     public BufferedImage getDirections(String startPoint, String destination){
 
         try {
-            URL url = new URL(new PropertyHandler().getMapQuest_directions(startPoint,destination));
+            URL url = new URL(new PropertyHandlerMQ().getMapQuest_directions(startPoint,destination));
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
             con.connect();
@@ -59,10 +60,15 @@ public class MapQuest {
 
             map = getStaticMap(session, boundingBox);
         } catch (MalformedURLException e) {
+            new AlertWarning().checkData();
             log.logError("Data could not be retrieved from MapQuest because of malformed URL -MapQuest-");
         } catch (JsonMappingException e) {
             log.logError("Problem with translating JSON, request has been closed -MapQuest-");
-        } catch (IOException e) {
+        } catch (NullPointerException e){
+            new AlertWarning().checkData();
+            log.logError("Null Pointer exception, request has been closed -MapQuest-");
+        }
+        catch (IOException e) {
             log.logError("IOException while retrieving data from MapQuest -MapQuest-");
         }
         log.logInfo("Retrieved Data from MapQuest successfully -MapQuest-");
@@ -71,7 +77,7 @@ public class MapQuest {
 
     public BufferedImage getStaticMap(String sessionId, String boundBox) throws IOException {
         try {
-            URL url = new URL(new PropertyHandler().getMapQuest_image(sessionId, boundBox));
+            URL url = new URL(new PropertyHandlerMQ().getMapQuest_image(sessionId, boundBox));
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
             con.connect();

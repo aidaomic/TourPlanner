@@ -1,7 +1,8 @@
 package Models;
 
 import BusinessLayer.Logging.LoggingHandler;
-import BusinessLayer.Notification.Allerts;
+import BusinessLayer.Notification.AlertConfirmation;
+import BusinessLayer.Notification.AlertInfo;
 import BusinessLayer.Pdf.*;
 import BusinessLayer.Report.Report;
 import BusinessLayer.StageSceneViewHelper.StageLoader;
@@ -28,14 +29,14 @@ public class MenuBarViewModel {
     //Methoden
 
     public ObservableList searchForTour(String searchText){
-        ArrayList searchedList = new Database_Tours().getSearchedTours(searchText);
+        ArrayList searchedList = new Database_Tours().getSearched(searchText);
         ObservableList obList = FXCollections.observableList(searchedList);
         log.logDebug("Searched Tours displayed -MenuBarViewModel-");
         return obList;
     }
 
     public ObservableList searchForLog(String text) {
-            ArrayList searchedList = new Database_Logs().getSearchedTourLogs(text);
+            ArrayList searchedList = new Database_Logs().getSearched(text);
             ObservableList obList = FXCollections.observableList(searchedList);
             log.logDebug("Searched/Selected Tour Logs displayed -MenuBarViewModel-");
             return obList;
@@ -55,19 +56,19 @@ public class MenuBarViewModel {
         return obList;
     }
     public void exportTours(){
-        new PdfExportTours().toursToPdf();
-        new Allerts().allertExportSuccess();
+        new PdfExportTours().toPdf();
+        new AlertInfo().alertExportSuccess();
         log.logDebug("Exporting Tours to Pdf finished -MenuBarViewModel-");
     }
 
     public void exportToursTable(){
-        new PdfExportTours().toursToPdfTable();
-        new Allerts().allertExportSuccess();
+        new PdfExportTours().toPdfTable();
+        new AlertInfo().alertExportSuccess();
         log.logDebug("Exporting Tours to Table View finished -MenuBarViewModel-");
     }
 
     public void importTours(){
-        new PdfImportTours().pdfToTours();
+        new PdfImportTours().importFromPdf();
         log.logDebug("Importing Tours from Pdf finished -MenuBarViewModel-");
     }
 
@@ -77,19 +78,19 @@ public class MenuBarViewModel {
     }
 
     public void importTourLogs(){
-        new PdfImportTourLogs().pdfToTourLogs();
+        new PdfImportTourLogs().importFromPdf();
         log.logDebug("Importing Tour Logs from Pdf finished -MenuBarViewModel-");
     }
 
     public void exportTourLogsTable() {
-        new PdfExportTourLogs().tourLogsToPdfTable();
-        new Allerts().allertExportSuccess();
+        new PdfExportTourLogs().toPdfTable();
+        new AlertInfo().alertExportSuccess();
         log.logDebug("Exporting Tour Logs to Table View finished -MenuBarViewModel-");
     }
 
     public void exportTourLogs(){
-        new PdfExportTourLogs().tourLogsToPdf();
-        new Allerts().allertExportSuccess();
+        new PdfExportTourLogs().toPdf();
+        new AlertInfo().alertExportSuccess();
         log.logDebug("Exporting Tour Logs to Pdf finished -MenuBarViewModel-");
     }
 
@@ -97,7 +98,7 @@ public class MenuBarViewModel {
         if(tourName.equals("null") == false)
             new Report().singleTourReport(tourName);
         else {
-            int alert = new Allerts().reportTourNull();
+            int alert = new AlertConfirmation().reportTourNull();
             if (alert != 0)
                 log.logDebug("Printing Report stopped from user interaction -MenuBarViewModel-");
             else{

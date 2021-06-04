@@ -1,7 +1,7 @@
 package DataAccessLayer;
 
-import BusinessLayer.Handler.AverageHandler;
-import BusinessLayer.Handler.PropertyHandler;
+import BusinessLayer.Handler.Averages.AverageHandler;
+import BusinessLayer.Handler.Properties.PropertyHandlerDatabase;
 import BusinessLayer.Logging.LoggingHandler;
 import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Paragraph;
@@ -12,7 +12,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Properties;
 
-public class Database_Report {
+public class Database_Report implements DatabaseConnect{
 
     private Connection connection = null;
     public PreparedStatement preparedStatement = null;
@@ -22,7 +22,7 @@ public class Database_Report {
 
     public Connection connectDatabase(){
         try {
-            Properties prop = new PropertyHandler().getConnectionProperty();
+            Properties prop = new PropertyHandlerDatabase().getConnectionProperty();
             connection = DriverManager.getConnection(prop.getProperty("connectionURL"), prop.getProperty("connectionUser"), prop.getProperty("connectionPW"));
             log.logDebug("Database Connection established -Database_Report-");
         } catch (SQLException e) {
@@ -36,7 +36,7 @@ public class Database_Report {
     public PdfPTable toFileTable(PdfPTable exportTable, String tourName) {
         try {
             connection = connectDatabase();
-            preparedStatement = connection.prepareStatement(new PropertyHandler().getSqlQuery("specificLogs"));
+            preparedStatement = connection.prepareStatement(new PropertyHandlerDatabase().getSqlQuery("specificLogs"));
             preparedStatement.setString(1, tourName);
             rs = preparedStatement.executeQuery();
             while(rs.next()){
@@ -61,7 +61,7 @@ public class Database_Report {
             ArrayList weather = new ArrayList(), time = new ArrayList(), seasClos = new ArrayList(), transport = new ArrayList(), traf = new ArrayList();
             int rating = 0;
             connection = connectDatabase();
-            preparedStatement = connection.prepareStatement(new PropertyHandler().getSqlQuery("specificLogs"));
+            preparedStatement = connection.prepareStatement(new PropertyHandlerDatabase().getSqlQuery("specificLogs"));
             preparedStatement.setString(1, tourName);
             rs = preparedStatement.executeQuery();
             while(rs.next()){
@@ -77,6 +77,8 @@ public class Database_Report {
                 speed += rs.getDouble(13);
                 counter++;
             }
+            System.out.println("1. f:"+fuel);
+            System.out.println("2. s:"+speed);
             AverageHandler average = new AverageHandler(counter, distance, time, rating, seasClos, traf, fuel, speed);
             log.logInfo("Successfully exporting Tour Logs to TableView -Database_Report-");
             return average.getAverages(exportTable);

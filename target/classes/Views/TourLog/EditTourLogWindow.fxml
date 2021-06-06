@@ -87,7 +87,7 @@
                <toggleGroup>
                   <ToggleGroup fx:id="SeasClos" />
                </toggleGroup></RadioButton>
-                <RadioButton fx:id="seasClosNo" layoutX="110.0" layoutY="10.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="182.0" text="No" toggleGroup="$SeasClos" />
+                <RadioButton fx:id="seasClosNo" layoutX="110.0" layoutY="10.0" prefHeight="41.0" prefWidth="182.0" text="No" toggleGroup="$SeasClos" />
             </HBox>
             <HBox>
                 <Label prefHeight="20" prefWidth="100" text="Transportation:">
@@ -104,15 +104,12 @@
                     <HBox.margin>
                         <Insets top="5.0" />
                     </HBox.margin></Label>
-                <RadioButton fx:id="trafJamYes" mnemonicParsing="false" prefHeight="40.0" prefWidth="194.0" text="Yes">
-                    <opaqueInsets>
-                        <Insets />
-                    </opaqueInsets>
+                <RadioButton fx:id="trafJamYes" prefHeight="40.0" prefWidth="194.0" text="Yes">
                <toggleGroup>
                   <ToggleGroup fx:id="trafficJam" />
                </toggleGroup>
                 </RadioButton>
-                <RadioButton fx:id="trafJamNo" layoutX="110.0" layoutY="10.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="183.0" text="No" textAlignment="CENTER" textOverrun="CLIP" toggleGroup="$trafficJam" />
+                <RadioButton fx:id="trafJamNo" layoutX="110.0" layoutY="10.0" prefHeight="39.0" prefWidth="183.0" text="No" textAlignment="CENTER" textOverrun="CLIP" toggleGroup="$trafficJam" />
             </HBox>
             <HBox>
                 <Label prefHeight="20" prefWidth="100" text="Fuel used:">

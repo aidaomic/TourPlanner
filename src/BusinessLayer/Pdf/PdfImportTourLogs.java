@@ -21,7 +21,7 @@ public class PdfImportTourLogs implements PdfImporter{
 
             StringTokenizer token = new StringTokenizer(textFromPage, ";");
 
-            Database_Logs dbt = new Database_Logs();
+            Database_Logs dbtl = new Database_Logs();
             ArrayList t = new ArrayList();
             int counter = 0;
             while(token.hasMoreElements()){
@@ -33,7 +33,7 @@ public class PdfImportTourLogs implements PdfImporter{
                 for (int i = 1; i < 10; i++){
                     t.add(token.nextToken());
                 }
-                dbt.save(t);
+                dbtl.save(t);
                 counter++;
             }
             log.logInfo("Added "+counter+" Tour Logs from Pdf to Database -PdfReader-");

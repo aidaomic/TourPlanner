@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.HelpWindowController">
+    <TextArea prefHeight="372.0" prefWidth="400.0" text="This application gives you several options:&#10;&#10;Tours&#10;- create&#10;- delete&#10;- edit&#10;- display&#10;- copy&#10;- import from Pdf&#10;- export as Table&#10;- export to Pdf&#10;&#10;Tour Log&#10;- create&#10;- delete&#10;- edit&#10;- import from Pdf&#10;- export as Table&#10;- export to Pdf&#10;&#10;Report&#10;- export single Tour report&#10;- export report over all Tours&#10;&#10;Logging&#10;- change log level&#10;(currently not working)&#10;&#10;If you have any questions, you can reach us at support@mail.com" />
+    <Button layoutX="171.0" layoutY="374.0" onAction="#exit">exit</Button>
+</Pane>

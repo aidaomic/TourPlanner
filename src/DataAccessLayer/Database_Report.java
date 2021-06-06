@@ -35,11 +35,13 @@ public class Database_Report implements DatabaseConnect{
 
     public PdfPTable toFileTable(PdfPTable exportTable, String tourName) {
         try {
+            int counter = 0;
             connection = connectDatabase();
             preparedStatement = connection.prepareStatement(new PropertyHandlerDatabase().getSqlQuery("specificLogs"));
             preparedStatement.setString(1, tourName);
             rs = preparedStatement.executeQuery();
             while(rs.next()){
+                counter++;
                 for (int i = 1; i<=13; i++) {
                     exportTable.addCell(new Paragraph(rs.getString(i), FontFactory.getFont(FontFactory.HELVETICA, 10)));
                 }
@@ -50,6 +52,10 @@ public class Database_Report implements DatabaseConnect{
             log.logError("SQL Exception exporting Tour Logs to TableView -Database_Report-");
         } catch (IOException e) {
             log.logError("IO Exception exporting Tour Logs to TableView -Database_Report-");
+        }
+        if (counter==0) {
+            exportTable.deleteLastRow();
+            return exportTable;
         }
         return exportTable;
     }
@@ -77,8 +83,10 @@ public class Database_Report implements DatabaseConnect{
                 speed += rs.getDouble(13);
                 counter++;
             }
-            System.out.println("1. f:"+fuel);
-            System.out.println("2. s:"+speed);
+            if (counter==0) {
+                exportTable.deleteLastRow();
+                return exportTable;
+            }
             AverageHandler average = new AverageHandler(counter, distance, time, rating, seasClos, traf, fuel, speed);
             log.logInfo("Successfully exporting Tour Logs to TableView -Database_Report-");
             return average.getAverages(exportTable);

@@ -48,9 +48,15 @@ public class Database_Logs implements Database, DatabaseConnect{
             preparedStatement.setString(5, (String) list.get(2));
             preparedStatement.setDouble(6, Double.valueOf(String.valueOf(list.get(3))));
             preparedStatement.setString(7, String.valueOf(list.get(4)));
-            preparedStatement.setBoolean(8, Boolean.parseBoolean(String.valueOf(list.get(5))));
+            Boolean seasCl = false;
+            if (String.valueOf(list.get(5)).equals("t"))
+                seasCl = true;
+            preparedStatement.setBoolean(8, seasCl);
             preparedStatement.setString(9, String.valueOf(list.get(6)));
-            preparedStatement.setBoolean(10, Boolean.parseBoolean(String.valueOf(list.get(7))));
+            Boolean trafjam = false;
+            if (String.valueOf(list.get(7)).equals("t"))
+                trafjam = true;
+            preparedStatement.setBoolean(10, trafjam);
             preparedStatement.setDouble(11, Double.valueOf(String.valueOf(list.get(8))));
             preparedStatement.setDouble(12, Double.valueOf(String.valueOf(list.get(9))));
             preparedStatement.execute();

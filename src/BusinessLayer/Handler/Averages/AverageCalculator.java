@@ -24,6 +24,8 @@ public class AverageCalculator {
     }
 
     public String getAverageTime(ArrayList time){
+        if (counter == 0)
+            return "00:00:00";
         int seconds = 0;
         for(int i = 0; i < time.size(); i++){
             StringTokenizer token = new StringTokenizer(time.get(i).toString(),":");

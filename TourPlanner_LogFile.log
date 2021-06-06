@@ -1,0 +1,17 @@
+2021-06-06 10:25:21,252 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Alert => Deleting Tour/Log -Allerts-
+2021-06-06 10:25:21,253 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandlerDatabase-
+2021-06-06 10:25:21,290 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Logs-
+2021-06-06 10:25:21,290 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandlerDatabase-
+2021-06-06 10:25:21,328 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Logs-
+2021-06-06 10:25:21,329 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved SQL Query -PropertyHandlerDatabase-
+2021-06-06 10:25:21,331 INFO B.L.LoggingHandler [JavaFX Application Thread] All Tour Logs deleted successfully from database -Database_Logs-
+2021-06-06 10:25:21,332 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandlerDatabase-
+2021-06-06 10:25:21,368 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Tours-
+2021-06-06 10:25:21,369 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved SQL Query -PropertyHandlerDatabase-
+2021-06-06 10:25:21,377 INFO B.L.LoggingHandler [JavaFX Application Thread] Tour deleted successfully from database -Database_Tours-
+2021-06-06 10:25:21,379 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved Connection Property -PropertyHandlerDatabase-
+2021-06-06 10:25:21,417 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Database Connection established -Database_Tours-
+2021-06-06 10:25:21,417 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Retrieved SQL Query -PropertyHandlerDatabase-
+2021-06-06 10:25:21,419 INFO B.L.LoggingHandler [JavaFX Application Thread] Tour Data retrieved successfully from database -Database_Tours-
+2021-06-06 10:25:21,419 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Tour 'Vienna to Graz in July' deleted -MainViewModel-
+2021-06-06 10:25:21,419 DEBUG B.L.LoggingHandler [JavaFX Application Thread] Tour 'null' deleted -MainWindowController-
